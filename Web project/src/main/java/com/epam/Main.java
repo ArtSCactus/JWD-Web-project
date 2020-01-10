@@ -2,7 +2,6 @@ package com.epam;
 
 import com.epam.connection.ConnectionPool;
 import com.epam.connection.ProxyConnection;
-import com.epam.model.Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 //Only for temporal use, just to test some small features
 public class Main {
     public static void main(String[] args){
-        Database database = Database.getInstance();
+      //  Database database = Database.getInstance();
 
        /* try {
             database.checkDriver();
@@ -32,7 +31,7 @@ public class Main {
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
             System.out.println( resultSet.getString(1).contains("Admin") & resultSet.getString(2).contains("root"));
-            connection.safeClose();
+            connection.terminate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

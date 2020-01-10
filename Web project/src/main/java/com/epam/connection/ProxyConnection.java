@@ -1,6 +1,6 @@
 package com.epam.connection;
 
-import exceptions.ConnectionClosingException;
+import exceptions.connection.ConnectionClosingException;
 
 import java.sql.*;
 import java.util.Map;
@@ -215,6 +215,22 @@ public class ProxyConnection implements Connection, AutoCloseable {
     public void rollback() throws SQLException {
         connection.rollback();
     }
+    /**
+     * Turns on autocommit and then asking connection pool to release this connection.
+     *
+     * @see ConnectionPool#releaseConnection(Connection)
+     */
+
+    @Override
+    public void close(){
+        try {
+            connection.setAutoCommit(true);
+
+        } catch (SQLException e) {
+            throw new ConnectionClosingException(e);
+        }
+        ConnectionPool.getInstance().releaseConnection(this);
+    }
 
     /**
      * Releases this <code>Connection</code> object's database and JDBC resources
@@ -229,24 +245,8 @@ public class ProxyConnection implements Connection, AutoCloseable {
      * and there is an active transaction, the results are implementation-defined.
      * <p>
      */
-    @Override
-    public void close() throws SQLException {
+    public void terminate() throws SQLException {
         connection.close();
-    }
-
-    /**
-     * Turns on autocommit and then asking connection pool to release this connection.
-     *
-     * @see ConnectionPool#releaseConnection(Connection)
-     */
-    public void safeClose() {
-        try {
-            connection.setAutoCommit(true);
-
-        } catch (SQLException e) {
-            throw new ConnectionClosingException(e);
-        }
-        ConnectionPool.getInstance().releaseConnection(this);
     }
 
     /**

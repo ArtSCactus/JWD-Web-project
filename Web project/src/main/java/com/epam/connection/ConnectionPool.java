@@ -1,8 +1,8 @@
 package com.epam.connection;
 
 import com.mysql.cj.jdbc.Driver;
-import exceptions.DriverManagerException;
-import exceptions.ResourcesLoadingException;
+import exceptions.connection.DriverManagerException;
+import exceptions.files.ResourcesLoadingException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,9 +15,9 @@ import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
-
+//TODO: Configure log4j on tomcat
 public class ConnectionPool implements IConnectionPool {
-    //private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static final ReentrantLock LOCK = new ReentrantLock();
     private static int initialCapacity = 100;
     private static final String RESOURCES_PATH = "config/connection pool.properties";
@@ -46,7 +46,7 @@ public class ConnectionPool implements IConnectionPool {
             InputStream inputStream = loader.getResourceAsStream(RESOURCES_PATH);
             properties.load(inputStream);
         } catch (IOException e) {
-        //    LOGGER.error("Failed to load resources from properties file (" + RESOURCES_PATH + ").");
+            LOGGER.error("Failed to load resources from properties file (" + RESOURCES_PATH + ").");
             throw new ResourcesLoadingException("An error occurred while loading resources", e);
         }
         String databaseUrl = properties.getProperty("url");
@@ -62,7 +62,7 @@ public class ConnectionPool implements IConnectionPool {
                 Connection connection = new ProxyConnection(DriverManager.getConnection(databaseUrl, user, password));
                 freeConnections.offer(connection);
             } catch (SQLException e) {
-         //       LOGGER.error("Failed to get connection from DriverManager");
+                LOGGER.error("Failed to get connection from DriverManager");
                 throw new DriverManagerException("Failed to get connection from DriverManager", e);
             }
         }

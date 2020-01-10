@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.connection;
 
 public class DriverNotFoundException extends Exception {
 
