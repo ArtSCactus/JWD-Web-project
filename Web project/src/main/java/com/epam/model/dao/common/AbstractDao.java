@@ -47,7 +47,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
         PreparedStatement statement = connection.prepareStatement(sql);
         for (int index = 1; index <= params.length; index++) {
             try {
-                statement.setObject(index, params[1 - index]);
+                statement.setObject(index, params[index-1]);
             } catch (SQLException e) {
                 e.printStackTrace();
                 LOGGER.error("An error occurred while statement preparing", e);

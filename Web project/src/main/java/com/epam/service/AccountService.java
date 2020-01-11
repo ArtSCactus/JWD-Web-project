@@ -15,7 +15,7 @@ public class AccountService {
 
     public Optional<User> login(String login, String password) throws AccountServiceException {
         try(DaoManager dao = DaoManager.create()){
-           AccountDao accountDao = dao.getAccountDao();
+                    AccountDao accountDao = dao.getAccountDao();
            return accountDao.getByLoginAndPassword(login, password);
         } catch (DaoException e) {
             e.printStackTrace();

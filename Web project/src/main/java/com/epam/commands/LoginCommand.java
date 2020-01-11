@@ -9,15 +9,15 @@ public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_PASSWORD = "password";
 
     public String execute(HttpServletRequest request) {
-        String page = null;
+        String page;
         String login = request.getParameter(PARAM_NAME_LOGIN);
         String pass= request.getParameter(PARAM_NAME_PASSWORD);
         if (LoginLogic.checkLogin(login, pass)) {
             request.setAttribute("user", login);
-            page ="/WEB-INF/main.jsp";
+            page ="/WEB-INF/jsp/main.jsp";
         }else {
-            request.setAttribute("errorLoginPassMessage", "message.login.error");
-            page = "/WEB-INF/error.jsp";
+            request.setAttribute("errorLoginPassMessage", "Wrong login or password. Try again");
+            page = "/WEB-INF/jsp/login.jsp";
         }
         return page;
     }

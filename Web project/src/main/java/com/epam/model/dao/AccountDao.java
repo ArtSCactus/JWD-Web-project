@@ -12,7 +12,7 @@ import java.util.Optional;
 public class AccountDao extends AbstractDao<User> {
     //TODO: Insert SHA-1 encryption to request
     private static final String GET_BY_LOGIN_AND_PASSWORD_REQ =
-            "select * from webappdatabase.accounts where login = ? and password = ?";
+            "select * from webappdatabase.accounts where login = ? and password = sha1(?)";
 
     public AccountDao(Connection connection) {
         super(connection);
