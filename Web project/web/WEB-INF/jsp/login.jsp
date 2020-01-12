@@ -4,7 +4,7 @@
     <title>
         Login
     </title>
-    <link href="../css/login.css" rel="stylesheet">
+    <link href="/WEB-INF/css/login.css" rel="stylesheet">
 </head>
 	<div class="container-login">
 	<div class="Wrap-login">

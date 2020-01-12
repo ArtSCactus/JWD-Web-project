@@ -1,8 +1,7 @@
 package com.epam.model.dao.helper;
 
 import com.epam.connection.ConnectionPool;
-import com.epam.connection.ProxyConnection;
-import com.epam.model.dao.AccountDao;
+import com.epam.model.dao.types.AccountDao;
 import exceptions.dao.DaoException;
 
 import java.sql.Connection;

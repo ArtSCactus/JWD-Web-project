@@ -6,12 +6,14 @@
         </title>
     </head>
   <body>
+	  <div class="userGreeting">
   <h3>
-  Welcome
+  University name here
   </h3>
-  <hr/>
   ${user}, hello!
   <hr/>
+	  </div>
+
   <a href="controller?command=logout">Logout</a>
     </body>
     </html>

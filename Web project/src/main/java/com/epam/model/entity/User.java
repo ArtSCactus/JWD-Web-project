@@ -6,15 +6,18 @@ public class User {
     private String login;
     private String password;
     private String mailbox;
-    public static final String TABLE_NAME= "accounts";
+    private Long id;
+    public static final String TABLE_NAME = "accounts";
 
-    public User(String login, String password, String mailbox) {
+    public User(Long id, String login, String password, String mailbox) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.mailbox = mailbox;
     }
 
-    public User(String login, String password) {
+    public User(Long id, String login, String password) {
+        this.id = id;
         this.login = login;
         this.password = password;
     }
@@ -37,7 +40,8 @@ public class User {
         return mailbox;
     }
 
-    /**Builder, that allows building entity object step by step.
+    /**
+     * Builder, that allows building entity object step by step.
      * Also, this class is nested and static to make easy to find it.
      */
     public static class Builder {
@@ -45,6 +49,11 @@ public class User {
 
         public Builder() {
             user = new User();
+        }
+
+        public Builder withId(Long id) {
+            user.id = id;
+            return this;
         }
 
         public Builder withLogin(String login) {

@@ -15,8 +15,7 @@ import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
-//TODO: Configure log4j on tomcat
-public class ConnectionPool implements IConnectionPool {
+public class ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static final ReentrantLock LOCK = new ReentrantLock();
     private static int initialCapacity = 100;
@@ -60,6 +59,7 @@ public class ConnectionPool implements IConnectionPool {
         for (int index = 0; index < initialCapacity; index++) {
             try {
                 Connection connection = new ProxyConnection(DriverManager.getConnection(databaseUrl, user, password));
+                connection.setSchema("webappdatabase");
                 freeConnections.offer(connection);
             } catch (SQLException e) {
                 LOGGER.error("Failed to get connection from DriverManager");
@@ -76,7 +76,6 @@ public class ConnectionPool implements IConnectionPool {
                     pool = new ConnectionPool();
                 }
             } catch (SQLException e) {
-                //TODO: Handle exception in ConnectionPool while creating?
                 throw new RuntimeException("An error occurred while ConnectionPool creating", e);
             } finally {
                 LOCK.unlock();

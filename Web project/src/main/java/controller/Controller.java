@@ -1,7 +1,7 @@
 package controller;
 
-import com.epam.common.ActionFactory;
-import com.epam.commands.ActionCommand;
+import com.epam.common.CommandFactory;
+import com.epam.commands.Command;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,9 +26,9 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request,
                                 HttpServletResponse response) throws ServletException, IOException {
-        String page = null;
-        ActionFactory client = new ActionFactory();
-        ActionCommand command = client.defineCommand(request);
+        String page;
+        CommandFactory client = new CommandFactory();
+        Command command = client.defineCommand(request);
         page = command.execute(request);
         if (page !=null){
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

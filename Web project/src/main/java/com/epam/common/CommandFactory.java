@@ -1,16 +1,16 @@
 package com.epam.common;
 
-import com.epam.commands.ActionCommand;
+import com.epam.commands.Command;
 import com.epam.commands.CommandEnum;
-import com.epam.commands.EmptyCommand;
+import com.epam.commands.ShowCommand;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ActionFactory {
-    private static String COMMAND = "command";
+public class CommandFactory {
+    private static final String COMMAND = "command";
 
-    public ActionCommand defineCommand(HttpServletRequest request) {
-        ActionCommand current = new EmptyCommand();
+    public Command defineCommand(HttpServletRequest request) {
+        Command current = new ShowCommand();
         String action = request.getParameter(COMMAND);
         if (action == null || action.isEmpty()) {
             return current;

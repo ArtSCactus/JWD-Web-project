@@ -1,7 +1,5 @@
 package com.epam.model.dao.common;
 
-import com.epam.model.builders.Manufacturer;
-
 import java.util.List;
 import java.util.Optional;
 
