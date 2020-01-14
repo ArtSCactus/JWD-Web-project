@@ -19,6 +19,8 @@ public class LoginCommand implements Command {
         String pass = request.getParameter(PARAM_NAME_PASSWORD);
         if (checkLogin(login, pass)) {
             request.setAttribute("user", login);
+            //TODO: put isLoggedIn to session
+            request.setAttribute("isUserDefined", true);
             return MAIN_PAGE_PATH;
         } else {
             request.setAttribute("errorLoginPassMessage", "Wrong login or password. Try again");

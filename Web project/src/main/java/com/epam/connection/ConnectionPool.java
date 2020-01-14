@@ -51,6 +51,7 @@ public class ConnectionPool {
         String databaseUrl = properties.getProperty("url");
         String user = properties.getProperty("user");
         String password = properties.getProperty("password");
+        String schema = properties.getProperty("schema");
         if (properties.containsKey("initialPoolSize")) {
             initialCapacity = Integer.parseInt(properties.getProperty("initialPoolSize"));
         }
@@ -59,7 +60,7 @@ public class ConnectionPool {
         for (int index = 0; index < initialCapacity; index++) {
             try {
                 Connection connection = new ProxyConnection(DriverManager.getConnection(databaseUrl, user, password));
-                connection.setSchema("webappdatabase");
+                connection.setSchema(schema);
                 freeConnections.offer(connection);
             } catch (SQLException e) {
                 LOGGER.error("Failed to get connection from DriverManager");

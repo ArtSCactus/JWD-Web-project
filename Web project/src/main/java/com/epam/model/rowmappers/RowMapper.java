@@ -1,5 +1,6 @@
 package com.epam.model.rowmappers;
 
+import com.epam.model.entity.Faculty;
 import com.epam.model.entity.User;
 
 import java.sql.ResultSet;
@@ -12,6 +13,8 @@ public interface RowMapper<T> {
         switch (table) {
             case User.TABLE_NAME:
                 return new UserRowMapper();
+            case Faculty.TABLE_NAME:
+                return new FacultyRowMapper();
             default:
                 throw new IllegalArgumentException("Unknown table name: " + table);
 

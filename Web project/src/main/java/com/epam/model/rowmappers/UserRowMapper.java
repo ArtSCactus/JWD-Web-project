@@ -1,14 +1,11 @@
 package com.epam.model.rowmappers;
 
 import com.epam.model.entity.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRowMapper implements RowMapper<User> {
-    private static final Logger LOGGER = LogManager.getLogger(UserRowMapper.class);
     private static final String LOGIN_COLUMN_NAME = "login";
     private static final String PASSWORD_COLUMN_NAME = "password";
     private static final String MAILBOX_COLUMN_NAME = "mailbox";

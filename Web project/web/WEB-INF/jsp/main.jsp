@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -9,18 +9,26 @@
 </head>
 <body>
 <header>
-    <div class="signUpBtn">
-        <a href="controller?command=signUp">sign up</a>
-    </div>
-    <div class="signInBtn">
-        <a href="controller?command=login">sign in</a>
-    </div>
+    <c:set var="isDefined" scope="page">${isUserDefined}</c:set>
+    <c:if test="${isDefined eq true}">
+        <a href="controller?command=logout">Logout</a>
+    </c:if>
+    <c:if test="${isDefined eq false}">
+        <div class="signUpBtn">
+            <a href="controller?command=signUp">sign up</a>
+        </div>
+        <div class="signInBtn">
+            <a href="controller?command=login">sign in</a>
+        </div>
+    </c:if>
 </header>
 <div class="userGreeting">
     <h3>
         University name here
     </h3>
-    ${user}, hello!
+   <c:if test="${isDefined eq true}">
+        ${user}, hello!
+    </c:if>
 </div>
 <aside class="specialtiesSideBar">
     <dl>faculties</dl>
@@ -28,7 +36,7 @@
     <dd>specialty</dd>
 </aside>
 <%--Temporary disabled due to the lack of data for the list--%>
-<%--<c:forEach var="specialtiesList" items="${specialties}">
+<c:forEach var="specialtiesList" items="${specialties}">
 <div class="specialtyContainer">
     <div class="row">
         <div class="columns">
@@ -37,7 +45,6 @@
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
         </div>
     </div>
-    </c:forEach>--%>
-    <a href="controller?command=logout">Logout</a>
+    </c:forEach>
 </body>
 </html>

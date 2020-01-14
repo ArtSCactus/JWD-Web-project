@@ -2,12 +2,12 @@ package com.epam.model.entity;
 
 import java.util.Objects;
 
-public class User {
+public class User implements Identifiable {
+    public static final String TABLE_NAME = "accounts";
     private String login;
     private String password;
     private String mailbox;
     private Long id;
-    public static final String TABLE_NAME = "accounts";
 
     public User(Long id, String login, String password, String mailbox) {
         this.id = id;
@@ -74,6 +74,11 @@ public class User {
         public User build() {
             return user;
         }
+    }
+
+    @Override
+    public Long getID() {
+        return id;
     }
 
     @Override
