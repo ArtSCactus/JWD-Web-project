@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface Dao<T> {
     Optional<T> getById(Long id);
 
-    List<T> getAll(String sql);
+    List<T> getAll();
 
     void save(T item);
 

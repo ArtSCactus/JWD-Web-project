@@ -1,16 +1,24 @@
 package com.epam.model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Faculty implements Identifiable {
+public class Faculty implements Identifiable, Serializable {
     public static final String TABLE_NAME = "faculties";
     private Long id;
     private String name;
     private String description;
     private List<Specialty> specialties;
+
+    public Faculty() {
+        id = 0L;
+        name="";
+        description="";
+        specialties = new ArrayList<>();
+    }
 
     public Faculty(Long id, String name, String description, List<Specialty> specialties) {
         this.id = id;
@@ -57,6 +65,9 @@ public class Faculty implements Identifiable {
         this.specialties = specialties;
     }
 
+    public void addSpecialty(Specialty specialty){
+        specialties.add(specialty);
+    }
     @Override
     public Long getID() {
         return id;

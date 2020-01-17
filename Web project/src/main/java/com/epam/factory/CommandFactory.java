@@ -1,8 +1,8 @@
-package com.epam.common;
+package com.epam.factory;
 
 import com.epam.commands.Command;
 import com.epam.commands.CommandEnum;
-import com.epam.commands.ShowCommand;
+import com.epam.commands.DefaultCommand;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ public class CommandFactory {
     private static final String COMMAND = "command";
 
     public Command defineCommand(HttpServletRequest request) {
-        Command current = new ShowCommand();
+        Command current = new DefaultCommand();
         String action = request.getParameter(COMMAND);
         if (action == null || action.isEmpty()) {
             return current;

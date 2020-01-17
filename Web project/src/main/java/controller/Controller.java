@@ -1,9 +1,12 @@
 package controller;
 
-import com.epam.common.CommandFactory;
+import com.epam.factory.CommandFactory;
 import com.epam.commands.Command;
+import com.epam.model.entity.University;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +25,13 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext servletContext = config.getServletContext();
+        servletContext.setAttribute("faculties", University.getInstance().getFaculties());
+        super.init(config);
     }
 
     private void processRequest(HttpServletRequest request,

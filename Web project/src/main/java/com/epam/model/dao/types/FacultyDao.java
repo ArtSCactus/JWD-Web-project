@@ -3,8 +3,10 @@ package com.epam.model.dao.types;
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
 import com.epam.model.entity.Faculty;
+import com.epam.model.rowmappers.FacultyRowMapper;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,14 +18,15 @@ public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
         super(connection);
     }
 
+
     @Override
     public Optional<Faculty> getById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public List<Faculty> getAll(String sql) {
-        return null;
+    public List<Faculty> getAll() {
+        return super.executeQuery(GET_ALL_REQ, new FacultyRowMapper());
     }
 
     @Override

@@ -24,16 +24,15 @@ public abstract class AbstractDao<T> implements Dao<T> {
             while (resultSet.next()){
                 objects.add(rowMapper.map(resultSet));
             }
+          //  resultSet.close();
             return objects;
         } catch (SQLException e) {
             throw new DaoException("An error occurred while multiple result dao request executing", e);
         }
     }
 
-    //TODO: Here's setting schema to connection. Jus in case remember this
     private PreparedStatement prepareStatement(String sql, Object... params) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(sql);
-        connection.setSchema("webappdatabase");
         for (int index = 1; index <= params.length; index++) {
             try {
                 statement.setObject(index, params[index-1]);

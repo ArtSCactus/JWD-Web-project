@@ -14,4 +14,13 @@
         <exception-type>java.lang.RuntimeException</exception-type>
         <location>/WEB-INF/jsp/error.jsp</location>
     </error-page>
+    <servlet>
+        <servlet-name>Selection committee</servlet-name>
+        <servlet-class>controller.Controller</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Selection committee</servlet-name>
+        <url-pattern>/webapp</url-pattern>
+    </servlet-mapping>
 </web-app>

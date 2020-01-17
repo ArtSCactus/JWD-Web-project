@@ -2,6 +2,9 @@ package com.epam.model.dao.helper;
 
 import com.epam.connection.ConnectionPool;
 import com.epam.model.dao.types.AccountDao;
+import com.epam.model.dao.types.FacultyDao;
+import com.epam.model.dao.types.SpecialtyDao;
+import com.epam.model.entity.Specialty;
 import exceptions.dao.DaoException;
 
 import java.sql.Connection;
@@ -20,6 +23,14 @@ public class DaoManager implements AutoCloseable {
 
     public AccountDao getAccountDao(){
         return new AccountDao(connection);
+    }
+
+    public FacultyDao getFacultyDao(){
+        return new FacultyDao(connection);
+    }
+
+    public SpecialtyDao getSpecialtyDao(){
+        return new SpecialtyDao(connection);
     }
 
     @Override

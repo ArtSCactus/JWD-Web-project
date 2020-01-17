@@ -19,10 +19,6 @@
         <br/>
         ${errorLoginPassMessage}
         <br/>
-        ${wrongAction}
-        <br/>
-        ${nullPage}
-        <br/>
         <input class="signInBtn" type="submit" value="sign in"/>
     </div>
 </form>

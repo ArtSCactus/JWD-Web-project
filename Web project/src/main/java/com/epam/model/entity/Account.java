@@ -2,27 +2,38 @@ package com.epam.model.entity;
 
 import java.util.Objects;
 
-public class User implements Identifiable {
+public class Account implements Identifiable {
     public static final String TABLE_NAME = "accounts";
     private String login;
     private String password;
     private String mailbox;
     private Long id;
+    private boolean isAdmin;
 
-    public User(Long id, String login, String password, String mailbox) {
+    public Account(Long id, String login, String password, String mailbox) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.mailbox = mailbox;
+        this.isAdmin=false;
     }
 
-    public User(Long id, String login, String password) {
+    public Account(Long id, String login, String password) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.isAdmin=false;
     }
 
-    private User() {
+    public Account(String login, String password, String mailbox, Long id, boolean isAdmin) {
+        this.login = login;
+        this.password = password;
+        this.mailbox = mailbox;
+        this.id = id;
+        this.isAdmin = isAdmin;
+    }
+
+    private Account() {
 
     }
 
@@ -40,40 +51,50 @@ public class User implements Identifiable {
         return mailbox;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
     /**
      * Builder, that allows building entity object step by step.
      * Also, this class is nested and static to make easy to find it.
      */
     public static class Builder {
-        private User user;
+        private Account account;
 
         public Builder() {
-            user = new User();
+            account = new Account();
         }
 
         public Builder withId(Long id) {
-            user.id = id;
+            account.id = id;
             return this;
         }
 
         public Builder withLogin(String login) {
-            user.login = login;
+            account.login = login;
             return this;
         }
 
         public Builder withPassword(String password) {
-            user.password = password;
+            account.password = password;
             return this;
         }
 
         public Builder withMailbox(String mailbox) {
-            user.mailbox = mailbox;
+            account.mailbox = mailbox;
             return this;
         }
 
-        public User build() {
-            return user;
+        public Builder withAdminStatus(boolean status){
+            account.isAdmin=status;
+            return this;
         }
+
+        public Account build() {
+            return account;
+        }
+
     }
 
     @Override
@@ -84,11 +105,11 @@ public class User implements Identifiable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return getLogin().equals(user.getLogin()) &&
-                getPassword().equals(user.getPassword()) &&
-                Objects.equals(getMailbox(), user.getMailbox());
+        if (!(o instanceof Account)) return false;
+        Account account = (Account) o;
+        return getLogin().equals(account.getLogin()) &&
+                getPassword().equals(account.getPassword()) &&
+                Objects.equals(getMailbox(), account.getMailbox());
     }
 
     @Override

@@ -1,17 +1,27 @@
 package com.epam.model.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Specialty implements Identifiable {
+public class Specialty implements Identifiable, Serializable {
     public static final String TABLE_NAME = "specialties";
     private Long id;
     private String name;
     private String description;
+    private Long facultyId;
 
-    public Specialty(Long id, String name, String description) {
+    public Specialty() {
+        id = 0L;
+        name = "";
+        description = "";
+        facultyId = 0L;
+    }
+
+    public Specialty(Long id, Long facultyId, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.facultyId=facultyId;
     }
 
     public Long getId() {
@@ -32,6 +42,14 @@ public class Specialty implements Identifiable {
 
     public String getDescription() {
         return description;
+    }
+
+    public Long getFacultyId() {
+        return facultyId;
+    }
+
+    public void setFacultyId(Long facultyId) {
+        this.facultyId = facultyId;
     }
 
     public void setDescription(String description) {
