@@ -15,6 +15,7 @@ import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
+
 public class ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static final ReentrantLock LOCK = new ReentrantLock();
@@ -64,7 +65,7 @@ public class ConnectionPool {
                 freeConnections.offer(connection);
             } catch (SQLException e) {
                 LOGGER.error("Failed to get connection from DriverManager");
-                throw new DriverManagerException("Failed to get connection from DriverManager: "+e.getMessage(), e);
+                throw new DriverManagerException("Failed to get connection from DriverManager: " + e.getMessage(), e);
             }
         }
     }
@@ -86,17 +87,22 @@ public class ConnectionPool {
     }
 
     public void releaseConnection(Connection connection) {
+        LOCK.lock();
         freeConnections.remove(connection);
         busyConnections.offer(connection);
+        LOCK.unlock();
     }
 
     public Connection getConnection() {
+        LOCK.lock();
         try {
             Connection connection = freeConnections.take();
             busyConnections.offer(connection);
             return connection;
         } catch (InterruptedException e) {
             throw new RuntimeException("An error occurred while getting connection from connection pool", e);
+        } finally {
+            LOCK.unlock();
         }
     }
 

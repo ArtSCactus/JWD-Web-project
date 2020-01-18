@@ -4,7 +4,6 @@ import com.epam.connection.ConnectionPool;
 import com.epam.model.dao.types.AccountDao;
 import com.epam.model.dao.types.FacultyDao;
 import com.epam.model.dao.types.SpecialtyDao;
-import com.epam.model.entity.Specialty;
 import exceptions.dao.DaoException;
 
 import java.sql.Connection;
