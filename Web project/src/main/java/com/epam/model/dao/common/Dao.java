@@ -10,7 +10,5 @@ public interface Dao<T> {
 
     void save(T item);
 
-    void update(Long id, Object ... params);
-
     void removeById(Long id);
 }

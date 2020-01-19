@@ -1,6 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 body {
+    /*  margin: 0;
+      padding: 0;
+      max-width: 100%;*/
     margin-left: 25%;
     margin-right: 25%;
     background-image: url(../images/Melbourne_university.jpg);
@@ -8,14 +11,39 @@ body {
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
     background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
     background-repeat: no-repeat;
-    width: 100%;
     background-size: 100%;
 }
 
-.logoutBtn, .signInBtn, .signUpBtn{
+.pageContainer {
+
+}
+
+.UniversityTitle {
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+}
+
+.signBtnBlock, .UniversityTitle {
     display: inline-block;
 }
+
+/*.signBtnBlock{
+    margin-left:100em;
+    margin-right: 10em;
+}*/
+header li {
+    font-family: 'Comfortaa', cursive;
+    color: #524f4e;
+    display: inline-block;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    transition: .2s linear;
+    float: right;
+}
+
 
 .specialty_item_title {
     /*border: 1px solid #4158d0;*/
@@ -33,7 +61,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
-.specialty_item .applyBtnFont{
+.specialty_item .applyBtnFont {
     text-align: right;
 }
 
@@ -42,18 +70,10 @@ body {
 
 }
 
-.Faculty_item {
-
-}
-
 .applyBtnFont {
     display: inline-block;
     position: relative;
-    border: 1px solid white;
-    text-align: center;
-}
-
-.ApplyBtn {
+    border: 1px;
 }
 
 .FacultiesSideBar {
@@ -69,4 +89,8 @@ body {
     display: inline-block;
     float: left;
     margin-left: 50px;
+}
+
+.MainList .specialty_item .ApplyBtn {
+    margin-left: 235px;
 }

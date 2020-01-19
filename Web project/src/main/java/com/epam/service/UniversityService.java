@@ -29,7 +29,7 @@ public class UniversityService {
             List<Specialty> specialties = specialtyDao.getAll();
             for (Faculty faculty : faculties) {
                 for (Specialty specialty : specialties) {
-                    if (specialty.getFacultyId().equals(faculty.getID())) {
+                    if (specialty.getFacultyId().equals(faculty.getId())) {
                         faculty.addSpecialty(specialty);
                     }
                 }

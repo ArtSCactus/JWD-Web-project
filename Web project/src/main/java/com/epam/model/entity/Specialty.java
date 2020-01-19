@@ -57,7 +57,7 @@ public class Specialty implements Identifiable, Serializable {
     }
 
     @Override
-    public Long getID() {
+    public Long getId() {
         return id;
     }
 

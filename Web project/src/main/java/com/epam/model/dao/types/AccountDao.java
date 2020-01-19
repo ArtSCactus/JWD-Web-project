@@ -39,12 +39,6 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public void save(Account item) {
-
-    }
-
-    @Override
-    public void update(Long id, Object... params) {
-
     }
 
     @Override

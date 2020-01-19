@@ -35,11 +35,6 @@ public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
     }
 
     @Override
-    public void update(Long id, Object... params) {
-
-    }
-
-    @Override
     public void removeById(Long id) {
 
     }

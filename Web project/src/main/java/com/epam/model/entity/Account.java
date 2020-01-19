@@ -98,7 +98,7 @@ public class Account implements Identifiable {
     }
 
     @Override
-    public Long getID() {
+    public Long getId() {
         return id;
     }
 

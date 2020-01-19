@@ -69,7 +69,7 @@ public class Faculty implements Identifiable, Serializable {
         specialties.add(specialty);
     }
     @Override
-    public Long getID() {
+    public Long getId() {
         return id;
     }
 
