@@ -49,7 +49,7 @@
 <div class="MainList">
     <c:forEach var="specialtiesList" items="${applicationScope.faculties}">
         <c:forEach var="specialty" items="${specialtiesList.specialties}">
-            <form class="specialty_item" method="post" action="controller?command=apply&specialty=${specialty.id}">
+            <form class="specialty_item" method="post" action="controller?command=apply&specialty=${specialty.id}&faculty=${specialtiesList.id}">
                 <div class="specialty_item_title">
                         ${specialty.name}
                     <div class="specialty_item_description">

@@ -11,9 +11,14 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
-    FORWARD{
+    FORWARD {
         {
             this.command = new ForwardCommand();
+        }
+    },
+    APPLY {
+        {
+            this.command = new ApplyCommand();
         }
     };
     Command command;

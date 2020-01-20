@@ -3,37 +3,34 @@ package com.epam.model.entity;
 import java.sql.Date;
 import java.util.Objects;
 
-public class StudentApplication implements Identifiable {
+public class Application implements Identifiable {
     private Long id;
     private Long facultyId;
     private Long accountId;
-    private Long admissionId;
     private Long specialtyId;
     private boolean isAccepted;
     private Date filingDate;
 
-    public StudentApplication(Long id, Long facultyId, Long accountId,
-                              Long admissionId, Long specialtyId, boolean isAccepted, Date filingDate) {
+    public Application(Long id, Long facultyId, Long accountId,
+                       Long specialtyId, boolean isAccepted, Date filingDate) {
         this.id = id;
         this.facultyId = facultyId;
         this.accountId = accountId;
-        this.admissionId = admissionId;
         this.specialtyId = specialtyId;
         this.isAccepted = isAccepted;
         this.filingDate = filingDate;
     }
 
-    public StudentApplication(Long facultyId, Long accountId,
-                              Long admissionId, Long specialtyId, boolean isAccepted, Date filingDate) {
+    public Application(Long facultyId, Long accountId,
+                       Long specialtyId, boolean isAccepted, Date filingDate) {
         this.facultyId = facultyId;
         this.accountId = accountId;
-        this.admissionId = admissionId;
         this.specialtyId = specialtyId;
         this.isAccepted = isAccepted;
         this.filingDate = filingDate;
     }
 
-    private StudentApplication(){
+    private Application(){
     }
 
     @Override
@@ -61,14 +58,6 @@ public class StudentApplication implements Identifiable {
         this.accountId = accountId;
     }
 
-    public Long getAdmissionId() {
-        return admissionId;
-    }
-
-    public void setAdmissionId(Long admissionId) {
-        this.admissionId = admissionId;
-    }
-
     public Long getSpecialtyId() {
         return specialtyId;
     }
@@ -94,10 +83,10 @@ public class StudentApplication implements Identifiable {
     }
 
     public static class Builder{
-        private StudentApplication obj;
+        private Application obj;
 
         public Builder() {
-            obj=new StudentApplication();
+            obj=new Application();
         }
 
         public Builder withId(Long id){
@@ -120,11 +109,6 @@ public class StudentApplication implements Identifiable {
             return this;
         }
 
-        public Builder withAdmissionId(Long id){
-            obj.admissionId=id;
-            return this;
-        }
-
         public Builder withStatus(boolean isAccepted){
             obj.isAccepted=isAccepted;
             return this;
@@ -134,25 +118,29 @@ public class StudentApplication implements Identifiable {
             obj.filingDate=filingDate;
             return this;
         }
+
+        public Application build(){
+            return obj;
+        }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StudentApplication)) return false;
-        StudentApplication that = (StudentApplication) o;
+        if (!(o instanceof Application)) return false;
+        Application that = (Application) o;
         return isAccepted() == that.isAccepted() &&
                 Objects.equals(getId(), that.getId()) &&
                 Objects.equals(getFacultyId(), that.getFacultyId()) &&
                 Objects.equals(getAccountId(), that.getAccountId()) &&
-                Objects.equals(getAdmissionId(), that.getAdmissionId()) &&
                 Objects.equals(getSpecialtyId(), that.getSpecialtyId()) &&
                 Objects.equals(getFilingDate(), that.getFilingDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFacultyId(), getAccountId(), getAdmissionId(), getSpecialtyId(), isAccepted(), getFilingDate());
+        return Objects.hash(getId(), getFacultyId(), getAccountId(),
+                getSpecialtyId(), isAccepted(), getFilingDate());
     }
 
     @Override
@@ -161,7 +149,6 @@ public class StudentApplication implements Identifiable {
                 "id=" + id +
                 ", facultyId=" + facultyId +
                 ", accountId=" + accountId +
-                ", admissionId=" + admissionId +
                 ", specialtyId=" + specialtyId +
                 ", isAccepted=" + isAccepted +
                 ", filingDate=" + filingDate +

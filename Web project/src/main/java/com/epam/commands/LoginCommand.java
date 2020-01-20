@@ -24,6 +24,7 @@ public class LoginCommand implements Command {
             request.setAttribute("user", login);
             session.setAttribute("isUserDefined", true);
             session.setAttribute("isUserAdmin", currentAccount.isAdmin());
+            session.setAttribute("accountId", currentAccount.getId());
             return MAIN_PAGE_PATH;
         } else {
             request.setAttribute("errorLoginPassMessage", "Wrong login or password. Try again");
@@ -34,8 +35,7 @@ public class LoginCommand implements Command {
     private Optional<Account> findUser(String enterLogin, String enterPass) {
         AccountService service = new AccountService();
         try {
-            Optional<Account> foundUser = service.login(enterLogin, enterPass);
-            return foundUser;
+            return service.login(enterLogin, enterPass);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

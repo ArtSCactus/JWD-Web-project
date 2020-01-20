@@ -19,13 +19,21 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
     protected List<T> executeQuery(String sql, RowMapper<T> rowMapper, Object... params) throws DaoException {
         try (PreparedStatement statement = prepareStatement(sql, params)) {
-            ResultSet resultSet = statement.executeQuery();
-            List<T> objects = new ArrayList<>();
-            while (resultSet.next()){
-                objects.add(rowMapper.map(resultSet));
-            }
-          //  resultSet.close();
-            return objects;
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    List<T> objects = new ArrayList<>();
+                    while (resultSet.next()) {
+                        objects.add(rowMapper.map(resultSet));
+                    }
+                    return objects;
+                }
+        } catch (SQLException e) {
+            throw new DaoException("An error occurred while multiple result dao request executing", e);
+        }
+    }
+
+    protected void executeUpdate(String sql, Object... params){
+        try (PreparedStatement statement = prepareStatement(sql, params)) {
+           statement.execute();
         } catch (SQLException e) {
             throw new DaoException("An error occurred while multiple result dao request executing", e);
         }
@@ -35,7 +43,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
         PreparedStatement statement = connection.prepareStatement(sql);
         for (int index = 1; index <= params.length; index++) {
             try {
-                statement.setObject(index, params[index-1]);
+                statement.setObject(index, params[index - 1]);
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new SQLException(e);

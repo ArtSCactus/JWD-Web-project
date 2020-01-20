@@ -11,10 +11,6 @@ public class Specialty implements Identifiable, Serializable {
     private Long facultyId;
 
     public Specialty() {
-        id = 0L;
-        name = "";
-        description = "";
-        facultyId = 0L;
     }
 
     public Specialty(Long id, Long facultyId, String name, String description) {
@@ -22,10 +18,6 @@ public class Specialty implements Identifiable, Serializable {
         this.name = name;
         this.description = description;
         this.facultyId=facultyId;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public void setId(Long id) {

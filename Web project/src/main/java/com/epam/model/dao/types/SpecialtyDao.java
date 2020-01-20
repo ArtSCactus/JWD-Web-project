@@ -28,12 +28,6 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
     public void save(Specialty item) {
 
     }
-
-    @Override
-    public void update(Long id, Object... params) {
-
-    }
-
     @Override
     public void removeById(Long id) {
 
