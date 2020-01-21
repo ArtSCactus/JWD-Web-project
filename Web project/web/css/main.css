@@ -23,6 +23,19 @@ body {
 .UniversityTitle {
     background-color: rgba(255, 255, 255, .6);
     backdrop-filter: blur(5px);
+/*    top: 14px;
+    left: 17px;
+    width: 509px;
+    height: 83px;
+    font-family: Segoe UI;
+    font-size: 54px;
+    text-align: left;
+    -ms-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
+    -o-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
+    -webkit-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
+    -moz-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
+    text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
+    color: #211d98;*/
 }
 
 .signBtnBlock, .UniversityTitle {
@@ -33,7 +46,7 @@ body {
     margin-left:100em;
     margin-right: 10em;
 }*/
-header li {
+header .sign-btn-ul {
     font-family: 'Comfortaa', cursive;
     color: #524f4e;
     display: inline-block;
@@ -43,6 +56,18 @@ header li {
     transition: .2s linear;
     float: right;
 }
+/*
+.menu-bar{
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+}
+ .menu-bar .menu-bar-item a{
+    display: inline-block;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    float: left;
+}
+*/
 
 
 .specialty_item_title {

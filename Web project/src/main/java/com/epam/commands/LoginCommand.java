@@ -14,7 +14,7 @@ public class LoginCommand implements Command {
     private static final String LOGIN_PAGE_PATH = "/WEB-INF/jsp/login.jsp";
     private static final String ERROR_PAGE_PATH = "/WEB-INF/jsp/error.jsp";
 
-    public String execute(HttpServletRequest request) {
+    public CommandResult execute(HttpServletRequest request) {
         String login = request.getParameter(PARAM_NAME_LOGIN);
         String pass = request.getParameter(PARAM_NAME_PASSWORD);
         HttpSession session = request.getSession(true);
@@ -22,13 +22,12 @@ public class LoginCommand implements Command {
         if (account.isPresent()) {
             Account currentAccount = account.get();
             request.setAttribute("user", login);
-            session.setAttribute("isUserDefined", true);
             session.setAttribute("isUserAdmin", currentAccount.isAdmin());
             session.setAttribute("accountId", currentAccount.getId());
-            return MAIN_PAGE_PATH;
+            return new CommandResult(MAIN_PAGE_PATH);
         } else {
             request.setAttribute("errorLoginPassMessage", "Wrong login or password. Try again");
-            return LOGIN_PAGE_PATH;
+            return new CommandResult(LOGIN_PAGE_PATH);
         }
     }
 

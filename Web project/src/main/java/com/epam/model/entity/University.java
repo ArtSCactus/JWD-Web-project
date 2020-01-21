@@ -18,7 +18,7 @@ public class University {
                 UniversityService service = new UniversityService();
                 university = new University();
                 try {
-                    university.facultyList = service.initFaculties();
+                    university.facultyList = service.initStructure();
                 } catch (ServiceException e) {
                     throw new RuntimeException("An error occurred in University service while" +
                             " creating University instance", e);

@@ -6,29 +6,32 @@
         University
     </title>
     <link rel="stylesheet" href="css/main.css">
-    <c:set var="isDefined" scope="session">${isUserDefined}</c:set>
-    <c:set var="isAdmin" scope="session">${isUserAdmin}</c:set>
 </head>
 <body>
 <div class="pageContainer">
 <header>
-    <ul>
-        <c:if test="${isDefined eq true}">
+    <ul class="sign-btn-ul">
+        <c:if test="${not empty sessionScope.accountId}">
             <li><a href="controller?command=logout">logout</a></li>
         </c:if>
-        <c:if test="${isDefined eq false}">
-            <li> <a href="controller?command=signUp&page=registration">sign up</a></li>
+        <c:if test="${empty sessionScope.accountId}">
+            <li> <a href="controller?command=forward&page=registration">sign up</a></li>
             <li> <a href="controller?command=forward&page=authorization">sign in</a></li>
         </c:if>
     </ul>
     <div class="UniversityTitle">Melbourne university </div>
+    <%-- <ul class="menu-bar">
+        <li><a href class="menu-bar-item">Main</a> </li>
+        <li><a href class="menu-bar-item">News</a> </li>
+        <li><a href class="menu-bar-item">Admission</a> </li>
+    </ul>--%>
 </header>
 <div class="UserGreeting">
-    <c:if test="${isDefined eq true}">
-        <c:if test="${isAdmin eq true}">
+    <c:if test="${not empty accountId}">
+        <c:if test="${isUserAdmin}">
             ${user}, hello, you are an administrator!
         </c:if>
-        <c:if test="${isAdmin eq false}">
+        <c:if test="${not isUserAdmin}">
             ${user}, hello, you are user!
         </c:if>
     </c:if>

@@ -1,5 +1,6 @@
 package controller;
 
+import com.epam.commands.CommandResult;
 import com.epam.factory.CommandFactory;
 import com.epam.commands.Command;
 import com.epam.model.entity.University;
@@ -36,17 +37,17 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request,
                                 HttpServletResponse response) throws ServletException, IOException {
-        String page;
+        CommandResult commandResult;
         CommandFactory client = new CommandFactory();
         Command command = client.defineCommand(request);
-        page = command.execute(request);
-        if (page !=null){
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+        commandResult = command.execute(request);
+        if (commandResult !=null & commandResult.getUrl()!=null){
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
             dispatcher.forward(request, response);
         } else {
-            page = "/WEB-INF/index.jsp";
+            commandResult = new CommandResult("/WEB-INF/index.jsp");
             request.getSession().setAttribute("nullPage", "A null page occurred");
-            response.sendRedirect(request.getContextPath()+page);
+            response.sendRedirect(request.getContextPath()+commandResult);
         }
 
     }

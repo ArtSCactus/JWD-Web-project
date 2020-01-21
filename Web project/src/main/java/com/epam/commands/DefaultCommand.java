@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 public class DefaultCommand implements Command {
     private static final String MAIN_PAGE_PATH = "/WEB-INF/main.jsp";
 
-    public String execute(HttpServletRequest request) {
+    public CommandResult execute(HttpServletRequest request) {
         HttpSession httpSession = request.getSession(true);
         httpSession.setAttribute("isUserDefined", false);
-        return MAIN_PAGE_PATH;
+        return new CommandResult(MAIN_PAGE_PATH);
     }
 }

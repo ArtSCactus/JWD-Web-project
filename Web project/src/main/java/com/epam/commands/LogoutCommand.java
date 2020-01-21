@@ -6,10 +6,10 @@ import javax.servlet.http.HttpSession;
 public class LogoutCommand implements Command {
     private static final String PAGE_PATH = "/WEB-INF/jsp/main.jsp";
 
-    public String execute(HttpServletRequest request) {
+    public CommandResult execute(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        session.setAttribute("isUserDefined", false);
         session.setAttribute("isUserAdmin", false);
-        return PAGE_PATH;
+        session.setAttribute("accountId", null);
+        return new CommandResult(PAGE_PATH);
     }
 }
