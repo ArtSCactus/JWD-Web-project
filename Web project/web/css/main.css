@@ -1,9 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 body {
-    /*  margin: 0;
-      padding: 0;
-      max-width: 100%;*/
     margin-left: 25%;
     margin-right: 25%;
     background-image: url(../images/Melbourne_university.jpg);
@@ -16,37 +13,30 @@ body {
     background-size: 100%;
 }
 
-.pageContainer {
-
+.UniversityTitle {
+    /*background-color: rgba(255, 255, 255, .6);*/
+    /* backdrop-filter: blur(5px);*/
 }
 
-.UniversityTitle {
+menu {
+    position: center;
     background-color: rgba(255, 255, 255, .6);
     backdrop-filter: blur(5px);
-/*    top: 14px;
-    left: 17px;
-    width: 509px;
-    height: 83px;
-    font-family: Segoe UI;
-    font-size: 54px;
-    text-align: left;
-    -ms-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
-    -o-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
-    -webkit-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
-    -moz-text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
-    text-shadow: 0px 3px 5px rgba(0,0,0,0.41);
-    color: #211d98;*/
+    padding: 0;
 }
 
-.signBtnBlock, .UniversityTitle {
+menu li {
     display: inline-block;
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-/*.signBtnBlock{
-    margin-left:100em;
-    margin-right: 10em;
-}*/
-header .sign-btn-ul {
+menu li a {
+    text-decoration: none;
+}
+
+header .sign-btn-ul li {
     font-family: 'Comfortaa', cursive;
     color: #524f4e;
     display: inline-block;
@@ -56,19 +46,10 @@ header .sign-btn-ul {
     transition: .2s linear;
     float: right;
 }
-/*
-.menu-bar{
-    background-color: rgba(255, 255, 255, .6);
-    backdrop-filter: blur(5px);
-}
- .menu-bar .menu-bar-item a{
-    display: inline-block;
-    margin-right: 10px;
-    padding-bottom: 5px;
-    float: left;
-}
-*/
 
+header .sign-btn-ul li a{
+    text-decoration: none;
+}
 
 .specialty_item_title {
     /*border: 1px solid #4158d0;*/
@@ -82,8 +63,8 @@ header .sign-btn-ul {
     width: 300px;
     height: auto;
     background-color: rgba(255, 255, 255, .6);
-    border-radius: 10px;
     backdrop-filter: blur(5px);
+    border-radius: 10px;
 }
 
 .specialty_item .applyBtnFont {

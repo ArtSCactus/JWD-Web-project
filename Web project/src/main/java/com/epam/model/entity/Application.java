@@ -1,32 +1,33 @@
 package com.epam.model.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Application implements Identifiable {
+public class Application implements Identifiable, Serializable {
     private Long id;
     private Long facultyId;
     private Long accountId;
     private Long specialtyId;
-    private boolean isAccepted;
+    private ApplicationStatus status;
     private Date filingDate;
 
     public Application(Long id, Long facultyId, Long accountId,
-                       Long specialtyId, boolean isAccepted, Date filingDate) {
+                       Long specialtyId, ApplicationStatus status, Date filingDate) {
         this.id = id;
         this.facultyId = facultyId;
         this.accountId = accountId;
         this.specialtyId = specialtyId;
-        this.isAccepted = isAccepted;
+        this.status = status;
         this.filingDate = filingDate;
     }
 
     public Application(Long facultyId, Long accountId,
-                       Long specialtyId, boolean isAccepted, Date filingDate) {
+                       Long specialtyId, ApplicationStatus status, Date filingDate) {
         this.facultyId = facultyId;
         this.accountId = accountId;
         this.specialtyId = specialtyId;
-        this.isAccepted = isAccepted;
+        this.status = status;
         this.filingDate = filingDate;
     }
 
@@ -66,12 +67,12 @@ public class Application implements Identifiable {
         this.specialtyId = specialtyId;
     }
 
-    public boolean isAccepted() {
-        return isAccepted;
+    public ApplicationStatus getStatus() {
+        return status;
     }
 
-    public void setAccepted(boolean accepted) {
-        isAccepted = accepted;
+    public void setStatus(ApplicationStatus status) {
+        this.status = status;
     }
 
     public Date getFilingDate() {
@@ -82,44 +83,44 @@ public class Application implements Identifiable {
         this.filingDate = filingDate;
     }
 
-    public static class Builder{
+    public static class Builder {
         private Application obj;
 
         public Builder() {
-            obj=new Application();
+            obj = new Application();
         }
 
-        public Builder withId(Long id){
-            obj.id=id;
+        public Builder withId(Long id) {
+            obj.id = id;
             return this;
         }
 
-        public Builder withFacultyId(Long id){
-            obj.facultyId=id;
+        public Builder withFacultyId(Long id) {
+            obj.facultyId = id;
             return this;
         }
 
-        public Builder withSpecialtyId(Long id){
-            obj.specialtyId=id;
+        public Builder withSpecialtyId(Long id) {
+            obj.specialtyId = id;
             return this;
         }
 
-        public Builder withAccountId(Long id){
-            obj.accountId=id;
+        public Builder withAccountId(Long id) {
+            obj.accountId = id;
             return this;
         }
 
-        public Builder withStatus(boolean isAccepted){
-            obj.isAccepted=isAccepted;
+        public Builder withStatus(ApplicationStatus isAccepted) {
+            obj.status = isAccepted;
             return this;
         }
 
-        public Builder withDate(Date filingDate){
-            obj.filingDate=filingDate;
+        public Builder withDate(Date filingDate) {
+            obj.filingDate = filingDate;
             return this;
         }
 
-        public Application build(){
+        public Application build() {
             return obj;
         }
     }
@@ -129,28 +130,27 @@ public class Application implements Identifiable {
         if (this == o) return true;
         if (!(o instanceof Application)) return false;
         Application that = (Application) o;
-        return isAccepted() == that.isAccepted() &&
-                Objects.equals(getId(), that.getId()) &&
+        return Objects.equals(getId(), that.getId()) &&
                 Objects.equals(getFacultyId(), that.getFacultyId()) &&
                 Objects.equals(getAccountId(), that.getAccountId()) &&
                 Objects.equals(getSpecialtyId(), that.getSpecialtyId()) &&
+                getStatus() == that.getStatus() &&
                 Objects.equals(getFilingDate(), that.getFilingDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFacultyId(), getAccountId(),
-                getSpecialtyId(), isAccepted(), getFilingDate());
+        return Objects.hash(getId(), getFacultyId(), getAccountId(), getSpecialtyId(), getStatus(), getFilingDate());
     }
 
     @Override
     public String toString() {
-        return "StudentApplication{" +
+        return "Application{" +
                 "id=" + id +
                 ", facultyId=" + facultyId +
                 ", accountId=" + accountId +
                 ", specialtyId=" + specialtyId +
-                ", isAccepted=" + isAccepted +
+                ", status=" + status +
                 ", filingDate=" + filingDate +
                 '}';
     }

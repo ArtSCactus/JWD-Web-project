@@ -1,6 +1,7 @@
 package com.epam.model.rowmappers;
 
 import com.epam.model.entity.Application;
+import com.epam.model.entity.ApplicationStatus;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ApplicationRowMapper implements RowMapper<Application> {
                 .withFacultyId(resultSet.getLong(FACULTY_ID_COLUMN))
                 .withSpecialtyId(resultSet.getLong(SPECIALTY_ID_COLUMN))
                 .withAccountId(resultSet.getLong(ACCOUNT_ID_COLUMN))
-                .withStatus(resultSet.getBoolean(STATUS_COLUMN))
+                .withStatus(ApplicationStatus.valueOf(resultSet.getString(STATUS_COLUMN).toUpperCase()))
                 .withDate(resultSet.getDate(FILING_DATE_COLUMN))
                 .build();
     }

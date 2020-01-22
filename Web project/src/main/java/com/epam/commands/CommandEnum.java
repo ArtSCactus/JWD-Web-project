@@ -20,10 +20,16 @@ public enum CommandEnum {
         {
             this.command = new ApplyCommand();
         }
+    },
+    SHOW_CONTROL_PANEL{
+        {
+            this.command = new ShowControlPanelCommand();
+        }
     };
     Command command;
 
     public Command getCurrentCommand() {
         return command;
     }
+
 }

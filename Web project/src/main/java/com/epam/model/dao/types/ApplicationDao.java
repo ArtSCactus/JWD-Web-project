@@ -6,7 +6,6 @@ import com.epam.model.entity.Application;
 import com.epam.model.rowmappers.ApplicationRowMapper;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +13,7 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     private static final String INSERT_STATEMENT_ROW = "INSERT INTO selection_committee.applications " +
             "(facultyId, specialtyId, accountId, status, date) VALUES" +
             " (?, ?, ?, ?, ?);";
+    private static final String GET_ALL_APPLICATIONS_REQ = "select * from applications";
 
     public ApplicationDao(Connection connection) {
         super(connection);
@@ -26,7 +26,7 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
 
     @Override
     public List<Application> getAll() {
-        return null;
+        return super.executeQuery(GET_ALL_APPLICATIONS_REQ, new ApplicationRowMapper());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
                 item.getFacultyId(),
                 item.getSpecialtyId(),
                 item.getAccountId(),
-                item.isAccepted(),
+                item.getStatus(),
                 item.getFilingDate());
     }
 

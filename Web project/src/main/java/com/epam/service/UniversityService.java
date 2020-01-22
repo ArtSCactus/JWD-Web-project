@@ -73,4 +73,8 @@ public class UniversityService {
         return getFacultyById(id).getName();
     }
 
+    public List<Faculty> getFaculties(){
+        return University.getInstance().getFaculties();
+    }
+
 }
