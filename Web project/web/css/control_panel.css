@@ -16,3 +16,6 @@ menu li {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.accept-form, .decline-form{
+    display: inline-block;
+}

@@ -37,12 +37,21 @@
             <td>${application.specialtyId}</td>
             <td>${application.status.message}</td>
             <td>${application.filingDate}</td>
-            <td><select>
-                <option>waiting</option>
-                <option>accepted</option>
-                <option>denied</option>
-            </select>
-           <%-- Create possibility to change application status--%></td>
+            <td>
+                <form class="accept-form" name="accept" method="post" action="controller">
+                    <input type="hidden" name="command" value="accept_application"/>
+                    <input type="hidden" name="applicationId" value="${application.id}"/>
+                    <input type="hidden" name="newStatus" value="accepted"/>
+                    <input class="button" type="submit" value="accept"/>
+                </form>
+                <form class="decline-form" name="decline" method="post" action="controller">
+                    <input type="hidden" name="command" value="decline_application"/>
+                    <input type="hidden" name="applicationId" value="${application.id}"/>
+                    <input type="hidden" name="newStatus" value="declined"/>
+                    <input class="button" type="submit" value="decline"/>
+                </form>
+                    <%-- Create possibility to change application status--%>
+            </td>
         </tr>
     </c:forEach>
 </table>

@@ -1,7 +1,8 @@
 package com.epam.commands;
 
 import java.util.Objects;
-
+//TODO: create a parameter boolean noRedirect?
+//TODO: create a reference to next command?
 public class CommandResult {
     private String url;
 

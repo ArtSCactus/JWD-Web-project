@@ -25,6 +25,11 @@ public enum CommandEnum {
         {
             this.command = new ShowControlPanelCommand();
         }
+    },
+    ACCEPT_APPLICATION{
+        {
+            this.command = new AcceptApplicationCommand();
+        }
     };
     Command command;
 

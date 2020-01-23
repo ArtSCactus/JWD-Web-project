@@ -16,9 +16,9 @@ public class AvailableCommands {
    }
 
    public static List<CommandEnum> getAdminCommands(){
-       List<CommandEnum> commands = new ArrayList<>();
-       commands.addAll(getUserCommands());
+       List<CommandEnum> commands = new ArrayList<>(getUserCommands());
        commands.add(CommandEnum.SHOW_CONTROL_PANEL);
+       commands.add(CommandEnum.ACCEPT_APPLICATION);
        return commands;
    }
 }

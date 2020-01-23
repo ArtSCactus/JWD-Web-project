@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class ApplicationDao extends AbstractDao<Application> implements Dao<Application> {
-    private static final String INSERT_STATEMENT_ROW = "INSERT INTO selection_committee.applications " +
-            "(facultyId, specialtyId, accountId, status, date) VALUES" +
-            " (?, ?, ?, ?, ?);";
+    private static final String INSERT_ODKU_STATEMENT_ROW = "INSERT INTO applications " +
+            "(id, facultyId, specialtyId, accountId, status, date) VALUES (?, ?,?, ?, ?, ?)" +
+            " on duplicate key update id=values(id), facultyId=values(facultyId), specialtyId=values(specialtyId)," +
+            " accountId=values(accountId), status=values(status), date=values(date);";
     private static final String GET_ALL_APPLICATIONS_REQ = "select * from applications";
+    private static final String GET_APPLICATION_BY_ID_REQ = "select * from applications where id=?";
 
     public ApplicationDao(Connection connection) {
         super(connection);
@@ -21,7 +23,12 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
 
     @Override
     public Optional<Application> getById(Long id) {
-        return Optional.empty();
+        List<Application> values =super.executeQuery(GET_APPLICATION_BY_ID_REQ, new ApplicationRowMapper(), id);
+        if (!values.isEmpty()){
+            return Optional.of(values.get(0));
+        } else {
+            return Optional.empty();
+        }
     }
 
     @Override
@@ -31,11 +38,12 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
 
     @Override
     public void save(Application item) {
-        super.executeUpdate(INSERT_STATEMENT_ROW,
+        super.executeUpdate(INSERT_ODKU_STATEMENT_ROW,
+                item.getId(),
                 item.getFacultyId(),
                 item.getSpecialtyId(),
                 item.getAccountId(),
-                item.getStatus(),
+                item.getStatus().getMessage(),
                 item.getFilingDate());
     }
 

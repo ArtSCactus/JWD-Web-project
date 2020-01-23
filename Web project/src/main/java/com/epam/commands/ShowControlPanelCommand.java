@@ -14,8 +14,8 @@ public class ShowControlPanelCommand implements Command {
         prepareDataForPage(request);
         return new CommandResult(CONTROL_PANEL_PAGE);
     }
-
-    private void prepareDataForPage(HttpServletRequest request) {
+    //TODO: make adaptive to students/admissions/accounts
+     void prepareDataForPage(HttpServletRequest request) {
         ApplicationService service = new ApplicationService();
         List<Application> applicationList = service.getApplicationsList();
         request.setAttribute("applicationsList", applicationList);

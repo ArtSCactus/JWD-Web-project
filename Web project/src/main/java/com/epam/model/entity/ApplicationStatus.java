@@ -1,7 +1,7 @@
 package com.epam.model.entity;
 
 public enum ApplicationStatus {
-    DENIED("denied"), ACCEPTED("accepted"), WAITING("waiting");
+    DECLINED("denied"), ACCEPTED("accepted"), WAITING("waiting");
 
     ApplicationStatus(String message) {
         this.message = message;

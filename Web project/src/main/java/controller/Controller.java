@@ -41,6 +41,7 @@ public class Controller extends HttpServlet {
         CommandFactory client = new CommandFactory();
         Command command = client.defineCommand(request);
         commandResult = command.execute(request);
+        //TODO: if you decided to make different parameter in CommandResult, make validation here.
         if (commandResult !=null & commandResult.getUrl()!=null){
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
             dispatcher.forward(request, response);

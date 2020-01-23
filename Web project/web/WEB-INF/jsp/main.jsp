@@ -26,12 +26,16 @@
         <li><a href="#">News</a></li>
         <li><a href="#">Admissions</a></li>
         <li><a href="#">Contacts</a></li>
+        <c:if test="${isUserAdmin}">
+            <li>
+            <a href="controller?command=show_control_panel">Control panel</a>
+            </li>
+        </c:if>
     </menu>
     <div class="UserGreeting">
         <c:if test="${not empty accountId}">
             <c:if test="${isUserAdmin}">
                 ${user}, hello, you are an administrator!
-                <a href="controller?command=show_control_panel">Your control panel</a>
             </c:if>
             <c:if test="${not isUserAdmin}">
                 ${user}, hello, you are user!
