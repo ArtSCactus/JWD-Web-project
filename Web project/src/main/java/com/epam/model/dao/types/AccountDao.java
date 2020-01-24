@@ -32,15 +32,12 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public Optional<Account> getById(Long id) {
-        try(DaoManager dao = DaoFactory.createDaoManager()){
-            AccountDao accountDao = dao.getAccountDao();
            List<Account> accountsList= super.executeQuery(GET_BY_ID_REQ, new AccountRowMapper(), id);
            if (accountsList.isEmpty()){
                return Optional.empty();
            } else {
                return Optional.of(accountsList.get(0));
            }
-        }
     }
 
     @Override
