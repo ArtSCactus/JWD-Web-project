@@ -1,4 +1,10 @@
-package com.epam.commands;
+package com.epam.commands.main;
+
+import com.epam.commands.result.ForwardCommand;
+import com.epam.commands.authorization.LoginCommand;
+import com.epam.commands.authorization.LogoutCommand;
+import com.epam.commands.controlpanel.ChangeApplicationStatusCommand;
+import com.epam.commands.controlpanel.ShowControlPanelCommand;
 
 public enum CommandEnum {
     LOGIN {
@@ -21,14 +27,14 @@ public enum CommandEnum {
             this.command = new ApplyCommand();
         }
     },
-    SHOW_CONTROL_PANEL{
+    SHOW_CONTROL_PANEL {
         {
             this.command = new ShowControlPanelCommand();
         }
     },
-    ACCEPT_APPLICATION{
+    CHANGE_APPLICATION_STATUS {
         {
-            this.command = new AcceptApplicationCommand();
+            this.command = new ChangeApplicationStatusCommand();
         }
     };
     Command command;

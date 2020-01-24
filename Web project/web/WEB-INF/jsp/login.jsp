@@ -17,7 +17,7 @@
         <span class="Password field title"><br>Password:<br/></span>
         <input type="password" name="password" value=""/>
         <br/>
-        ${errorLoginPassMessage}
+        ${errorMessage}
         <br/>
         <input class="signInBtn" type="submit" value="sign in"/>
     </div>

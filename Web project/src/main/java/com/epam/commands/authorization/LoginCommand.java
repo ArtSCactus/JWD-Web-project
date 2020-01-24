@@ -1,5 +1,7 @@
-package com.epam.commands;
+package com.epam.commands.authorization;
 
+import com.epam.commands.main.Command;
+import com.epam.commands.main.CommandResult;
 import com.epam.model.entity.Account;
 import com.epam.service.AccountService;
 import exceptions.service.ServiceException;
@@ -21,12 +23,17 @@ public class LoginCommand implements Command {
         Optional<Account> account = findUser(login, pass);
         if (account.isPresent()) {
             Account currentAccount = account.get();
-            request.setAttribute("user", login);
-            session.setAttribute("isUserAdmin", currentAccount.isAdmin());
-            session.setAttribute("accountId", currentAccount.getId());
-            return new CommandResult(MAIN_PAGE_PATH);
+            if (currentAccount.isBlocked()){
+                request.setAttribute("errorMessage", "This account is banned.");
+                return new CommandResult(LOGIN_PAGE_PATH);
+            } else {
+                request.setAttribute("user", login);
+                session.setAttribute("isUserAdmin", currentAccount.isAdmin());
+                session.setAttribute("accountId", currentAccount.getId());
+                return new CommandResult(MAIN_PAGE_PATH);
+            }
         } else {
-            request.setAttribute("errorLoginPassMessage", "Wrong login or password. Try again");
+            request.setAttribute("errorMessage", "Wrong login or password. Try again");
             return new CommandResult(LOGIN_PAGE_PATH);
         }
     }

@@ -1,5 +1,7 @@
-package com.epam.commands;
+package com.epam.commands.controlpanel;
 
+import com.epam.commands.main.Command;
+import com.epam.commands.main.CommandResult;
 import com.epam.model.entity.Application;
 import com.epam.model.entity.ApplicationStatus;
 import com.epam.service.ApplicationService;
@@ -7,7 +9,7 @@ import com.epam.service.ApplicationService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class AcceptApplicationCommand implements Command {
+public class ChangeApplicationStatusCommand implements Command {
     private static final String CONTROL_PANEL_PAGE_PATH = "/WEB-INF/jsp/control panel.jsp";
 
     @Override
@@ -26,7 +28,6 @@ public class AcceptApplicationCommand implements Command {
             throw new IllegalArgumentException("Requesting application does not exist: id=" + applicationId);
         }
     }
-
     private void updateControlPanelData(HttpServletRequest request){
         new ShowControlPanelCommand().prepareDataForPage(request);
     }

@@ -1,4 +1,4 @@
-package com.epam.commands;
+package com.epam.commands.main;
 
 import java.util.Objects;
 //TODO: create a parameter boolean noRedirect?

@@ -1,5 +1,7 @@
-package com.epam.commands;
+package com.epam.commands.controlpanel;
 
+import com.epam.commands.main.Command;
+import com.epam.commands.main.CommandResult;
 import com.epam.model.entity.Application;
 import com.epam.service.ApplicationService;
 
@@ -15,7 +17,7 @@ public class ShowControlPanelCommand implements Command {
         return new CommandResult(CONTROL_PANEL_PAGE);
     }
     //TODO: make adaptive to students/admissions/accounts
-     void prepareDataForPage(HttpServletRequest request) {
+     public void prepareDataForPage(HttpServletRequest request) {
         ApplicationService service = new ApplicationService();
         List<Application> applicationList = service.getApplicationsList();
         request.setAttribute("applicationsList", applicationList);

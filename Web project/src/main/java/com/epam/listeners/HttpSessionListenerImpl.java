@@ -1,13 +1,15 @@
-package controller;
+package com.epam.listeners;
 
 import javax.servlet.http.*;
 
-public class SessionListener implements HttpSessionListener {
+public class HttpSessionListenerImpl implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
+        session.setMaxInactiveInterval(600); // 10 minutes
         session.setAttribute("isUserDefined", false);
         session.setAttribute("isUserAdmin", false);
+        session.setAttribute("isAccountBlocked", null);
     }
 
     @Override

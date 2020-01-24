@@ -1,4 +1,7 @@
-package com.epam.commands;
+package com.epam.commands.authorization;
+
+import com.epam.commands.main.Command;
+import com.epam.commands.main.CommandResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

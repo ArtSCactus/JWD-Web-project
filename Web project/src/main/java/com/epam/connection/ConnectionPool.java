@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -88,8 +90,8 @@ public class ConnectionPool {
 
     public void releaseConnection(Connection connection) {
         LOCK.lock();
-        freeConnections.remove(connection);
-        busyConnections.offer(connection);
+        freeConnections.offer(connection);
+        busyConnections.remove(connection);
         LOCK.unlock();
     }
 

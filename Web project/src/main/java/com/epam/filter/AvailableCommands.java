@@ -1,6 +1,6 @@
 package com.epam.filter;
 
-import com.epam.commands.CommandEnum;
+import com.epam.commands.main.CommandEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AvailableCommands {
    public static List<CommandEnum> getAdminCommands(){
        List<CommandEnum> commands = new ArrayList<>(getUserCommands());
        commands.add(CommandEnum.SHOW_CONTROL_PANEL);
-       commands.add(CommandEnum.ACCEPT_APPLICATION);
+       commands.add(CommandEnum.CHANGE_APPLICATION_STATUS);
        return commands;
    }
 }

@@ -39,16 +39,16 @@
             <td>${application.filingDate}</td>
             <td>
                 <form class="accept-form" name="accept" method="post" action="controller">
-                    <input type="hidden" name="command" value="accept_application"/>
+                    <input type="hidden" name="command" value="change_application_status"/>
                     <input type="hidden" name="applicationId" value="${application.id}"/>
                     <input type="hidden" name="newStatus" value="accepted"/>
                     <input class="button" type="submit" value="accept"/>
                 </form>
                 <form class="decline-form" name="decline" method="post" action="controller">
-                    <input type="hidden" name="command" value="decline_application"/>
+                    <input type="hidden" name="command" value="change_application_status"/>
                     <input type="hidden" name="applicationId" value="${application.id}"/>
-                    <input type="hidden" name="newStatus" value="declined"/>
-                    <input class="button" type="submit" value="decline"/>
+                    <input type="hidden" name="newStatus" value="rejected"/>
+                    <input class="button" type="submit" value="reject"/>
                 </form>
                     <%-- Create possibility to change application status--%>
             </td>

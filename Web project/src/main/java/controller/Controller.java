@@ -1,8 +1,8 @@
 package controller;
 
-import com.epam.commands.CommandResult;
+import com.epam.commands.main.CommandResult;
 import com.epam.factory.CommandFactory;
-import com.epam.commands.Command;
+import com.epam.commands.main.Command;
 import com.epam.model.entity.University;
 
 import javax.servlet.RequestDispatcher;
@@ -42,13 +42,23 @@ public class Controller extends HttpServlet {
         Command command = client.defineCommand(request);
         commandResult = command.execute(request);
         //TODO: if you decided to make different parameter in CommandResult, make validation here.
-        if (commandResult !=null & commandResult.getUrl()!=null){
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-            dispatcher.forward(request, response);
-        } else {
-            commandResult = new CommandResult("/WEB-INF/index.jsp");
-            request.getSession().setAttribute("nullPage", "A null page occurred");
+        try {
+            if (commandResult != null & commandResult.getUrl() != null) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+                dispatcher.forward(request, response);
+            } else {
+                commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
+
+                response.sendRedirect(request.getContextPath() + commandResult);
+            }
+        }catch(ServletException e){
+            commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
+            request.setAttribute("requestUri", request.getRequestURI());
+            request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
+            request.setAttribute("throwable", e);
             response.sendRedirect(request.getContextPath()+commandResult);
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+dispatcher.forward(request, response);
         }
 
     }

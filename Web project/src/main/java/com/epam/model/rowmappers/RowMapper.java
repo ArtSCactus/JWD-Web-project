@@ -13,7 +13,7 @@ public interface RowMapper<T> {
     static RowMapper create(String table) {
         switch (table) {
             case Account.TABLE_NAME:
-                return new UserRowMapper();
+                return new AccountRowMapper();
             case Faculty.TABLE_NAME:
                 return new FacultyRowMapper();
             case Specialty.TABLE_NAME:

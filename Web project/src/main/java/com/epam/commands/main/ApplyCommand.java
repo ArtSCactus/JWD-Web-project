@@ -1,4 +1,4 @@
-package com.epam.commands;
+package com.epam.commands.main;
 
 import com.epam.service.ApplicationService;
 
