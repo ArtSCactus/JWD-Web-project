@@ -1,7 +1,7 @@
 package com.epam.commands.controlpanel;
 
 import com.epam.commands.main.Command;
-import com.epam.commands.main.CommandResult;
+import com.epam.commands.result.CommandResult;
 import com.epam.model.entity.controlpanel.PageContent;
 import com.epam.model.entity.controlpanel.PageContentType;
 import com.epam.service.AccountService;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class LoadContentCommand implements Command {
-    private static final String CONTROL_PANEL_PAGE_PATH = "/WEB-INF/jsp/control panel.jsp";
+    private static final String CONTROL_PANEL_PAGE_PATH = "/WEB-INF/jsp/applications admin panel.jsp";
     private static final String CONTENT_TYPE_ATTR_NAME = "type";
 
     @Override

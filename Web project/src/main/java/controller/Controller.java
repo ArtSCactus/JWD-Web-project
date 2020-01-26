@@ -1,9 +1,12 @@
 package controller;
 
-import com.epam.commands.main.CommandResult;
+import com.epam.commands.result.CommandResult;
+import com.epam.commands.result.CommandType;
 import com.epam.factory.CommandFactory;
 import com.epam.commands.main.Command;
 import com.epam.model.entity.university.University;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -17,6 +20,7 @@ import java.io.IOException;
 
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
+    private static final Logger LOGGER = LogManager.getLogger(Controller.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,24 +45,43 @@ public class Controller extends HttpServlet {
         CommandFactory client = new CommandFactory();
         Command command = client.defineCommand(request);
         commandResult = command.execute(request);
-        //TODO: if you decided to make different parameter in CommandResult, make validation here.
         try {
-            if (commandResult != null && commandResult.getUrl() != null) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-                dispatcher.forward(request, response);
-            } else {
-                commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
-
-                response.sendRedirect(request.getContextPath() + commandResult);
+            switch (commandResult.getExecutedCommandType()) {
+                case POST:
+                    response.sendRedirect(request.getContextPath() + commandResult.getRedirectUrl());
+                    break;
+                case GET:
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+                    dispatcher.forward(request, response);
             }
         } catch (ServletException e) {
+        LOGGER.error("An error was occurred while command executing: "+e.getMessage());
+        commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
+        request.setAttribute("requestUri", request.getRequestURI());
+        request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
+        request.setAttribute("throwable", e);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+        dispatcher.forward(request, response);
+    }
+      /* // try {
+            if (commandResult != null && commandResult.getUrl() != null) {
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+               // dispatcher.forward(request, response);
+                response.sendRedirect(request.getContextPath()+commandResult.getRedirectUrl());
+            } else {
+                commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
+                System.out.println(request.getContextPath());
+                response.sendRedirect(request.getContextPath() + commandResult.getUrl());
+            }*/
+      /*  } catch (ServletException e) {
+            LOGGER.error("An error was occurred while command executing: "+e.getMessage());
             commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
             request.setAttribute("requestUri", request.getRequestURI());
             request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
             request.setAttribute("throwable", e);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
             dispatcher.forward(request, response);
-        }
+        }*/
 
     }
 }

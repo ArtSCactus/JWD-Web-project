@@ -2,11 +2,12 @@ package com.epam.commands.main;
 
 import com.epam.commands.controlpanel.ChangeBlockStatusCommand;
 import com.epam.commands.controlpanel.LoadContentCommand;
+import com.epam.commands.controlpanel.view.ShowAccountsAdminMenu;
 import com.epam.commands.result.ForwardCommand;
 import com.epam.commands.authorization.LoginCommand;
 import com.epam.commands.authorization.LogoutCommand;
 import com.epam.commands.controlpanel.ChangeApplicationStatusCommand;
-import com.epam.commands.controlpanel.ShowControlPanelCommand;
+import com.epam.commands.controlpanel.view.ShowApplicationsAdminMenu;
 
 public enum CommandEnum {
     LOGIN {
@@ -31,7 +32,7 @@ public enum CommandEnum {
     },
     SHOW_CONTROL_PANEL {
         {
-            this.command = new ShowControlPanelCommand();
+            this.command = new ShowApplicationsAdminMenu();
         }
     },
     CHANGE_APPLICATION_STATUS {
@@ -44,9 +45,19 @@ public enum CommandEnum {
           this.command = new ChangeBlockStatusCommand();
         }
     },
-    LOAD_CONTENT{
+    SHOW_ADMIN_PANEL {
         {
-            this.command = new LoadContentCommand();
+            this.command = new ShowApplicationsAdminMenu();
+        }
+    },
+    SHOW_APPLICATIONS_PANEL{
+        {
+            this.command = new ShowApplicationsAdminMenu();
+        }
+    },
+    SHOW_ACCOUNTS_PANEL{
+        {
+            this.command = new ShowAccountsAdminMenu();
         }
     };
     Command command;

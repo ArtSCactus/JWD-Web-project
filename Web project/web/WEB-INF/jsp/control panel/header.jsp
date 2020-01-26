@@ -1,0 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<html>
+<head>
+    <link rel="stylesheet" href="css/accounts_admin_panel.css">
+</head>
+<header>
+    <div class="university-title">Melbourne university</div>
+    <a href="controller?command=logout">logout</a>
+    <menu>
+        <li><a href="controller?command=load_content&type=admissions">Admissions</a></li>
+        <li><a href="controller?command=show_applications_panel">Applications</a></li>
+        <li><a href="controller?command=load_content&type=students">Students</a></li>
+        <li><a href="controller?command=show_accounts_panel">Accounts</a></li>
+    </menu>
+</header>
+</html>

@@ -28,7 +28,7 @@
         <li><a href="#">Contacts</a></li>
         <c:if test="${isUserAdmin}">
             <li>
-            <a href="controller?command=show_control_panel">Control panel</a>
+            <a href="controller?command=show_admin_panel">Control panel</a>
             </li>
         </c:if>
     </menu>

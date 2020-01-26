@@ -13,7 +13,7 @@ import java.util.Optional;
 public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
     private static final String INSERT_ODKU_REQ="insert into accounts (id, login, password, mailbox, adminStatus, " +
             "blockStatus) VALUES (?, ?, sha1(?),?, ?, ?) on duplicate key update id=values(id), login=values(login), " +
-            "password=values(password), mailbox=values(mailbox), adminStatus=values(adminStatus), " +
+            " mailbox=values(mailbox), adminStatus=values(adminStatus), " +
             "blockStatus=values(blockStatus);";
     private static final String GET_BY_LOGIN_AND_PASSWORD_REQ =
             "select * from accounts where login = ? and password = sha1(?)";

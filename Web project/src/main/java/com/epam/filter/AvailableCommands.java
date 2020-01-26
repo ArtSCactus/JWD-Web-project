@@ -19,7 +19,9 @@ public class AvailableCommands {
        List<CommandEnum> commands = new ArrayList<>(getUserCommands());
        commands.add(CommandEnum.SHOW_CONTROL_PANEL);
        commands.add(CommandEnum.CHANGE_BLOCK_STATUS);
-       commands.add(CommandEnum.LOAD_CONTENT);
+       commands.add(CommandEnum.SHOW_ADMIN_PANEL);
+       commands.add(CommandEnum.SHOW_ACCOUNTS_PANEL);
+       commands.add(CommandEnum.SHOW_APPLICATIONS_PANEL);
        commands.add(CommandEnum.CHANGE_APPLICATION_STATUS);
        return commands;
    }

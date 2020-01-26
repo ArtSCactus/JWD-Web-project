@@ -1,7 +1,8 @@
 package com.epam.commands.controlpanel;
 
 import com.epam.commands.main.Command;
-import com.epam.commands.main.CommandResult;
+import com.epam.commands.result.CommandResult;
+import com.epam.commands.result.CommandType;
 import com.epam.model.entity.controlpanel.PageContent;
 import com.epam.model.entity.controlpanel.PageContentType;
 import com.epam.service.AccountService;
@@ -9,10 +10,10 @@ import com.epam.service.AccountService;
 import javax.servlet.http.HttpServletRequest;
 
 public class ChangeBlockStatusCommand implements Command {
-    private static final String CONTROL_PANEL_PAGE_PATH="/WEB-INF/jsp/control panel.jsp";
+    private static final String CONTROL_PANEL_PAGE_PATH="/WEB-INF/jsp/applications admin panel.jsp";
+    private static final String REDIRECT_URL="/controller?command=show_accounts_panel";
     @Override
     public CommandResult execute(HttpServletRequest request) {
-        //TODO: create enum for account block status.
         Long accountId = Long.valueOf(request.getParameter("accountId"));
         boolean blockStatus = Boolean.parseBoolean(request.getParameter("blockStatus"));
         AccountService service = new AccountService();
@@ -21,7 +22,7 @@ public class ChangeBlockStatusCommand implements Command {
         content.setType(PageContentType.ACCOUNTS);
         content.setContent(service.getAccountsList());
         request.setAttribute("content", content);
-        return new CommandResult(CONTROL_PANEL_PAGE_PATH);
+        return new CommandResult(CONTROL_PANEL_PAGE_PATH, REDIRECT_URL, CommandType.POST);
     }
 
 }
