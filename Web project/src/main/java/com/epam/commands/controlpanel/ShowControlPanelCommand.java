@@ -3,6 +3,7 @@ package com.epam.commands.controlpanel;
 import com.epam.commands.main.Command;
 import com.epam.commands.main.CommandResult;
 import com.epam.model.entity.Application;
+import com.epam.model.entity.controlpanel.PageContent;
 import com.epam.service.ApplicationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +17,13 @@ public class ShowControlPanelCommand implements Command {
         prepareDataForPage(request);
         return new CommandResult(CONTROL_PANEL_PAGE);
     }
+
     //TODO: make adaptive to students/admissions/accounts
-     public void prepareDataForPage(HttpServletRequest request) {
+    public void prepareDataForPage(HttpServletRequest request) {
+        PageContent container = new PageContent();
         ApplicationService service = new ApplicationService();
         List<Application> applicationList = service.getApplicationsList();
-        request.setAttribute("applicationsList", applicationList);
+        container.setContent(applicationList);
+        request.setAttribute("content", container);
     }
 }

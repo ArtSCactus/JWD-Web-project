@@ -2,7 +2,7 @@ package com.epam.model.dao.types;
 
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.model.entity.Specialty;
+import com.epam.model.entity.university.Specialty;
 import com.epam.model.rowmappers.SpecialtyRowMapper;
 
 import java.sql.Connection;

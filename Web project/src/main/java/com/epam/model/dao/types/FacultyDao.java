@@ -2,11 +2,10 @@ package com.epam.model.dao.types;
 
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.model.entity.Faculty;
+import com.epam.model.entity.university.Faculty;
 import com.epam.model.rowmappers.FacultyRowMapper;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

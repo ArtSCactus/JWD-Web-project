@@ -7,6 +7,7 @@ import com.epam.model.entity.Account;
 import exceptions.dao.DaoException;
 import exceptions.service.ServiceException;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -48,6 +49,13 @@ public class AccountService {
             } else {
                 throw new ServiceException("Account with given id not exists");
             }
+        }
+    }
+
+    public List<Account> getAccountsList(){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            AccountDao accountDao = dao.getAccountDao();
+            return accountDao.getAll();
         }
     }
 

@@ -3,7 +3,7 @@ package controller;
 import com.epam.commands.main.CommandResult;
 import com.epam.factory.CommandFactory;
 import com.epam.commands.main.Command;
-import com.epam.model.entity.University;
+import com.epam.model.entity.university.University;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -20,7 +20,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       processRequest(req, resp);
+        processRequest(req, resp);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Controller extends HttpServlet {
         commandResult = command.execute(request);
         //TODO: if you decided to make different parameter in CommandResult, make validation here.
         try {
-            if (commandResult != null & commandResult.getUrl() != null) {
+            if (commandResult != null && commandResult.getUrl() != null) {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
                 dispatcher.forward(request, response);
             } else {
@@ -51,14 +51,13 @@ public class Controller extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + commandResult);
             }
-        }catch(ServletException e){
+        } catch (ServletException e) {
             commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
             request.setAttribute("requestUri", request.getRequestURI());
             request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
             request.setAttribute("throwable", e);
-            response.sendRedirect(request.getContextPath()+commandResult);
-RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-dispatcher.forward(request, response);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+            dispatcher.forward(request, response);
         }
 
     }

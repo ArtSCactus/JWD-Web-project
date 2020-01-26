@@ -1,4 +1,4 @@
-package com.epam.model.entity;
+package com.epam.model.entity.university;
 
 import com.epam.service.UniversityService;
 import exceptions.service.ServiceException;

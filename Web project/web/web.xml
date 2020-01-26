@@ -7,7 +7,7 @@
         <welcome-file>/WEB-INF/jsp/main.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
-        <session-timeout>20</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <error-page>
         <error-code>404</error-code>

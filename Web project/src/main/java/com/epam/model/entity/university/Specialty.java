@@ -1,4 +1,6 @@
-package com.epam.model.entity;
+package com.epam.model.entity.university;
+
+import com.epam.model.entity.Identifiable;
 
 import java.io.Serializable;
 import java.util.Objects;

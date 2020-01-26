@@ -1,8 +1,8 @@
 package com.epam.model.rowmappers;
 
 import com.epam.model.entity.Account;
-import com.epam.model.entity.Faculty;
-import com.epam.model.entity.Specialty;
+import com.epam.model.entity.university.Faculty;
+import com.epam.model.entity.university.Specialty;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -4,9 +4,9 @@ import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.FacultyDao;
 import com.epam.model.dao.types.SpecialtyDao;
-import com.epam.model.entity.Faculty;
-import com.epam.model.entity.Specialty;
-import com.epam.model.entity.University;
+import com.epam.model.entity.university.Faculty;
+import com.epam.model.entity.university.Specialty;
+import com.epam.model.entity.university.University;
 import exceptions.dao.DaoException;
 import exceptions.service.ServiceException;
 
