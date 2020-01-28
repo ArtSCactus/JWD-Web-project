@@ -8,9 +8,9 @@
     <div class="university-title">Melbourne university</div>
     <a href="controller?command=logout">logout</a>
     <menu>
-        <li><a href="controller?command=load_content&type=admissions">Admissions</a></li>
+        <li><a href="controller?command=show_admissions_panel">Admissions</a></li>
         <li><a href="controller?command=show_applications_panel">Applications</a></li>
-        <li><a href="controller?command=load_content&type=students">Students</a></li>
+        <li><a href="controller?command=show_students_panel">Students</a></li>
         <li><a href="controller?command=show_accounts_panel">Accounts</a></li>
     </menu>
 </header>

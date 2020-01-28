@@ -27,15 +27,15 @@ public abstract class AbstractDao<T> implements Dao<T> {
                     return objects;
                 }
         } catch (SQLException e) {
-            throw new DaoException("An error occurred while multiple result dao request executing", e);
+            throw new DaoException("An error occurred while request executing", e);
         }
     }
 
-    protected void executeUpdate(String sql, Object... params){
+    protected int executeUpdate(String sql, Object... params){
         try (PreparedStatement statement = prepareStatement(sql, params)) {
-           statement.execute();
+           return statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DaoException("An error occurred while multiple result dao request executing", e);
+            throw new DaoException("An error occurred while request executing", e);
         }
     }
 

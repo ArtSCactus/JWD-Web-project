@@ -1,10 +1,11 @@
 package com.epam.service;
 
+import com.epam.dto.entity.Admission;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.ApplicationDao;
-import com.epam.model.entity.Application;
-import com.epam.model.entity.ApplicationStatus;
+import com.epam.dto.entity.Application;
+import com.epam.dto.entity.ApplicationStatus;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -58,6 +59,13 @@ public class ApplicationService {
         try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
             applicationDao.save(application);
+        }
+    }
+
+    public List<Application> getEnrolledApplications(Admission admission){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            ApplicationDao applicationDao = dao.getApplicationDao();
+           return applicationDao.getEnrolledApplications(admission);
         }
     }
 }

@@ -32,16 +32,6 @@
             </li>
         </c:if>
     </menu>
-    <div class="UserGreeting">
-        <c:if test="${not empty accountId}">
-            <c:if test="${isUserAdmin}">
-                ${user}, hello, you are an administrator!
-            </c:if>
-            <c:if test="${not isUserAdmin}">
-                ${user}, hello, you are user!
-            </c:if>
-        </c:if>
-    </div>
     <aside class="FacultiesSideBar">
         <c:forEach var="facultiesList" items="${applicationScope.faculties}">
         <div class="Faculty_item">

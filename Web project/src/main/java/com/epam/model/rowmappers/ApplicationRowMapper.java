@@ -1,8 +1,10 @@
 package com.epam.model.rowmappers;
 
-import com.epam.model.entity.Application;
-import com.epam.model.entity.ApplicationStatus;
+import com.epam.dto.entity.Application;
+import com.epam.dto.entity.ApplicationStatus;
+import exceptions.dao.DaoException;
 
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -24,5 +26,13 @@ public class ApplicationRowMapper implements RowMapper<Application> {
                 .withStatus(ApplicationStatus.valueOf(resultSet.getString(STATUS_COLUMN).toUpperCase()))
                 .withDate(resultSet.getDate(FILING_DATE_COLUMN))
                 .build();
+    }
+
+    public Long mapAdmissionResult(ResultSet resultSet){
+        try {
+            return  resultSet.getLong(ACCOUNT_ID_COLUMN);
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
     }
 }

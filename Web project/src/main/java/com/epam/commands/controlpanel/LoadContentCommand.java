@@ -2,8 +2,8 @@ package com.epam.commands.controlpanel;
 
 import com.epam.commands.main.Command;
 import com.epam.commands.result.CommandResult;
-import com.epam.model.entity.controlpanel.PageContent;
-import com.epam.model.entity.controlpanel.PageContentType;
+import com.epam.dto.PageContent;
+import com.epam.dto.PageContentType;
 import com.epam.service.AccountService;
 import com.epam.service.ApplicationService;
 

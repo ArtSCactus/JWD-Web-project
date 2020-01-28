@@ -2,7 +2,7 @@ package com.epam.model.dao.types;
 
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.model.entity.university.Faculty;
+import com.epam.dto.university.Faculty;
 import com.epam.model.rowmappers.FacultyRowMapper;
 
 import java.sql.Connection;
@@ -29,8 +29,8 @@ public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
     }
 
     @Override
-    public void save(Faculty item) {
-
+    public int save(Faculty item) {
+        return 0;
     }
 
     @Override

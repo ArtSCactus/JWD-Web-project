@@ -23,6 +23,10 @@ public class AvailableCommands {
        commands.add(CommandEnum.SHOW_ACCOUNTS_PANEL);
        commands.add(CommandEnum.SHOW_APPLICATIONS_PANEL);
        commands.add(CommandEnum.CHANGE_APPLICATION_STATUS);
+       commands.add(CommandEnum.SHOW_ADMISSIONS_PANEL);
+       commands.add(CommandEnum.FINISH_ADMISSION);
+       commands.add(CommandEnum.SHOW_STUDENTS_PANEL);
+       commands.add(CommandEnum.EXPEL_STUDENT);
        return commands;
    }
 }

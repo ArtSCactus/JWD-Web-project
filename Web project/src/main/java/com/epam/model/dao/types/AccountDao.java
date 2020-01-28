@@ -2,7 +2,7 @@ package com.epam.model.dao.types;
 
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.model.entity.Account;
+import com.epam.dto.entity.Account;
 import com.epam.model.rowmappers.AccountRowMapper;
 import exceptions.dao.DaoException;
 
@@ -49,8 +49,8 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
     }
 
     @Override
-    public void save(Account item) {
-        super.executeUpdate(INSERT_ODKU_REQ,
+    public int save(Account item) {
+      return super.executeUpdate(INSERT_ODKU_REQ,
                 item.getId(),
                 item.getLogin(),
                 item.getPassword(),

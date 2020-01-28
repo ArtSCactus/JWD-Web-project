@@ -3,7 +3,7 @@ package com.epam.commands.result;
 import com.epam.commands.main.Command;
 
 import javax.servlet.http.HttpServletRequest;
-
+//TODO: should be deleted and replace on forward/redirect
 public class ForwardCommand implements Command {
     private static final String SIGN_IN_PAGE_PATH = "/WEB-INF/jsp/login.jsp";
     private static final String MAIN_PAGE_PATH = "/WEB-INF/jsp/main.jsp";

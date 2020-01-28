@@ -3,7 +3,7 @@ package com.epam.service;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.AccountDao;
-import com.epam.model.entity.Account;
+import com.epam.dto.entity.Account;
 import exceptions.dao.DaoException;
 import exceptions.service.ServiceException;
 
@@ -55,6 +55,20 @@ public class AccountService {
         try(DaoManager dao = DaoFactory.createDaoManager()){
             AccountDao accountDao = dao.getAccountDao();
             return accountDao.getAll();
+        }
+    }
+
+    public Optional<Account> getAccountById(Long id){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            AccountDao accountDao = dao.getAccountDao();
+            return accountDao.getById(id);
+        }
+    }
+
+    public int registerNewUser(Account account){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            AccountDao accountDao = dao.getAccountDao();
+            return accountDao.save(account);
         }
     }
 

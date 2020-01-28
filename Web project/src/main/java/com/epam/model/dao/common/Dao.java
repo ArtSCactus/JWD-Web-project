@@ -8,7 +8,7 @@ public interface Dao<T> {
 
     List<T> getAll();
 
-    void save(T item);
+    int save(T item);
 
     void removeById(Long id);
 }

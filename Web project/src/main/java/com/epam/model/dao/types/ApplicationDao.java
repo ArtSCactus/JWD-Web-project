@@ -1,8 +1,9 @@
 package com.epam.model.dao.types;
 
+import com.epam.dto.entity.Admission;
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.model.entity.Application;
+import com.epam.dto.entity.Application;
 import com.epam.model.rowmappers.ApplicationRowMapper;
 
 import java.sql.Connection;
@@ -16,6 +17,16 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
             " accountId=values(accountId), status=values(status), date=values(date);";
     private static final String GET_ALL_APPLICATIONS_REQ = "select * from applications";
     private static final String GET_APPLICATION_BY_ID_REQ = "select * from applications where id=?";
+    private static final String GET_ACCOUNT_ID_FROM_ENROLLED_APPLICATIONS_REQ = "select applications.*, accounts.totalPoints\n" +
+            "from applications,\n" +
+            "     accounts\n" +
+            "where status = 'accepted'\n" +
+            "  and facultyId = ?\n" +
+            "  and specialtyId = ?\n" +
+            "  and admissionId = ?\n" +
+            "  and (date between ? and ?)\n" +
+            "order by totalPoints desc\n" +
+            "limit ?;";
 
     public ApplicationDao(Connection connection) {
         super(connection);
@@ -37,8 +48,8 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     }
 
     @Override
-    public void save(Application item) {
-        super.executeUpdate(INSERT_ODKU_STATEMENT_ROW,
+    public int save(Application item) {
+      return super.executeUpdate(INSERT_ODKU_STATEMENT_ROW,
                 item.getId(),
                 item.getFacultyId(),
                 item.getSpecialtyId(),
@@ -50,5 +61,15 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     @Override
     public void removeById(Long id) {
 
+    }
+
+    public List<Application> getEnrolledApplications(Admission admission){
+        return super.executeQuery(GET_ACCOUNT_ID_FROM_ENROLLED_APPLICATIONS_REQ, new ApplicationRowMapper(),
+                admission.getFacultyId(),
+                admission.getSpecialtyId(),
+                admission.getId(),
+                admission.getStart(),
+                admission.getEnd(),
+                admission.getAmountOfStudents());
     }
 }
