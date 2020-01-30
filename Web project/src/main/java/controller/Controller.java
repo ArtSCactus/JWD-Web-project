@@ -1,9 +1,9 @@
 package controller;
 
-import com.epam.commands.result.CommandResult;
-import com.epam.factory.CommandFactory;
 import com.epam.commands.main.Command;
+import com.epam.commands.result.CommandResult;
 import com.epam.dto.university.University;
+import com.epam.factory.CommandFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

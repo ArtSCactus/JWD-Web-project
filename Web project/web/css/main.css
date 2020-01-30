@@ -1,8 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
 body {
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 15%;
+    margin-right: 15%;
     background-image: url(../images/Melbourne_university.jpg);
     -moz-background-size: 100%; /* Firefox 3.6+ */
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
@@ -13,9 +13,10 @@ body {
     background-size: 100%;
 }
 
-.UniversityTitle {
-    /*background-color: rgba(255, 255, 255, .6);*/
-    /* backdrop-filter: blur(5px);*/
+.page-title {
+    font-style: italic;
+    font-size: 50px;
+    color: #353eead6;
 }
 
 menu {
@@ -37,7 +38,6 @@ menu li a {
 }
 
 header .sign-btn-ul li {
-    font-family: 'Comfortaa', cursive;
     color: #524f4e;
     display: inline-block;
     margin-right: 10px;
@@ -51,23 +51,17 @@ header .sign-btn-ul li a{
     text-decoration: none;
 }
 
-.specialty_item_title {
-    /*border: 1px solid #4158d0;*/
-}
-
-.specialty_item_description {
-    /*border: 1px solid #4158d0;*/
-}
-
 .specialty_item {
-    width: 300px;
-    height: auto;
+    display: flex; /* 1 */
+    flex-direction: column; /* 1 */
+    flex: 0 0 300px; /* 2 */
+    margin: 10px; /* 3 */
     background-color: rgba(255, 255, 255, .6);
     backdrop-filter: blur(5px);
     border-radius: 10px;
 }
 
-.specialty_item .applyBtnFont {
+.specialty_item .apply-btn-form {
     text-align: right;
 }
 
@@ -76,10 +70,11 @@ header .sign-btn-ul li a{
 
 }
 
-.applyBtnFont {
+.apply-btn-form {
     display: inline-block;
     position: relative;
-    border: 1px;
+    float: right;
+    margin-right:10%;
 }
 
 .FacultiesSideBar {
@@ -91,12 +86,42 @@ header .sign-btn-ul li a{
     outline: 2px #2c5792;
 }
 
-.MainList {
-    display: inline-block;
-    float: left;
-    margin-left: 50px;
+.specialties-block{
+    list-style: none; /* 1 */
+    margin: 0; /* 1 */
+    padding: 0; /* 1 */
+    display: flex; /* 2 */
+    flex-wrap: wrap; /* 2 */
 }
 
-.MainList .specialty_item .ApplyBtn {
-    margin-left: 235px;
+.specialty_item_title{
+    font-size: 150%;
+    font-style: oblique;
+}
+
+.specialty_item:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.apply-btn{
+    display: inline-block;
+    color: #74d1ff;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+
+.apply-btn:hover{
+    background: rgba(255,255,255,.2);
+}
+
+.apply-btn:active{
+    background: white;
 }

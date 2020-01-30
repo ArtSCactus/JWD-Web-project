@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    background-image: url(../images/Melbourne_university.jpg);
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+menu {
+    position: center;
+    padding: 0;
+    text-decoration: none;
+}
+
+header {
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+}
+
+.university-title {
+    font-family: Snell Roundhand, cursive;
+    font-size: 19px;
+}
+
+header .university-title, a {
+    display: inline-block;
+}
+
+header a {
+    float: right;
+}
+
+aside {
+    margin-left: 0;
+}
+
+table, aside {
+    display: inline-block;
+    padding-right: 30px;
+}
+
+table {
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+}
+
+menu li {
+    display: inline-block;
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.accept-form, .decline-form {
+    display: inline-block;
+}

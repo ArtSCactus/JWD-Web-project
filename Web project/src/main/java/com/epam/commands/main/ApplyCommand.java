@@ -1,19 +1,20 @@
 package com.epam.commands.main;
 
 import com.epam.commands.result.CommandResult;
+import com.epam.commands.result.CommandType;
 import com.epam.service.ApplicationService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class ApplyCommand implements Command {
-    private static final String LOGIN_PAGE = "/WEB-INF/jsp/login.jsp";
-    private static final String MAIN_PAGE = "/WEB-INF/jsp/main.jsp";
+    private static final String LOGIN_PAGE = "/WEB-INF/jsp/main/login.jsp";
+    private static final String MAIN_PAGE = "/WEB-INF/jsp/main/main.jsp";
     private static final String IS_USER_DEFINED_ATTR="isDefined";
     private static final String FACULTY_PARAM = "faculty";
     private static final String SPECIALTY_PARAM = "specialty";
     private static final String ACCOUNT_ID_ATTR="accountId";
-    private static final String REDIRECT_URL = "/controller?command=forward&page=main";
+    private static final String REDIRECT_MAIN_URL = "/controller?command=forward&page=main";
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
@@ -23,9 +24,9 @@ public class ApplyCommand implements Command {
             service.apply(Long.parseLong(request.getParameter(FACULTY_PARAM)),
                     Long.parseLong(request.getParameter(SPECIALTY_PARAM)),
                     (Long) session.getAttribute(ACCOUNT_ID_ATTR));
-            return new CommandResult(MAIN_PAGE);
+            return new CommandResult(null, REDIRECT_MAIN_URL, CommandType.POST);
         } else {
-            return new CommandResult(LOGIN_PAGE);
+            return new CommandResult(LOGIN_PAGE, null, CommandType.GET);
         }
     }
 }

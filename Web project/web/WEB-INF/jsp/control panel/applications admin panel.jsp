@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Control panel</title>
-    <link rel="stylesheet" href="css/accounts_admin_panel.css">
+    <link rel="stylesheet" href="css/admin_panel.css">
     <%--@elvariable id="content" type="com.epam.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>

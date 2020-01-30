@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <link rel="stylesheet" href="css/accounts_admin_panel.css">
+    <link rel="stylesheet" href="css/admin_panel.css">
 </head>
 <header>
     <div class="university-title">Melbourne university</div>

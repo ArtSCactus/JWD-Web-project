@@ -4,7 +4,7 @@
          id="WebApp_ID" version="3.0">
     <display-name>DevApp</display-name>
     <welcome-file-list>
-        <welcome-file>/WEB-INF/jsp/main.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/main/main.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
         <session-timeout>30</session-timeout>
