@@ -62,25 +62,5 @@ public class Controller extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
         dispatcher.forward(request, response);
     }
-      /* // try {
-            if (commandResult != null && commandResult.getUrl() != null) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-               // dispatcher.forward(request, response);
-                response.sendRedirect(request.getContextPath()+commandResult.getRedirectUrl());
-            } else {
-                commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
-                System.out.println(request.getContextPath());
-                response.sendRedirect(request.getContextPath() + commandResult.getUrl());
-            }*/
-      /*  } catch (ServletException e) {
-            LOGGER.error("An error was occurred while command executing: "+e.getMessage());
-            commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
-            request.setAttribute("requestUri", request.getRequestURI());
-            request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
-            request.setAttribute("throwable", e);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-            dispatcher.forward(request, response);
-        }*/
-
     }
 }

@@ -8,12 +8,14 @@ import com.epam.model.rowmappers.SpecialtyRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialty> {
-    private static final String GET_ALL_SPEC_REQ = "select * from specialties";
+    private ResourceBundle resources;
 
     public SpecialtyDao(Connection connection) {
         super(connection);
+        resources = ResourceBundle.getBundle("sql requests/get");
     }
 
     @Override
@@ -23,7 +25,7 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
 
     @Override
     public List<Specialty> getAll() {
-        return super.executeQuery(GET_ALL_SPEC_REQ, new SpecialtyRowMapper());
+        return super.executeQuery(resources.getString("get_all_specialties"), new SpecialtyRowMapper());
     }
 
     @Override

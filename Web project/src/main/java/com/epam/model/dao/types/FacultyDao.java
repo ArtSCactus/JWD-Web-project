@@ -8,24 +8,35 @@ import com.epam.model.rowmappers.FacultyRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
-    private static final String GET_BY_ID_REQ = "select * from faculties where id = ?";
-    private static final String GET_ALL_REQ = "select * from faculties";
+    /*  private static final String GET_BY_ID_REQ = "select * from faculties where id = ?";
+      private static final String GET_ALL_REQ = "select * from faculties";*/
+    private ResourceBundle resources;
 
     public FacultyDao(Connection connection) {
         super(connection);
+        resources = ResourceBundle.getBundle("sql requests/get");
     }
 
 
     @Override
     public Optional<Faculty> getById(Long id) {
-        return Optional.empty();
+        List<Faculty> faculties =
+                super.executeQuery(resources.getString("get_faculty_by_id"), new FacultyRowMapper(), id);
+        if (!faculties.isEmpty()){
+            return Optional.of(faculties.get(0));
+        } else {
+            return Optional.empty();
+
+        }
     }
 
     @Override
     public List<Faculty> getAll() {
-        return super.executeQuery(GET_ALL_REQ, new FacultyRowMapper());
+        String sqlRequest = resources.getString("get_all_faculties");
+        return super.executeQuery(sqlRequest, new FacultyRowMapper());
     }
 
     @Override

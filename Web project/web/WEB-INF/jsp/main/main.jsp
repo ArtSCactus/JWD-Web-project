@@ -9,19 +9,35 @@
     <link rel="stylesheet" href="../../../css/main.css">
 </head>
 <body>
-  <%--  <aside class="FacultiesSideBar">
-        <c:forEach var="facultiesList" items="${applicationScope.faculties}">
-        <div class="Faculty_item">
-            <div class="Faculty_item_title">
-                    ${facultiesList.name}
-                <c:forEach var="specialtiesOfFacultyList" items="${facultiesList.specialties}">
-                    <div class="specialtyNameAtList">
-                            ${specialtiesOfFacultyList.name}
-                    </div>
-                </c:forEach>
-            </div>
-            </c:forEach>
-    </aside>--%>
+<div class="faculties-block">
+    <aside class="faculties-enum-block">
+       <c:forEach var="facultiesList" items="${applicationScope.faculties}">
+       <div class="faculty-item">
+           <div class="faculty-item-title">
+                   ${facultiesList.name}
+           </div>
+       </div>
+       </c:forEach>
+    </aside>
+           <div class="faculty-description-block">
+               Established in 1853, the University of Melbourne is a public-spirited
+               institution that makes distinctive contributions to society in research,
+               learning and teaching and engagement. It’s consistently ranked among the
+               leading universities in the world, with international rankings of world universities
+               placing it as number 1 in Australia and number 32 in the world
+               (Times Higher Education World University Rankings 2017-2018).
+           </div>
+</div>
+<div class="specialties-toolbox">
+<form class="search-form">
+<input type="text" class="search-input-field" placeholder="Search here..."/>
+    <label for="only-with-admission-checkbox">
+        Only with admission
+        <input type="checkbox" id="only-with-admission-checkbox" value="false">
+    </label>
+    <input type="submit" value="find">
+</form>
+</div>
     <div class="specialties-block">
         <c:forEach var="specialtiesList" items="${applicationScope.faculties}">
             <c:forEach var="specialty" items="${specialtiesList.specialties}">

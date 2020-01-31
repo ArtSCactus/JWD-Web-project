@@ -5,18 +5,21 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <header>
+    <div class="upper-section">
     <ul class="sign-btn-ul">
         <c:if test="${not empty sessionScope.accountId}">
-            <li><a href="controller?command=logout">logout</a></li>
+           <li><a href="controller?command=logout">logout</a></li>
         </c:if>
         <c:if test="${empty sessionScope.accountId}">
             <li><a href="controller?command=forward&page=registration">sign up</a></li>
-            <li><a href="controller?command=forward&page=authorization">sign in</a></li>
+           <li><a href="controller?command=forward&page=authorization">sign in</a></li>
         </c:if>
     </ul>
-    <div class="page-title">Melbourne university</div>
-</header>
-<header>
+        <div class="down-section">
+            <div class="page-title">Melbourne university</div>
+            <div class="Apply-form"><a>Apply</a></div>
+        </div>
+    </div>
     <menu>
         <li><a href="#"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li><a href="#">News</a></li>

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 public class FinishAdmissionCommand implements Command {
