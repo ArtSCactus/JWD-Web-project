@@ -15,6 +15,6 @@ public class LogoutCommand implements Command {
         HttpSession session = request.getSession(false);
         session.setAttribute("isUserAdmin", false);
         session.setAttribute("accountId", null);
-        return new CommandResult(PAGE_PATH, REDIRECT_URL, CommandType.POST);
+        return new CommandResult(REDIRECT_URL, CommandType.POST);
     }
 }

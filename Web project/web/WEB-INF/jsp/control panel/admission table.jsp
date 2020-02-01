@@ -9,7 +9,37 @@
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
-<table class="application-table">
+<form class="Start-admission-form" method="post" action="controller">
+    <label for="date-end-input">
+        End date:
+        <input type="date" class="date-end-input-field" name="end" id="date-end-input"/>
+    </label>
+    <label>
+        Faculty:
+        <select class="select-faculty-list" name="faculty" required="required">
+            <%--@elvariable id="faculty_item" type="com.epam.dto.university.Faculty"--%>
+            <c:forEach var="faculty_item" items="${requestScope.content.additionalAttributes.get('faculties')}">
+                <option>${faculty_item.name}</option>
+            </c:forEach>
+        </select>
+    </label>
+    <label>
+        Specialty:
+        <select class="select-specialty-list" name="specialty" required="required">
+            <%--@elvariable id="specialty_item" type="com.epam.dto.university.Specialty"--%>
+            <c:forEach var="specialty_item" items="${requestScope.content.additionalAttributes.get('specialties')}">
+                <option>${specialty_item.name}</option>
+            </c:forEach>
+        </select>
+    </label>
+    <label>
+        Limit:
+        <input class="limit-input" name="limit" type="text" required="required" placeholder="Integer limit here"/>
+    </label>
+    <input class="start-admission-btn" type="submit" value="start">
+    <input type="hidden" name="command" value="start_admission">
+</form>
+<table class="admission-table">
     <tr>
         <th>ID</th>
         <th>Started at</th>

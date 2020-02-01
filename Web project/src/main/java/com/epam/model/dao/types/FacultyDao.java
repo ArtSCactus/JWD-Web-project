@@ -48,4 +48,13 @@ public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
     public void removeById(Long id) {
 
     }
+
+    public Optional<Faculty> getByName(String name){
+        List<Faculty> faculties = super.executeQuery(resources.getString("get_faculty_by_name"), new FacultyRowMapper(), name);
+        if (faculties.isEmpty()){
+            return Optional.empty();
+        } else {
+            return Optional.of(faculties.get(0));
+        }
+    }
 }

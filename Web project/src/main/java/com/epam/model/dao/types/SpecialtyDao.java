@@ -37,4 +37,14 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
     public void removeById(Long id) {
 
     }
+
+    public Optional<Specialty> getByName(String name){
+        List<Specialty> specialties = super.executeQuery(resources.getString("get_specialty_by_name"),
+                new SpecialtyRowMapper(), name);
+        if (specialties.isEmpty()){
+            return Optional.empty();
+        } else {
+            return Optional.of(specialties.get(0));
+        }
+    }
 }

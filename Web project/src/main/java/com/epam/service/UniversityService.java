@@ -11,6 +11,7 @@ import exceptions.dao.DaoException;
 import exceptions.service.ServiceException;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UniversityService {
     /**Initializes university structure.
@@ -75,6 +76,29 @@ public class UniversityService {
 
     public List<Faculty> getFaculties(){
         return University.getInstance().getFaculties();
+    }
+
+    public Long getFacultyIdByName(String name){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            FacultyDao facultyDao = dao.getFacultyDao();
+           Optional<Faculty> facultyOptional = facultyDao.getByName(name);
+            return facultyOptional.map(Faculty::getId).orElse(null);
+        }
+    }
+
+    public Long getSpecialtyIdByName(String name){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            SpecialtyDao specialtyDao = dao.getSpecialtyDao();
+            Optional<Specialty> specialtyOptional = specialtyDao.getByName(name);
+            return specialtyOptional.map(Specialty::getId).orElse(null);
+        }
+    }
+
+    public List<Specialty> getAllSpecialties(){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            SpecialtyDao specialtyDao = dao.getSpecialtyDao();
+            return specialtyDao.getAll();
+        }
     }
 
 }

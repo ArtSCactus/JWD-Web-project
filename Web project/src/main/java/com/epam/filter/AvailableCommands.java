@@ -27,6 +27,7 @@ public class AvailableCommands {
        commands.add(CommandEnum.FINISH_ADMISSION);
        commands.add(CommandEnum.SHOW_STUDENTS_PANEL);
        commands.add(CommandEnum.EXPEL_STUDENT);
+       commands.add(CommandEnum.START_ADMISSION);
        return commands;
    }
 }

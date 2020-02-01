@@ -13,7 +13,7 @@ public class ForwardCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
-        return new CommandResult(definePage(request.getParameter("page")), null, CommandType.GET);
+        return new CommandResult(definePage(request.getParameter("page")), CommandType.GET);
     }
 
     private String definePage(String parameter) {

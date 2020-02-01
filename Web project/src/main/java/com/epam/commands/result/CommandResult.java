@@ -1,20 +1,20 @@
 package com.epam.commands.result;
 
+import java.util.Map;
 import java.util.Objects;
+
 public class CommandResult {
     private String url;
-    private String redirectUrl;
     private CommandType executedCommandType;
 
-    public CommandResult(String url, String redirectUrl, CommandType executedCommandType) {
+    public CommandResult(String url, CommandType executedCommandType) {
         this.url = url;
-        this.redirectUrl = redirectUrl;
         this.executedCommandType = executedCommandType;
     }
 
+
     public CommandResult(String url, String redirectUrl) {
         this.url = url;
-        this.redirectUrl = redirectUrl;
     }
 
     public CommandResult(String url) {
@@ -27,14 +27,6 @@ public class CommandResult {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getRedirectUrl() {
-        return redirectUrl;
-    }
-
-    public void setRedirectUrl(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
     }
 
     public CommandType getExecutedCommandType() {
@@ -50,20 +42,17 @@ public class CommandResult {
         if (this == o) return true;
         if (!(o instanceof CommandResult)) return false;
         CommandResult that = (CommandResult) o;
-        return Objects.equals(getUrl(), that.getUrl()) &&
-                Objects.equals(getRedirectUrl(), that.getRedirectUrl());
+        return Objects.equals(getUrl(), that.getUrl());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUrl(), getRedirectUrl());
+        return Objects.hash(getUrl());
     }
 
     @Override
     public String toString() {
         return "CommandResult{" +
-                "url='" + url + '\'' +
-                ", redirectUrl='" + redirectUrl + '\'' +
-                '}';
+                "url='" + url + '\'' + '}';
     }
 }

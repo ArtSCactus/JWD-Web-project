@@ -8,7 +8,7 @@ import com.epam.service.AccountService;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class RegisterNewUserCommand implements Command {
+public class SignUpCommand implements Command {
     private static final String REDIRECT_URL = "controller?command=forward&page=authorization";
     @Override
     public CommandResult execute(HttpServletRequest request) {
@@ -20,6 +20,6 @@ public class RegisterNewUserCommand implements Command {
                 .withMailbox(request.getParameter("mailbox"))
                 .build();
         service.registerNewUser(account);
-        return new CommandResult(null, REDIRECT_URL, CommandType.POST);
+        return new CommandResult( REDIRECT_URL, CommandType.POST);
     }
 }

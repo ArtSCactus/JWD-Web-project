@@ -30,7 +30,7 @@ public class ChangeApplicationStatusCommand implements Command {
             List<Application> applicationList = service.getApplicationsList();
             container.setContent(applicationList);
             request.setAttribute("content", container);
-            return new CommandResult(CONTROL_PANEL_PAGE_PATH, REDIRECT_URL, CommandType.POST);
+            return new CommandResult(REDIRECT_URL, CommandType.POST);
         } else {
             throw new IllegalArgumentException("Requesting application does not exist: id=" + applicationId);
         }

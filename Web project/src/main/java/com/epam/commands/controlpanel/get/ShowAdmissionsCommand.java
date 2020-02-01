@@ -6,6 +6,7 @@ import com.epam.commands.result.CommandType;
 import com.epam.dto.entity.Admission;
 import com.epam.dto.PageContent;
 import com.epam.service.AdmissionService;
+import com.epam.service.UniversityService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -18,7 +19,10 @@ public class ShowAdmissionsCommand implements Command {
         List<Admission> admissionList = service.getAdmissionList();
         PageContent content = new PageContent();
         content.setContent(admissionList);
+        UniversityService universityService = new UniversityService();
+        content.setAttribute("faculties", universityService.getFaculties());
+        content.setAttribute("specialties", universityService.getAllSpecialties());
         request.setAttribute("content", content);
-        return new CommandResult(ADMISSIONS_PAGE_PATH, null, CommandType.GET);
+        return new CommandResult(ADMISSIONS_PAGE_PATH, CommandType.GET);
     }
 }

@@ -21,6 +21,6 @@ public class ShowApplicationsCommand implements Command {
         List<Application> applicationList = service.getApplicationsList();
         container.setContent(applicationList);
         request.setAttribute("content", container);
-        return new CommandResult(CONTROL_PANEL_PAGE, REDIRECT_URL, CommandType.GET);
+        return new CommandResult(CONTROL_PANEL_PAGE, CommandType.GET);
     }
 }

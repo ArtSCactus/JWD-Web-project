@@ -19,10 +19,9 @@ public class ChangeBlockStatusCommand implements Command {
         AccountService service = new AccountService();
         service.changeBlockStatusAccount(accountId, blockStatus);
         PageContent content = new PageContent();
-        content.setType(PageContentType.ACCOUNTS);
         content.setContent(service.getAccountsList());
         request.setAttribute("content", content);
-        return new CommandResult(CONTROL_PANEL_PAGE_PATH, REDIRECT_URL, CommandType.POST);
+        return new CommandResult(REDIRECT_URL, CommandType.POST);
     }
 
 }

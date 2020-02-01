@@ -24,9 +24,9 @@ public class ApplyCommand implements Command {
             service.apply(Long.parseLong(request.getParameter(FACULTY_PARAM)),
                     Long.parseLong(request.getParameter(SPECIALTY_PARAM)),
                     (Long) session.getAttribute(ACCOUNT_ID_ATTR));
-            return new CommandResult(null, REDIRECT_MAIN_URL, CommandType.POST);
+            return new CommandResult(REDIRECT_MAIN_URL, CommandType.POST);
         } else {
-            return new CommandResult(LOGIN_PAGE, null, CommandType.GET);
+            return new CommandResult(LOGIN_PAGE, CommandType.GET);
         }
     }
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class ShowAccountsCommand implements Command {
-    private static final String ACCOUNTS_ADMIN_PANEL_PAGE= "/WEB-INF/jsp/control panel/accounts admin panel.jsp";
+    private static final String ACCOUNTS_ADMIN_PANEL_PAGE_PATH = "/WEB-INF/jsp/control panel/accounts admin panel.jsp";
     private static final String REDIRECT_URL = "/controller?command=show_accounts_panel";
     @Override
     public CommandResult execute(HttpServletRequest request) {
@@ -20,6 +20,6 @@ public class ShowAccountsCommand implements Command {
         List<Account> accountsList = service.getAccountsList();
         container.setContent(accountsList);
         request.setAttribute("content", container);
-        return new CommandResult(ACCOUNTS_ADMIN_PANEL_PAGE, REDIRECT_URL, CommandType.GET);
+        return new CommandResult(ACCOUNTS_ADMIN_PANEL_PAGE_PATH, CommandType.GET);
     }
 }

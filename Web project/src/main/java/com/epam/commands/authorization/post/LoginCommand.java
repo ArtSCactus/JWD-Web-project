@@ -26,15 +26,15 @@ public class LoginCommand implements Command {
             Account currentAccount = account.get();
             if (currentAccount.isBlocked()){
                 request.setAttribute("errorMessage", "This account is blocked.");
-                return new CommandResult(LOGIN_PAGE_PATH, null, CommandType.GET);
+                return new CommandResult(LOGIN_PAGE_PATH, CommandType.GET);
             } else {
                 session.setAttribute("isUserAdmin", currentAccount.isAdmin());
                 session.setAttribute("accountId", currentAccount.getId());
-                return new CommandResult(MAIN_PAGE_PATH, REDIRECT_URL, CommandType.POST);
+                return new CommandResult(REDIRECT_URL, CommandType.POST);
             }
         } else {
             request.setAttribute("errorMessage", "Wrong login or password. Try again");
-            return new CommandResult(LOGIN_PAGE_PATH, null, CommandType.GET);
+            return new CommandResult(LOGIN_PAGE_PATH, CommandType.GET);
         }
     }
 

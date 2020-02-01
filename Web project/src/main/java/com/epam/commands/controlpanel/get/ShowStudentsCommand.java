@@ -20,6 +20,6 @@ public class ShowStudentsCommand implements Command {
         PageContent content = new PageContent();
         content.setContent(studentList);
         request.setAttribute("content", content);
-        return new CommandResult(STUDENT_TABLE_PAGE_PATH, null, CommandType.GET);
+        return new CommandResult(STUDENT_TABLE_PAGE_PATH, CommandType.GET);
     }
 }

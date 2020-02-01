@@ -9,7 +9,7 @@
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
-<table class="application-table">
+<table class="student-table">
     <tr>
         <th>ID</th>
         <th>Account id</th>

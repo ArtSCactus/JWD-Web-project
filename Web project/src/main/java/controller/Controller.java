@@ -47,7 +47,7 @@ public class Controller extends HttpServlet {
         try {
             switch (commandResult.getExecutedCommandType()) {
                 case POST:
-                    response.sendRedirect(request.getContextPath() + commandResult.getRedirectUrl());
+                    response.sendRedirect(request.getContextPath() + commandResult.getUrl());
                     break;
                 case GET:
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());

@@ -9,7 +9,6 @@ public class HttpSessionListenerImpl implements HttpSessionListener {
         session.setMaxInactiveInterval(600); // 10 minutes
         session.setAttribute("isUserDefined", false);
         session.setAttribute("isUserAdmin", false);
-        session.setAttribute("isAccountBlocked", null);
     }
 
     @Override

@@ -40,9 +40,9 @@ public class FinishAdmissionCommand implements Command {
                         Date.valueOf(LocalDate.now(Clock.systemDefaultZone()))));
             }
             studentService.enrollStudents(studentList);
-            return new CommandResult(null, REDIRECT_URL, CommandType.POST);
+            return new CommandResult(REDIRECT_URL, CommandType.POST);
         } else {
-            return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, null, CommandType.GET);
+            return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, CommandType.GET);
         }
     }
 }
