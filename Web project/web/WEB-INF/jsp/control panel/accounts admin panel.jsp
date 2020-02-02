@@ -13,7 +13,6 @@
     <tr>
         <th>ID</th>
         <th>Login</th>
-        <th>Password</th>
         <th>MailBox</th>
         <th>Admin status</th>
         <th>Block status</th>

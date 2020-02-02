@@ -58,16 +58,16 @@
             <td>${admission.active}</td>
             <td>
                 <form class="accept-form" name="accept" method="post" action="controller">
-                    <input type="hidden" name="command" value="finish_admission"/>
+                    <input type="hidden" name="command" value="change_admission_status"/>
                     <input type="hidden" name="admissionId" value="${admission.id}"/>
                     <input type="hidden" name="newStatus" value="false"/>
                     <input class="button" type="submit" value="finish"/>
                 </form>
                 <form class="decline-form" name="decline" method="post" action="controller">
-                    <input type="hidden" name="command" value="continue_admission"/>
+                    <input type="hidden" name="command" value="change_admission_status"/>
                     <input type="hidden" name="admissionId" value="${admission.id}"/>
                     <input type="hidden" name="newStatus" value="true"/>
-                    <input class="button" type="submit" value="continue"/>
+                    <input class="button" type="submit" value="resume"/>
                 </form>
             </td>
         </tr>

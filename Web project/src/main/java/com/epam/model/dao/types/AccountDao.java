@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
+    //TODO: Update insert account statement and save method according to new table format
     private static final String INSERT_ODKU_REQ="insert into accounts (id, login, password, mailbox, adminStatus, " +
             "blockStatus) VALUES (?, ?, sha1(?),?, ?, ?) on duplicate key update id=values(id), login=values(login), " +
             " mailbox=values(mailbox), adminStatus=values(adminStatus), " +

@@ -65,7 +65,7 @@ public class AccountService {
         }
     }
 
-    public int registerNewUser(Account account){
+    public int signUp(Account account){
         try(DaoManager dao = DaoFactory.createDaoManager()){
             AccountDao accountDao = dao.getAccountDao();
             return accountDao.save(account);

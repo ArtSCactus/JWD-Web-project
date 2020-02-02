@@ -16,12 +16,20 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.util.*;
 
-public class FinishAdmissionCommand implements Command {
+public class ChangeAdmissionStatusCommand implements Command {
     private static final String REDIRECT_URL = "/controller?command=show_admissions_panel";
     private static final String ADMISSIONS_TABLE_PAGE_PATH = "/WEB-INF/jsp/control panel/admission table.jsp";
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
+        boolean newAdmissionStatus = Boolean.parseBoolean(request.getParameter("newStatus"));
+     if (newAdmissionStatus){
+         return resumeAdmission(request);
+     } else {
+         return  finishAdmission(request);
+     }
+    }
+    private CommandResult finishAdmission(HttpServletRequest request){
         Long admissionId = Long.parseLong(request.getParameter("admissionId"));
         AdmissionService admissionService = new AdmissionService();
         ApplicationService applicationService = new ApplicationService();
@@ -44,5 +52,18 @@ public class FinishAdmissionCommand implements Command {
         } else {
             return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, CommandType.GET);
         }
+    }
+
+    private CommandResult resumeAdmission(HttpServletRequest request){
+        Long admissionId = Long.parseLong(request.getParameter("admissionId"));
+        AdmissionService admissionService = new AdmissionService();
+        Optional<Admission> admissionOptional = admissionService.getAdmissionById(admissionId);
+        if (admissionOptional.isPresent()){
+         Admission admission = admissionOptional.get();
+         admission.setStatus(true);
+         admissionService.updateAdmission(admission);
+         return new CommandResult(REDIRECT_URL, CommandType.POST);
+        }
+        return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, CommandType.GET);
     }
 }

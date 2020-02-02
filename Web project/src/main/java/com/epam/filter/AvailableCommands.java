@@ -12,6 +12,7 @@ public class AvailableCommands {
        commands.add(CommandEnum.LOGIN);
        commands.add(CommandEnum.LOGOUT);
        commands.add(CommandEnum.FORWARD);
+       commands.add(CommandEnum.SIGN_UP);
        return commands;
    }
 
@@ -24,7 +25,7 @@ public class AvailableCommands {
        commands.add(CommandEnum.SHOW_APPLICATIONS_PANEL);
        commands.add(CommandEnum.CHANGE_APPLICATION_STATUS);
        commands.add(CommandEnum.SHOW_ADMISSIONS_PANEL);
-       commands.add(CommandEnum.FINISH_ADMISSION);
+       commands.add(CommandEnum.CHANGE_ADMISSION_STATUS);
        commands.add(CommandEnum.SHOW_STUDENTS_PANEL);
        commands.add(CommandEnum.EXPEL_STUDENT);
        commands.add(CommandEnum.START_ADMISSION);

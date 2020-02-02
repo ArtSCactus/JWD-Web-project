@@ -56,4 +56,11 @@ public class AdmissionService {
         }
     }
 
+    public void updateAdmission(Admission admission) {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
+            AdmissionDao admissionDao = dao.getAdmissionDao();
+            admissionDao.save(admission);
+        }
+    }
+
 }

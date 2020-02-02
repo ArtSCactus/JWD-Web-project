@@ -2,14 +2,20 @@ package com.epam.dto.entity;
 
 import com.epam.dto.Identifiable;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Account implements Identifiable {
+public class Account implements Serializable, Identifiable {
     public static final String TABLE_NAME = "accounts";
     private String login;
     private String password;
     private String mailbox;
+    private String name;
+    private String secondName;
+    private String thirdName;
+    private Integer totalPoints;
     private Long id;
+    private Long studentId;
     private boolean isAdmin;
     private boolean isBlocked;
 
@@ -18,21 +24,27 @@ public class Account implements Identifiable {
         this.login = login;
         this.password = password;
         this.mailbox = mailbox;
-        this.isAdmin=false;
+        this.isAdmin = false;
     }
 
     public Account(Long id, String login, String password) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.isAdmin=false;
+        this.isAdmin = false;
     }
 
-    public Account(String login, String password, String mailbox, Long id, boolean isAdmin, boolean isBlocked) {
+    public Account(String login, String password, String mailbox, String name, String secondName, String thirdName,
+                   Integer totalPoints, Long id, Long studentId, boolean isAdmin, boolean isBlocked) {
         this.login = login;
         this.password = password;
         this.mailbox = mailbox;
+        this.name = name;
+        this.secondName = secondName;
+        this.thirdName = thirdName;
+        this.totalPoints = totalPoints;
         this.id = id;
+        this.studentId = studentId;
         this.isAdmin = isAdmin;
         this.isBlocked = isBlocked;
     }
@@ -87,6 +99,47 @@ public class Account implements Identifiable {
         isAdmin = admin;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getThirdName() {
+        return thirdName;
+    }
+
+    public void setThirdName(String thirdName) {
+        this.thirdName = thirdName;
+    }
+
+    public Integer getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(Integer totalPoints) {
+        this.totalPoints = totalPoints;
+    }
+
+    public Long getStudentId() {
+
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
     /**
      * Builder, that allows building entity object step by step.
      * Also, this class is nested and static to make easy to find it.
@@ -118,13 +171,33 @@ public class Account implements Identifiable {
             return this;
         }
 
-        public Builder withAdminStatus(boolean status){
-            account.isAdmin=status;
+        public Builder withAdminStatus(boolean status) {
+            account.isAdmin = status;
             return this;
         }
 
-        public Builder withBlockStatus(boolean status){
-            account.isBlocked=status;
+        public Builder withBlockStatus(boolean status) {
+            account.isBlocked = status;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            account.name = name;
+            return this;
+        }
+
+        public Builder withSecondName(String secondName) {
+            account.secondName = secondName;
+            return this;
+        }
+
+        public Builder withThirdName(String thirdName) {
+            account.thirdName = thirdName;
+            return this;
+        }
+
+        public Builder withTotalPoints(Integer totalPoints) {
+            account.totalPoints = totalPoints;
             return this;
         }
 
@@ -149,12 +222,18 @@ public class Account implements Identifiable {
                 Objects.equals(getLogin(), account.getLogin()) &&
                 Objects.equals(getPassword(), account.getPassword()) &&
                 Objects.equals(getMailbox(), account.getMailbox()) &&
-                Objects.equals(getId(), account.getId());
+                Objects.equals(getName(), account.getName()) &&
+                Objects.equals(getSecondName(), account.getSecondName()) &&
+                Objects.equals(getThirdName(), account.getThirdName()) &&
+                Objects.equals(getTotalPoints(), account.getTotalPoints()) &&
+                Objects.equals(getId(), account.getId()) &&
+                Objects.equals(getStudentId(), account.getStudentId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLogin(), getPassword(), getMailbox(), getId(), isAdmin(), isBlocked());
+        return Objects.hash(getLogin(), getPassword(), getMailbox(), getName(), getSecondName(),
+                getThirdName(), getTotalPoints(), getId(), getStudentId(), isAdmin(), isBlocked());
     }
 
     @Override
@@ -163,7 +242,12 @@ public class Account implements Identifiable {
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", mailbox='" + mailbox + '\'' +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", thirdName='" + thirdName + '\'' +
+                ", totalPoints=" + totalPoints +
                 ", id=" + id +
+                ", studentId=" + studentId +
                 ", isAdmin=" + isAdmin +
                 ", isBlocked=" + isBlocked +
                 '}';

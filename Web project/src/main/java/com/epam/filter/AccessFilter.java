@@ -34,6 +34,8 @@ public class AccessFilter implements Filter {
             if (commands.contains(requestingCommandObj) & !service.isAccountBlocked(accountId)) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
+                HttpSession httpSession = httpServletRequest.getSession();
+                httpSession.invalidate();
                 RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(ACCESS_DENIED_PAGE);
                 requestDispatcher.forward(servletRequest, servletResponse);
             }

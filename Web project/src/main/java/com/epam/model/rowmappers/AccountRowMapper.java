@@ -12,6 +12,11 @@ public class AccountRowMapper implements RowMapper<Account> {
     private static final String ID_COLUMN_NAME = "id";
     private static final String ADMIN_STATUS_COL_NAME="adminStatus";
     private static final String BLOCK_STATUS_COL_NAME="blockStatus";
+    private static final String NAME_COL = "name";
+    private static final String SURNAME_COL = "surname";
+    private static final String PATRONYMIC_COL = "patronymic";
+    private static final String TOTAL_POINTS_COL = "totalPoints";
+    private static final String STUDENT_ID_COL = "studentId";
 
 
     @Override
@@ -23,6 +28,10 @@ public class AccountRowMapper implements RowMapper<Account> {
                 .withMailbox(resultSet.getString(MAILBOX_COLUMN_NAME))
                 .withAdminStatus(resultSet.getBoolean(ADMIN_STATUS_COL_NAME))
                 .withBlockStatus(resultSet.getBoolean(BLOCK_STATUS_COL_NAME))
+                .withName(resultSet.getString(NAME_COL))
+                .withSecondName(resultSet.getString(SURNAME_COL))
+                .withThirdName(resultSet.getString(PATRONYMIC_COL))
+                .withTotalPoints(resultSet.getInt(TOTAL_POINTS_COL))
                 .build();
     }
 }

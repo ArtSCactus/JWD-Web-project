@@ -1,5 +1,6 @@
 package com.epam.commands.main;
 
+import com.epam.commands.authorization.post.SignUpCommand;
 import com.epam.commands.controlpanel.get.ShowStudentsCommand;
 import com.epam.commands.controlpanel.post.*;
 import com.epam.commands.controlpanel.get.ShowAccountsCommand;
@@ -65,9 +66,9 @@ public enum CommandEnum {
             this.command = new ShowAdmissionsCommand();
         }
     },
-    FINISH_ADMISSION {
+    CHANGE_ADMISSION_STATUS{
         {
-            this.command = new FinishAdmissionCommand();
+            this.command = new ChangeAdmissionStatusCommand();
         }
     },
     SHOW_STUDENTS_PANEL{
@@ -83,6 +84,11 @@ public enum CommandEnum {
     START_ADMISSION{
         {
             this.command = new StartAdmissionCommand();
+        }
+    },
+    SIGN_UP{
+        {
+            this.command = new SignUpCommand();
         }
     };
     Command command;
