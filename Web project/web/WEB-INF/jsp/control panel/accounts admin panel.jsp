@@ -5,7 +5,7 @@
 <head>
     <title>Control panel</title>
     <link rel="stylesheet" href="css/admin_panel.css">
-    <%--@elvariable id="content" type="com.epam.dto.PageContent"--%>
+    <%--@elvariable id="content" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <th>Block status</th>
         <th>Action</th>
     </tr>
-    <%--@elvariable id="account" type="com.epam.dto.entity.Account"--%>
+    <%--@elvariable id="account" type="com.epam.model.dto.entity.Account"--%>
     <c:forEach var="account" items="${pageContent.objectsList}">
         <tr>
             <td>${account.id}</td>

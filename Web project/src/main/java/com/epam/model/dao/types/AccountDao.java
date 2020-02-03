@@ -2,9 +2,9 @@ package com.epam.model.dao.types;
 
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.dto.entity.Account;
+import com.epam.model.dto.entity.Account;
 import com.epam.model.rowmappers.AccountRowMapper;
-import exceptions.dao.DaoException;
+import exception.dao.DaoException;
 
 import java.sql.Connection;
 import java.util.List;

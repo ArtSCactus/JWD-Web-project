@@ -1,6 +1,6 @@
 package com.epam.filter;
 
-import com.epam.commands.main.CommandEnum;
+import com.epam.commands.common.CommandEnum;
 import com.epam.service.AccountService;
 
 import javax.servlet.*;

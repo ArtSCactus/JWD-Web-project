@@ -2,7 +2,7 @@ package com.epam.model.dao.helper;
 
 import com.epam.connection.ConnectionPool;
 import com.epam.model.dao.types.*;
-import exceptions.dao.DaoException;
+import exception.dao.DaoException;
 
 import java.sql.Connection;
 import java.sql.SQLException;

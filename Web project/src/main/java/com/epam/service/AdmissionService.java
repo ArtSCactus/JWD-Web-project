@@ -3,8 +3,8 @@ package com.epam.service;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.AdmissionDao;
-import com.epam.dto.entity.Admission;
-import exceptions.service.ServiceException;
+import com.epam.model.dto.entity.Admission;
+import exception.service.ServiceException;
 
 import java.sql.Date;
 import java.time.LocalDate;

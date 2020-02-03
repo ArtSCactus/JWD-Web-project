@@ -1,6 +1,6 @@
 package com.epam.model.dao.types;
 
-import com.epam.dto.entity.Student;
+import com.epam.model.dto.entity.Student;
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
 import com.epam.model.rowmappers.StudentRowMapper;

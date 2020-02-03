@@ -1,13 +1,13 @@
 package com.epam.commands.result;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 
 import javax.servlet.http.HttpServletRequest;
 
 //TODO: should be deleted and replace on forward/redirect
 public class ForwardCommand implements Command {
     private static final String SIGN_IN_PAGE_PATH = "/WEB-INF/jsp/login.jsp";
-    private static final String MAIN_PAGE_PATH = "/WEB-INF/jsp/main/main.jsp";
+    private static final String MAIN_PAGE_PATH = "/WEB-INF/jsp/common/common.jsp";
     private static final String CONTROL_PANEL_PAGE_PATH = "/WEB-INF/jsp/applications admin panel.jsp";
     private static final String REGISTRATION_PAGE_PATH = "/WEB-INF/jsp/registration page.jsp";
 
@@ -20,7 +20,7 @@ public class ForwardCommand implements Command {
         switch (parameter) {
             case "authorization":
                 return SIGN_IN_PAGE_PATH;
-            case "main":
+            case "common":
                 return MAIN_PAGE_PATH;
             case "control-panel":
                 return CONTROL_PANEL_PAGE_PATH;

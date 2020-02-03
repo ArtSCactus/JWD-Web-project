@@ -4,11 +4,11 @@ import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.FacultyDao;
 import com.epam.model.dao.types.SpecialtyDao;
-import com.epam.dto.university.Faculty;
-import com.epam.dto.university.Specialty;
-import com.epam.dto.university.University;
-import exceptions.dao.DaoException;
-import exceptions.service.ServiceException;
+import com.epam.model.dto.university.Faculty;
+import com.epam.model.dto.university.Specialty;
+import com.epam.model.dto.university.University;
+import exception.dao.DaoException;
+import exception.service.ServiceException;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,21 +53,20 @@ public class UniversityService {
         return null;
     }
 
-    public Specialty getSpecialtyById(Long id){
-        University university = University.getInstance();
-        List<Faculty> faculties = university.getFaculties();
-        for (Faculty faculty : faculties){
-            for (Specialty specialty : faculty.getSpecialties()){
-                if (specialty.getId().equals(id)){
-                    return specialty;
-                }
-            }
+    public Optional<Specialty> getSpecialtyById(Long id){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            SpecialtyDao specialtyDao = dao.getSpecialtyDao();
+           return specialtyDao.getById(id);
         }
-        return null;
     }
 
     public String getSpecialtyNameById(Long id){
-        return getSpecialtyById(id).getName();
+        Optional<Specialty> specialtyOptional =getSpecialtyById(id);
+        if (specialtyOptional.isPresent()){
+            return specialtyOptional.get().getName();
+        } else {
+            throw new ServiceException("No such specialty with id: "+id);
+        }
     }
 
     public String getFacultyNameById(Long id){

@@ -1,10 +1,9 @@
 package com.epam.model.rowmappers;
 
-import com.epam.dto.entity.Application;
-import com.epam.dto.entity.ApplicationStatus;
-import exceptions.dao.DaoException;
+import com.epam.model.dto.entity.Application;
+import com.epam.model.dto.entity.ApplicationStatus;
+import exception.dao.DaoException;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

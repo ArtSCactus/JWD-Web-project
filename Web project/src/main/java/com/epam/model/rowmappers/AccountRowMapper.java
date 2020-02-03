@@ -1,6 +1,6 @@
 package com.epam.model.rowmappers;
 
-import com.epam.dto.entity.Account;
+import com.epam.model.dto.entity.Account;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

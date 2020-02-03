@@ -1,8 +1,8 @@
 package com.epam.commands.controlpanel.post;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
-import com.epam.dto.entity.Student;
+import com.epam.model.dto.entity.Student;
 import com.epam.service.StudentService;
 
 import javax.servlet.http.HttpServletRequest;

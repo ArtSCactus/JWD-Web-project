@@ -7,14 +7,17 @@
         University
     </title>
     <link rel="stylesheet" href="../../../css/main.css">
+    <script async src="scripts/Main page.js"></script>
+    <c:set var="pageContent" value="${requestScope.content}" scope="page"/>
 </head>
 <body>
 <div class="faculties-block">
     <aside class="faculties-enum-block">
-       <c:forEach var="facultiesList" items="${applicationScope.faculties}">
+        <%--@elvariable id="faculty" type="com.epam.model.dto.university.Faculty"--%>
+       <c:forEach var="faculty" items="${pageContent.additionalAttributes.get('faculties')}">
        <div class="faculty-item">
            <div class="faculty-item-title">
-                   ${facultiesList.name}
+                   ${faculty.name}
            </div>
        </div>
        </c:forEach>
@@ -33,15 +36,16 @@
 <input type="text" class="search-input-field" placeholder="Search here..."/>
     <label for="only-with-admission-checkbox">
         Only with admission
-        <input type="checkbox" id="only-with-admission-checkbox" value="false">
+        <input type="checkbox" id="only-with-admission-checkbox" value="false" onchange="updateSpecialtiesBlock()">
     </label>
-    <input type="submit" value="find">
+    <input type="button" value="find" onclick="updateSpecialtiesBlock()">
 </form>
 </div>
+<div class="specialty-block-title">Choose your way</div>
     <div class="specialties-block">
-        <c:forEach var="specialtiesList" items="${applicationScope.faculties}">
-            <c:forEach var="specialty" items="${specialtiesList.specialties}">
-                <div class="specialty_item">
+        <%--@elvariable id="specialty" type="com.epam.model.dto.university.Specialty"--%>
+        <c:forEach var="specialty" items="${pageContent.additionalAttributes.get('specialties')}">
+                <div id="${specialty.id}" class="specialty_item">
                     <div class="specialty_item_title">
                             ${specialty.name}
                     </div>
@@ -49,11 +53,10 @@
                                 ${specialty.description}
                         </div>
                         <form class="apply-btn-form" method="post"
-                              action="controller?command=apply&specialty=${specialty.id}&faculty=${specialtiesList.id}">
+                              action="controller?command=apply&specialty=${specialty.id}&faculty=${specialty.facultyId}">
                             <button class="apply-btn" type="submit">Apply</button>
                         </form>
                 </div>
-            </c:forEach>
         </c:forEach>
     </div>
 </body>

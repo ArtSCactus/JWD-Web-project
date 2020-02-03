@@ -1,3 +1,6 @@
+/**
+ * @author ArtSCactus
+ */
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
@@ -6,9 +9,9 @@ function showTab(n) {
     var x = document.getElementsByClassName("tab");
     x[n].style.display = "block";
     // ... and fix the Previous/Next buttons:
-    if (n!=(x.length-1)){
-        document.getElementById("finish").style.display="none";
-        document.getElementById("nextBtn").style.display="inline";
+    if (n != (x.length - 1)) {
+        document.getElementById("finish").style.display = "none";
+        document.getElementById("nextBtn").style.display = "inline";
     }
     if (n == 0) {
         document.getElementById("prevBtn").style.display = "none";
@@ -52,7 +55,7 @@ function validateForm() {
     // A loop that checks every input field in the current tab:
     for (i = 0; i < y.length; i++) {
         // If a field is empty...
-        if (y[i].value == "" & y[i].className!="mailbox-input") {
+        if (y[i].value == "" & y[i].className != "mailbox-input") {
             // add an "invalid" class to the field:
             y[i].className += " invalid";
             // and set the current valid status to false:

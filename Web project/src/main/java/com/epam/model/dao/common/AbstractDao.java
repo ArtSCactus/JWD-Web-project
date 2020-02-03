@@ -1,7 +1,7 @@
 package com.epam.model.dao.common;
 
 import com.epam.model.rowmappers.RowMapper;
-import exceptions.dao.DaoException;
+import exception.dao.DaoException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

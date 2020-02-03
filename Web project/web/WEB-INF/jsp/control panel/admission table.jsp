@@ -5,7 +5,7 @@
 <head>
     <title>Control panel</title>
     <link rel="stylesheet" href="css/admin_panel.css">
-    <%--@elvariable id="content" type="com.epam.dto.PageContent"--%>
+    <%--@elvariable id="content" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
@@ -17,8 +17,8 @@
     <label>
         Faculty:
         <select class="select-faculty-list" name="faculty" required="required">
-            <%--@elvariable id="faculty_item" type="com.epam.dto.university.Faculty"--%>
-            <c:forEach var="faculty_item" items="${requestScope.content.additionalAttributes.get('faculties')}">
+            <%--@elvariable id="faculty_item" type="com.epam.model.dto.university.Faculty"--%>
+            <c:forEach var="faculty_item" items="${pageContent.additionalAttributes.get('faculties')}">
                 <option>${faculty_item.name}</option>
             </c:forEach>
         </select>
@@ -26,8 +26,8 @@
     <label>
         Specialty:
         <select class="select-specialty-list" name="specialty" required="required">
-            <%--@elvariable id="specialty_item" type="com.epam.dto.university.Specialty"--%>
-            <c:forEach var="specialty_item" items="${requestScope.content.additionalAttributes.get('specialties')}">
+            <%--@elvariable id="specialty_item" type="com.epam.model.dto.university.Specialty"--%>
+            <c:forEach var="specialty_item" items="${pageContent.additionalAttributes.get('specialties')}">
                 <option>${specialty_item.name}</option>
             </c:forEach>
         </select>
@@ -48,7 +48,7 @@
         <th>Status</th>
         <th>Action</th>
     </tr>
-    <%--@elvariable id="admission" type="com.epam.dto.entity.Admission"--%>
+    <%--@elvariable id="admission" type="com.epam.model.dto.entity.Admission"--%>
     <c:forEach var="admission" items="${pageContent.objectsList}">
         <tr>
             <td>${admission.id}</td>

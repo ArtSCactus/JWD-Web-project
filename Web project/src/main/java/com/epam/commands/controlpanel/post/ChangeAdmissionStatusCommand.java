@@ -1,11 +1,11 @@
 package com.epam.commands.controlpanel.post;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.dto.entity.Admission;
-import com.epam.dto.entity.Application;
-import com.epam.dto.entity.Student;
+import com.epam.model.dto.entity.Admission;
+import com.epam.model.dto.entity.Application;
+import com.epam.model.dto.entity.Student;
 import com.epam.service.AdmissionService;
 import com.epam.service.ApplicationService;
 import com.epam.service.StudentService;

@@ -1,9 +1,9 @@
 package com.epam.commands.authorization.post;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.dto.entity.Account;
+import com.epam.model.dto.entity.Account;
 import com.epam.service.AccountService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +12,10 @@ import java.util.Optional;
 public class LoginCommand implements Command {
     private static final String PARAM_NAME_LOGIN = "login";
     private static final String PARAM_NAME_PASSWORD = "password";
-    private static final String MAIN_PAGE_PATH = "/WEB-INF/jsp/main.jsp";
+    private static final String MAIN_PAGE_PATH = "/WEB-INF/jsp/main/main.jsp";
     private static final String LOGIN_PAGE_PATH = "/WEB-INF/jsp/login.jsp";
     private static final String ERROR_PAGE_PATH = "/WEB-INF/jsp/error.jsp";
-    private static final String REDIRECT_URL = "/controller?command=forward&page=main";
+    private static final String REDIRECT_URL = "/controller?command=show_main_page";
 
     public CommandResult execute(HttpServletRequest request) {
         String login = request.getParameter(PARAM_NAME_LOGIN);

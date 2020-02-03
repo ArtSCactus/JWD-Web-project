@@ -1,6 +1,6 @@
 package com.epam.service;
 
-import com.epam.dto.entity.Student;
+import com.epam.model.dto.entity.Student;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.StudentDao;

@@ -1,8 +1,8 @@
 package com.epam.factory;
 
-import com.epam.commands.main.Command;
-import com.epam.commands.main.CommandEnum;
-import com.epam.commands.main.DefaultCommand;
+import com.epam.commands.common.Command;
+import com.epam.commands.common.CommandEnum;
+import com.epam.commands.get.DefaultCommand;
 
 import javax.servlet.http.HttpServletRequest;
 

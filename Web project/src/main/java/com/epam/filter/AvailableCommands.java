@@ -1,6 +1,6 @@
 package com.epam.filter;
 
-import com.epam.commands.main.CommandEnum;
+import com.epam.commands.common.CommandEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ public class AvailableCommands {
        commands.add(CommandEnum.LOGOUT);
        commands.add(CommandEnum.FORWARD);
        commands.add(CommandEnum.SIGN_UP);
+       commands.add(CommandEnum.SHOW_MAIN_PAGE);
        return commands;
    }
 

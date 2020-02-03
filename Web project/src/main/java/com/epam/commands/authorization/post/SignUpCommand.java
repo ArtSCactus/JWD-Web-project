@@ -1,15 +1,15 @@
 package com.epam.commands.authorization.post;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.dto.entity.Account;
+import com.epam.model.dto.entity.Account;
 import com.epam.service.AccountService;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class SignUpCommand implements Command {
-    private static final String REDIRECT_URL = "/controller?command=forward&page=authorization";
+    private static final String REDIRECT_URL = "/controller?command=show_main_page";
     @Override
     public CommandResult execute(HttpServletRequest request) {
         AccountService service = new AccountService();

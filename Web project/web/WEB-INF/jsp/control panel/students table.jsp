@@ -5,7 +5,7 @@
 <head>
     <title>Control panel</title>
     <link rel="stylesheet" href="css/admin_panel.css">
-    <%--@elvariable id="content" type="com.epam.dto.PageContent"--%>
+    <%--@elvariable id="content" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
@@ -18,7 +18,7 @@
         <th>Enrollment date</th>
         <th>Action</th>
     </tr>
-    <%--@elvariable id="student" type="com.epam.dto.entity.Student"--%>
+    <%--@elvariable id="student" type="com.epam.model.dto.entity.Student"--%>
     <c:forEach var="student" items="${pageContent.objectsList}">
         <tr>
             <td>${student.id}</td>

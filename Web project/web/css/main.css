@@ -11,15 +11,18 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
 }
+
 *, *::before, *::after {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
+    transition: 1s;
 }
-.faculties-enum-block, .faculty-description-block{
+
+.faculties-enum-block, .faculty-description-block {
     display: inline-block;
 }
 
-.faculty-description-block{
+.faculty-description-block {
     width: 50%;
     display: flex; /* 1 */
     flex-direction: column; /* 1 */
@@ -27,11 +30,11 @@ body {
     margin: 10px; /* 3 */
     background-color: rgba(255, 255, 255, .6);
     border-radius: 0px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
     padding: 10px;
 }
 
-.faculties-enum-block{
+.faculties-enum-block {
     float: right;
     margin-right: 1%;
     background-color: #0f3053c4;
@@ -41,13 +44,18 @@ body {
     color: white;
 }
 
-.faculty-item{
+.faculty-item {
     padding: 4%;
     font-weight: 600;
 }
 
-.faculty-item:hover{
+.faculty-item:hover {
     background-color: #ffffffa3;
+    transition: 1s;
+}
+
+.faculty-item:not(:hover) {
+    transition: 1s;
 }
 
 .page-title {
@@ -59,16 +67,17 @@ body {
     line-height: 1.4;
 }
 
-.authorization-form{
+.authorization-form {
     font-size: 20;
     font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
     font-weight: 400;
 }
-.authorization-form a{
+
+.authorization-form a {
     color: white;
 }
 
-.apply-form{
+.apply-form {
     font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
     font-size: 1.4rem;
     line-height: 1.4;
@@ -79,7 +88,7 @@ body {
 menu {
     font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
     font-size: 1.5rem;
-    text-align:center;
+    text-align: center;
     margin-top: 0;
     position: center;
     background-color: rgba(255, 255, 255, 0.82);
@@ -98,13 +107,13 @@ menu li a {
     color: #0f3053;
 }
 
-header{
+header {
     background-image: url(../images/Melbourne_university.jpg);
     background-position: 50%;
     background-size: cover;
 }
 
-header .Apply-form{
+header .Apply-form {
     display: inline-block;
     padding: .625rem 1rem;
     width: 100%;
@@ -124,14 +133,16 @@ header .Apply-form{
     color: rgb(255, 255, 255);
     background-color: rgba(1, 42, 88, .8);
 }
-header .Apply-form:hover{
+
+header .Apply-form:hover {
     background: rgba(52, 85, 121, 0.72);
 }
-.upper-section{
+
+.upper-section {
     padding: 50px;
 }
 
-.down-section{
+.down-section {
     padding-top: 100px;
     padding-bottom: 3rem !important;
     padding-right: 40%;
@@ -152,7 +163,7 @@ header .sign-btn-ul li a {
     text-decoration: none;
 }
 
-.sign-btn-ul a{
+.sign-btn-ul a {
     padding: 6px;
     background-color: #0f3053;
     border-color: #4f667fc9;
@@ -162,7 +173,7 @@ header .sign-btn-ul li a {
     color: white;
 }
 
-.sign-btn-ul a:hover{
+.sign-btn-ul a:hover {
     background: rgba(52, 85, 121, 0.72);
 }
 
@@ -173,7 +184,7 @@ header .sign-btn-ul li a {
     margin: 10px; /* 3 */
     background-color: rgba(255, 255, 255, .6);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
     padding: 10px;
 
 }
@@ -207,6 +218,11 @@ header .sign-btn-ul li a {
     -ms-transform: scale(1.2);
     transform: scale(1.2);
     box-shadow: inset 0 0 0 5px #0f3053de;
+    transition: 1s;
+}
+
+.specialty_item:not(:hover) {
+    transition: 1s;
 }
 
 .apply-btn {
@@ -229,7 +245,7 @@ header .sign-btn-ul li a {
     background-color: rgba(1, 42, 88, .8);
 }
 
-.specialty_item .apply-btn-form{
+.specialty_item .apply-btn-form {
     margin-left: auto;
     margin-right: auto;
     float: right;
@@ -243,11 +259,31 @@ header .sign-btn-ul li a {
     background: white;
 }
 
-.specialties-toolbox{
+.specialties-toolbox {
     text-align: center;
     background-color: rgba(1, 42, 88, .8);
 }
 
-.specialties-toolbox{
+.specialties-toolbox {
     margin-top: 30px;
+}
+
+.search-input-field {
+    width: 5%;
+    border-radius: 4px;
+    transition: 1s;
+}
+
+.search-input-field:hover {
+    width: 50%;
+    transition: 1s;
+}
+
+.search-input-field:focus {
+    width: 50%;
+    transition: 1s;
+}
+
+.search-input-field:not(:focus) {
+    transition: 1s;
 }

@@ -1,6 +1,6 @@
 package com.epam.connection;
 
-import exceptions.connection.ConnectionClosingException;
+import exception.connection.ConnectionClosingException;
 
 import java.sql.*;
 import java.util.Map;
@@ -260,7 +260,7 @@ public class ProxyConnection implements Connection, AutoCloseable {
      * This method generally cannot be called to determine whether a
      * connection to a database is valid or invalid.  A typical client
      * can determine that a connection is invalid by catching any
-     * exceptions that might be thrown when an operation is attempted.
+     * exception that might be thrown when an operation is attempted.
      *
      * @return <code>true</code> if this <code>Connection</code> object
      * is closed; <code>false</code> if it is still open

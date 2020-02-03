@@ -1,11 +1,11 @@
 package com.epam.service;
 
-import com.epam.dto.entity.Admission;
+import com.epam.model.dto.entity.Admission;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.ApplicationDao;
-import com.epam.dto.entity.Application;
-import com.epam.dto.entity.ApplicationStatus;
+import com.epam.model.dto.entity.Application;
+import com.epam.model.dto.entity.ApplicationStatus;
 
 import java.sql.Date;
 import java.time.LocalDate;

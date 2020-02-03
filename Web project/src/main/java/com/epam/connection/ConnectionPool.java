@@ -1,8 +1,8 @@
 package com.epam.connection;
 
 import com.mysql.cj.jdbc.Driver;
-import exceptions.connection.DriverManagerException;
-import exceptions.files.ResourcesLoadingException;
+import exception.connection.DriverManagerException;
+import exception.files.ResourcesLoadingException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +11,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

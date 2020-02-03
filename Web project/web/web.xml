@@ -4,7 +4,7 @@
          id="WebApp_ID" version="3.0">
     <display-name>DevApp</display-name>
     <welcome-file-list>
-        <welcome-file>/WEB-INF/jsp/main/main.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
         <session-timeout>30</session-timeout>
@@ -23,7 +23,7 @@
     </listener>
     <servlet>
         <servlet-name>Selection committee</servlet-name>
-        <servlet-class>controller.Controller</servlet-class>
+        <servlet-class>com.epam.controller.Controller</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -36,6 +36,6 @@
     </filter>
     <filter-mapping>
         <filter-name>CommandFilter</filter-name>
-        <url-pattern>/controller</url-pattern>
+        <url-pattern>/com.epam.controller</url-pattern>
     </filter-mapping>
 </web-app>

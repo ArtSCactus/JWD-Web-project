@@ -1,6 +1,6 @@
 package com.epam.model.rowmappers;
 
-import com.epam.dto.university.Faculty;
+import com.epam.model.dto.university.Faculty;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

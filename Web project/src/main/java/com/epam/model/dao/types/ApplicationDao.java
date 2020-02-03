@@ -1,9 +1,9 @@
 package com.epam.model.dao.types;
 
-import com.epam.dto.entity.Admission;
+import com.epam.model.dto.entity.Admission;
 import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
-import com.epam.dto.entity.Application;
+import com.epam.model.dto.entity.Application;
 import com.epam.model.rowmappers.ApplicationRowMapper;
 
 import java.sql.Connection;

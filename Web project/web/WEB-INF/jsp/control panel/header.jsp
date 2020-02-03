@@ -12,6 +12,7 @@
         <li><a href="controller?command=show_applications_panel">Applications</a></li>
         <li><a href="controller?command=show_students_panel">Students</a></li>
         <li><a href="controller?command=show_accounts_panel">Accounts</a></li>
+        <li><a href="controller?command=show_main_page">Main</a></li>
     </menu>
 </header>
 </html>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="r" uri="/WEB-INF/taglib/RedirectionTagLib.tld" %>
 <html>
     <head>
         <title>
@@ -6,6 +7,6 @@
         </title>
     </head>
     <body>
-    <jsp:forward page="/WEB-INF/jsp/main/main.jsp"/>
+    <r:redirect url="controller?command=show_main_page" redirectionType="CLIENT_SIDE"/>
     </body>
 </html>

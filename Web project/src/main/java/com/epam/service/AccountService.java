@@ -3,9 +3,9 @@ package com.epam.service;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.AccountDao;
-import com.epam.dto.entity.Account;
-import exceptions.dao.DaoException;
-import exceptions.service.ServiceException;
+import com.epam.model.dto.entity.Account;
+import exception.dao.DaoException;
+import exception.service.ServiceException;
 
 import java.util.List;
 import java.util.Optional;

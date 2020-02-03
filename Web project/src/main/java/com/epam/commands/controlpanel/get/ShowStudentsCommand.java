@@ -1,10 +1,10 @@
 package com.epam.commands.controlpanel.get;
 
-import com.epam.commands.main.Command;
+import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.dto.PageContent;
-import com.epam.dto.entity.Student;
+import com.epam.model.dto.PageContent;
+import com.epam.model.dto.entity.Student;
 import com.epam.service.StudentService;
 
 import javax.servlet.http.HttpServletRequest;
