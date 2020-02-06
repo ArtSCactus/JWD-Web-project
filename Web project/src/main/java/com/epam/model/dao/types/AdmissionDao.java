@@ -8,28 +8,22 @@ import com.epam.model.rowmappers.AdmissionRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AdmissionDao extends AbstractDao<Admission> implements Dao<Admission> {
-    private static final String INSERT_ODKU = "insert into admissions (id, start, end, facultyId, specialtyId, required_students, status)\n" +
-            "values (?, ?, ?, ?, ?, ?, ?)" +
-            "on duplicate key update id=values(id)," +
-            "                        start=values(start)," +
-            "                        end = values(end)," +
-            "                        facultyId=values(facultyId)," +
-            "                        specialtyId = values(specialtyID)," +
-            "                        required_students=values(required_students)," +
-            "                        status = values (status);";
-    private static final String GET_ALL_REQ = "select id, start, end, facultyId, specialtyId, required_students, status from admissions";
-    private static final String GET_BY_ID_REQ = "select * from admissions where id = ?";
-
+    private ResourceBundle resourcesGet;
+    private ResourceBundle resourcesPut;
 
     public AdmissionDao(Connection connection) {
         super(connection);
+        resourcesGet = ResourceBundle.getBundle("sql requests/get");
+        resourcesPut = ResourceBundle.getBundle("sql requests/put");
     }
 
     @Override
     public Optional<Admission> getById(Long id) {
-        List<Admission> admissionList = super.executeQuery(GET_BY_ID_REQ, new AdmissionRowMapper(), id);
+        List<Admission> admissionList = super.executeQuery(resourcesGet.getString("get_admission_by_id"),
+                new AdmissionRowMapper(), id);
         if (admissionList.isEmpty()) {
             return Optional.empty();
         } else {
@@ -39,12 +33,12 @@ public class AdmissionDao extends AbstractDao<Admission> implements Dao<Admissio
 
     @Override
     public List<Admission> getAll() {
-        return super.executeQuery(GET_ALL_REQ, new AdmissionRowMapper());
+        return super.executeQuery(resourcesGet.getString("get_all_admissions"), new AdmissionRowMapper());
     }
 
     @Override
     public int save(Admission item) {
-        return super.executeUpdate(INSERT_ODKU,
+        return super.executeUpdate(resourcesPut.getString("insert_odku_into_admissions"),
                 item.getId(),
                 item.getStart(),
                 item.getEnd(),

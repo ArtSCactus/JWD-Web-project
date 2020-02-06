@@ -1,11 +1,18 @@
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="header.jsp" %>
-<html>
+
+<fmt:setLocale value="ru_RU" scope="session"/>
+<fmt:setBundle basename="Page content" var="content"/>
+<fmt:message bundle="${content}" key="page_title" var="page_title"/>
+<html lang="${sessionScope.language}">
 <head>
     <title>
-        University
+       University
     </title>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8">
     <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../../../css/main.css">
     <script async src="scripts/Main page.js"></script>
@@ -27,6 +34,7 @@
         </c:forEach>
     </aside>
     <div class="faculty-description-block">
+        ${page_title}
         Established in 1853, the University of Melbourne is a public-spirited
         institution that makes distinctive contributions to society in research,
         learning and teaching and engagement. It’s consistently ranked among the

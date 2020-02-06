@@ -9,32 +9,22 @@ import com.epam.model.rowmappers.ApplicationRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class ApplicationDao extends AbstractDao<Application> implements Dao<Application> {
-    private static final String INSERT_ODKU_STATEMENT_ROW = "INSERT INTO applications " +
-            "(id, facultyId, specialtyId, accountId, status, date) VALUES (?, ?,?, ?, ?, ?)" +
-            " on duplicate key update id=values(id), facultyId=values(facultyId), specialtyId=values(specialtyId)," +
-            " accountId=values(accountId), status=values(status), date=values(date);";
-    private static final String GET_ALL_APPLICATIONS_REQ = "select * from applications";
-    private static final String GET_APPLICATION_BY_ID_REQ = "select * from applications where id=?";
-    private static final String GET_ACCOUNT_ID_FROM_ENROLLED_APPLICATIONS_REQ = "select applications.*, accounts.totalPoints\n" +
-            "from applications,\n" +
-            "     accounts\n" +
-            "where status = 'accepted'\n" +
-            "  and facultyId = ?\n" +
-            "  and specialtyId = ?\n" +
-            "  and admissionId = ?\n" +
-            "  and (date between ? and ?)\n" +
-            "order by totalPoints desc\n" +
-            "limit ?;";
+    private ResourceBundle resourcesGet;
+    private ResourceBundle resourcesPut;
 
     public ApplicationDao(Connection connection) {
         super(connection);
+        resourcesGet = ResourceBundle.getBundle("sql requests/get");
+        resourcesPut = ResourceBundle.getBundle("sql requests/put");
     }
 
     @Override
     public Optional<Application> getById(Long id) {
-        List<Application> values =super.executeQuery(GET_APPLICATION_BY_ID_REQ, new ApplicationRowMapper(), id);
+        List<Application> values =super.executeQuery(resourcesGet.getString("get_application_by_id"),
+                new ApplicationRowMapper(), id);
         if (!values.isEmpty()){
             return Optional.of(values.get(0));
         } else {
@@ -44,12 +34,13 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
 
     @Override
     public List<Application> getAll() {
-        return super.executeQuery(GET_ALL_APPLICATIONS_REQ, new ApplicationRowMapper());
+        return super.executeQuery(resourcesGet.getString("get_all_applications"),
+                new ApplicationRowMapper());
     }
 
     @Override
     public int save(Application item) {
-      return super.executeUpdate(INSERT_ODKU_STATEMENT_ROW,
+      return super.executeUpdate(resourcesPut.getString("insert_odku_into_applications"),
                 item.getId(),
                 item.getFacultyId(),
                 item.getSpecialtyId(),
@@ -64,7 +55,7 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     }
 
     public List<Application> getEnrolledApplications(Admission admission){
-        return super.executeQuery(GET_ACCOUNT_ID_FROM_ENROLLED_APPLICATIONS_REQ, new ApplicationRowMapper(),
+        return super.executeQuery(resourcesGet.getString("get_account_id_from_enrolled_applications"), new ApplicationRowMapper(),
                 admission.getFacultyId(),
                 admission.getSpecialtyId(),
                 admission.getId(),

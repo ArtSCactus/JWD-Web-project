@@ -9,24 +9,21 @@ import exception.dao.DaoException;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
-    //TODO: Update insert account statement and save method according to new table format
-    private static final String INSERT_ODKU_REQ="insert into accounts (id, login, password, mailbox, adminStatus, " +
-            "blockStatus) VALUES (?, ?, sha1(?),?, ?, ?) on duplicate key update id=values(id), login=values(login), " +
-            " mailbox=values(mailbox), adminStatus=values(adminStatus), " +
-            "blockStatus=values(blockStatus);";
-    private static final String GET_BY_LOGIN_AND_PASSWORD_REQ =
-            "select * from accounts where login = ? and password = sha1(?)";
-    private static final String GET_BY_ID_REQ ="select * from accounts where id = ?";
-    private static final String GET_ALL_REQ = "select * from accounts";
+    //TODO: Update insert account statement and save method according to new table format;
+    private ResourceBundle resourcesGet;
+    private ResourceBundle resourcesPut;
 
     public AccountDao(Connection connection) {
         super(connection);
+        resourcesGet = ResourceBundle.getBundle("sql requests/get");
+        resourcesPut = ResourceBundle.getBundle("sql requests/put");
     }
 
     public Optional<Account> getByLoginAndPassword(String login, String password) throws DaoException {
-        List<Account> list = super.executeQuery(GET_BY_LOGIN_AND_PASSWORD_REQ,
+        List<Account> list = super.executeQuery(resourcesGet.getString("get_account_by_login_and_password"),
                 new AccountRowMapper(),
                 login,
                 password);
@@ -36,7 +33,7 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public Optional<Account> getById(Long id) {
-           List<Account> accountsList= super.executeQuery(GET_BY_ID_REQ, new AccountRowMapper(), id);
+           List<Account> accountsList= super.executeQuery(resourcesGet.getString("get_account_by_id"), new AccountRowMapper(), id);
            if (accountsList.isEmpty()){
                return Optional.empty();
            } else {
@@ -46,12 +43,12 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public List<Account> getAll() {
-        return super.executeQuery(GET_ALL_REQ, new AccountRowMapper());
+        return super.executeQuery(resourcesGet.getString("get_all_accounts"), new AccountRowMapper());
     }
 
     @Override
     public int save(Account item) {
-      return super.executeUpdate(INSERT_ODKU_REQ,
+      return super.executeUpdate(resourcesPut.getString("insert_odku_into_accounts"),
                 item.getId(),
                 item.getLogin(),
                 item.getPassword(),
@@ -62,10 +59,6 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public void removeById(Long id) {
-
-    }
-
-    public void create(Account account){
 
     }
 }

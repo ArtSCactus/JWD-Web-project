@@ -11,21 +11,28 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialty> {
-    private ResourceBundle resources;
+    private ResourceBundle resourcesGet;
+    private ResourceBundle resourcesPut;
 
     public SpecialtyDao(Connection connection) {
         super(connection);
-        resources = ResourceBundle.getBundle("sql requests/get");
+        resourcesGet = ResourceBundle.getBundle("sql requests/get");
+        resourcesPut = ResourceBundle.getBundle("sql requests/put");
     }
 
     @Override
     public Optional<Specialty> getById(Long id) {
-        return Optional.empty();
+        List<Specialty> resultList = super.executeQuery(resourcesGet.getString("get_student_by_id"), new SpecialtyRowMapper(), id);
+        if (resultList.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(resultList.get(0));
+        }
     }
 
     @Override
     public List<Specialty> getAll() {
-        return super.executeQuery(resources.getString("get_all_specialties"), new SpecialtyRowMapper());
+        return super.executeQuery(resourcesGet.getString("get_all_specialties"), new SpecialtyRowMapper());
     }
 
     @Override
@@ -38,10 +45,10 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
 
     }
 
-    public Optional<Specialty> getByName(String name){
-        List<Specialty> specialties = super.executeQuery(resources.getString("get_specialty_by_name"),
+    public Optional<Specialty> getByName(String name) {
+        List<Specialty> specialties = super.executeQuery(resourcesGet.getString("get_specialty_by_name"),
                 new SpecialtyRowMapper(), name);
-        if (specialties.isEmpty()){
+        if (specialties.isEmpty()) {
             return Optional.empty();
         } else {
             return Optional.of(specialties.get(0));

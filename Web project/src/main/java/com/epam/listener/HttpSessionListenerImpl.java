@@ -1,4 +1,4 @@
-package com.epam.listeners;
+package com.epam.listener;
 
 import javax.servlet.http.*;
 
@@ -6,7 +6,7 @@ public class HttpSessionListenerImpl implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
-        session.setMaxInactiveInterval(600); // 10 minutes
+      //  session.setMaxInactiveInterval(600); // 10 minutes
         session.setAttribute("isUserDefined", false);
         session.setAttribute("isUserAdmin", false);
     }

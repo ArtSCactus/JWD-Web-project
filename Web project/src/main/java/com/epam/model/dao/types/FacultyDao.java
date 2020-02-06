@@ -11,8 +11,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
-    /*  private static final String GET_BY_ID_REQ = "select * from faculties where id = ?";
-      private static final String GET_ALL_REQ = "select * from faculties";*/
     private ResourceBundle resources;
 
     public FacultyDao(Connection connection) {

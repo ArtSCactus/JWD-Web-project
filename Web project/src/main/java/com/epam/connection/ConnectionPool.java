@@ -106,4 +106,20 @@ public class ConnectionPool {
         }
     }
 
+    public void terminate() {
+        LOCK.lock();
+        try {
+            for (Connection connection : freeConnections) {
+                ((ProxyConnection) connection).terminate();
+            }
+            for (Connection connection : busyConnections) {
+                ((ProxyConnection) connection).terminate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to terminate connections. Message: " + e.getMessage());
+        } finally {
+            LOCK.unlock();
+        }
+    }
+
 }

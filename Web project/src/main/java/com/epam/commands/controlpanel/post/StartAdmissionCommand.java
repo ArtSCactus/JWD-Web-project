@@ -27,7 +27,7 @@ public class StartAdmissionCommand implements Command {
                     (Date) parameters.get("end"), ((Long) parameters.get("limit")).intValue());
             return new CommandResult(REDIRECT_URL, CommandType.POST);
         } catch (IllegalArgumentException e) {
-            request.setAttribute("error", "On of the fields ais incorrect." +
+            request.setAttribute("error", "One of the fields is incorrect." +
                     " Please, validate the fields and try again");
             return new CommandResult(REDIRECT_URL, CommandType.GET);
         }

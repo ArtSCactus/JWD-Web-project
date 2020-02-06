@@ -2,6 +2,7 @@ package com.epam.controller;
 
 import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
+import com.epam.connection.ConnectionPool;
 import com.epam.factory.CommandFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +24,11 @@ import java.io.IOException;
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(Controller.class);
+
+    @Override
+    public void destroy() {
+        ConnectionPool.getInstance().terminate();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -22,7 +22,7 @@ th{
     background-color: #1d3e61;
     color: white;
     width: 100px;
-    padding: 10;
+    padding: 10px;
 }
 th:hover{
     background-color: #1d3e619c;
@@ -42,36 +42,7 @@ tr {
 .error-message{
     color: #d70000;
 }
-menu {
-    position: center;
-    padding: 0;
-    text-decoration: none;
-    height: 100%;
-    width: 20%;
-    background-color: #1d3e61;
-}
-menu {
-    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
-    font-size: 1.3rem;
-    text-align:left;
-    margin-top: 0;
-    float: left;
-    z-index: 99999;
-    position: fixed;
-}
 
-menu li {
-    display: block;
-    margin-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-menu li a {
-    text-decoration: none;
-    color: #e3e5e8;
-    font-family:'Noto Serif', 'Georgia', 'Times New Roman', serif;
-}
 
 .university-title {
     font-family:'Noto Serif', 'Georgia', 'Times New Roman', serif;
@@ -110,6 +81,7 @@ select{
     font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
     color: #f9f9f9;
     margin-top:0;
+    margin-left: 3%;
 }
 
 .start-admission-btn{
@@ -137,27 +109,58 @@ select{
 }
 
 menu{
-    height: 100%;
-    width: 3%;
-    -webkit-transition: .5s ease; /* Safari and Chrome */
-    -moz-transition: .5s ease; /* Firefox 4 */
-    -o-transition: .5s ease; /* Opera */
-}
-
-menu li{
     display: none;
-    opacity: 0;
-    -webkit-transition: 1.5s ease; /* Safari and Chrome */
-    -moz-transition: .5s ease; /* Firefox 4 */
-    -o-transition: .5s ease; /* Opera */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    height: 100%;
+    background-color: #1d3e61e3;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
-menu:hover{
-    width: 20%;
+menu ul{
+    margin-top: 40px;
+    list-style-type: none;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0;
 }
 
-menu:hover li{
-    opacity: 1;
+menu a{
+    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-weight: 500;
+    font-size:  large;
     display: block;
-    transition: 1s;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    line-height: 30px;
+    height: 30px;
+    color: white;
+}
+
+.menu-toggle{
+    position: fixed;
+}
+
+#side-menu .close-btn{
+    padding: 5px;
+    float: right;
+}
+
+.close-btn:before{
+    content: '\2630';
+}
+.open-btn{
+    padding: 15px;
+    background-color: #1d3e61;
+    color: white;
+    display: block;
+    position: fixed;
+}
+.open-btn:before{
+    content: '\2630';
 }
