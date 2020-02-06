@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="css/admin_panel.css">
     <%--@elvariable id="content" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="page"/>
+    <c:set var="errorMessageVar" value="${error}" scope="page"/>
 </head>
 <body>
+<c:if test="${not empty errorMessageVar}">
+    <div class="error-message">
+        ${errorMessageVar}
+    </div>
+</c:if>
 <form class="Start-admission-form" method="post" action="controller">
     <label for="date-end-input">
         End date:

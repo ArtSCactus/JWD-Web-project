@@ -20,7 +20,7 @@ public class ShowAdmissionsCommand implements Command {
         PageContent content = new PageContent();
         content.setContent(admissionList);
         UniversityService universityService = new UniversityService();
-        content.setAttribute("faculties", universityService.getFaculties());
+        content.setAttribute("faculties", universityService.getAllFaculties());
         content.setAttribute("specialties", universityService.getAllSpecialties());
         request.setAttribute("content", content);
         return new CommandResult(ADMISSIONS_PAGE_PATH, CommandType.GET);

@@ -6,7 +6,6 @@ import com.epam.model.dao.types.FacultyDao;
 import com.epam.model.dao.types.SpecialtyDao;
 import com.epam.model.dto.university.Faculty;
 import com.epam.model.dto.university.Specialty;
-import com.epam.model.dto.university.University;
 import exception.dao.DaoException;
 import exception.service.ServiceException;
 
@@ -42,15 +41,11 @@ public class UniversityService {
         }
     }
 
-    public Faculty getFacultyById(Long id){
-        University university = University.getInstance();
-        List<Faculty> faculties = university.getFaculties();
-        for (Faculty faculty : faculties){
-            if (faculty.getId().equals(id)){
-                return faculty;
-            }
-        }
-        return null;
+    public Optional<Faculty> getFacultyById(Long id){
+       try(DaoManager dao = DaoFactory.createDaoManager()) {
+           FacultyDao facultyDao = dao.getFacultyDao();
+           return facultyDao.getById(id);
+       }
     }
 
     public Optional<Specialty> getSpecialtyById(Long id){
@@ -70,11 +65,12 @@ public class UniversityService {
     }
 
     public String getFacultyNameById(Long id){
-        return getFacultyById(id).getName();
-    }
-
-    public List<Faculty> getFaculties(){
-        return University.getInstance().getFaculties();
+        Optional<Faculty> facultyOptional = getFacultyById(id);
+        if (facultyOptional.isPresent()){
+            return facultyOptional.get().getName();
+        } else {
+            throw new ServiceException("No such faculty with id: "+id);
+        }
     }
 
     public Long getFacultyIdByName(String name){
@@ -93,6 +89,12 @@ public class UniversityService {
         }
     }
 
+    public List<Faculty> getAllFaculties(){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            FacultyDao facultyDao = dao.getFacultyDao();
+            return facultyDao.getAll();
+        }
+    }
     public List<Specialty> getAllSpecialties(){
         try(DaoManager dao = DaoFactory.createDaoManager()){
             SpecialtyDao specialtyDao = dao.getSpecialtyDao();

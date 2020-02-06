@@ -64,7 +64,7 @@ public class ConnectionPool {
                 connection.setSchema(schema);
                 freeConnections.offer(connection);
             } catch (SQLException e) {
-                LOGGER.error("Failed to get connection from DriverManager");
+                LOGGER.error("Failed to get connection from DriverManager" + e.getMessage());
                 throw new DriverManagerException("Failed to get connection from DriverManager: " + e.getMessage(), e);
             }
         }

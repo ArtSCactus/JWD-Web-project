@@ -1,24 +1,25 @@
 package com.epam.service;
 
-import com.epam.model.dto.university.Faculty;
-import com.epam.model.dto.university.University;
 import com.epam.model.dao.common.DaoFactory;
 import com.epam.model.dao.helper.DaoManager;
 import com.epam.model.dao.types.FacultyDao;
+import com.epam.model.dto.university.Faculty;
+import exception.service.ServiceException;
 
 import java.util.List;
 import java.util.Optional;
 
 public class FacultyService {
     public Faculty getFacultyById(Long id){
-        University university = University.getInstance();
-        List<Faculty> faculties = university.getFaculties();
-        for (Faculty faculty : faculties){
-            if (faculty.getId().equals(id)){
-                return faculty;
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            FacultyDao facultyDao = dao.getFacultyDao();
+            Optional<Faculty> specialty = facultyDao.getById(id);
+            if (specialty.isPresent()){
+                return specialty.get();
+            } else {
+                throw new ServiceException("No such faculty with id: "+id);
             }
         }
-        return null;
     }
     public String getFacultyNameById(Long id){
         return getFacultyById(id).getName();
