@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>
@@ -15,7 +16,11 @@
         <span class="step"></span>
         <span class="step"></span>
     </div>
+
     <h1>Registration:</h1>
+    <c:if test="${not empty errorMessage}">
+        <div class="error">${errorMessage}</div>
+    </c:if>
     <div class="tab">Create your login and password:
         <p><input name="login" type="text" placeholder="Username..." oninput="this.className = ''"></p>
         <p><input name="password" type="password" placeholder="Password..." oninput="this.className = ''"></p>
@@ -42,8 +47,6 @@
             <button type="submit" id="finish">Finish</button>
         </div>
     </div>
-
-    <!-- Circles which indicates the steps of the form: -->
 </form>
 </body>
 </html>

@@ -21,4 +21,4 @@ function updateSpecialtiesBlock() {
             $(specialtiesArray[index]).animate({opacity: 1}, 200);
         }
     }
-}
+};

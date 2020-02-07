@@ -72,5 +72,12 @@ public class AccountService {
         }
     }
 
+    public Optional<Account> getByLogin(String login){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            AccountDao accountDao = dao.getAccountDao();
+            return accountDao.getAccountByLogin(login);
+        }
+    }
+
 
 }

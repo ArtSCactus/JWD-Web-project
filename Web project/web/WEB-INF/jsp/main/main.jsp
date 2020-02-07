@@ -3,12 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="header.jsp" %>
 
-<fmt:setLocale value="ru_RU" scope="session"/>
 <fmt:setBundle basename="Page content" var="content"/>
 <fmt:message bundle="${content}" key="page_title" var="page_title"/>
 <fmt:message bundle="${content}" key="university_description" var="university_description"/>
 <fmt:message bundle="${content}" key="specialty_block_title" var="specialty_block_title"/>
 <fmt:message bundle="${content}" key="only_with_admissions_check_box" var="checkbox_content"/>
+<fmt:message bundle="${content}" key="main_page_search_input_field_placeholder" var="search_field_placeholder"/>
 <html lang="${sessionScope.language}">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
@@ -18,7 +18,6 @@
     <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../../../css/main.css">
     <script async src="scripts/Main page.js"></script>
-    <!-- 2. Подключим jQuery UI -->
     <link type="text/css" href="scripts/jquery/jquery-ui-1.12.1/jquery-ui.theme.css" rel="stylesheet"/>
     <script type="text/javascript" src="scripts/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <c:set var="pageContent" value="${requestScope.content}" scope="page"/>
@@ -42,7 +41,10 @@
 <div class="specialty-block-title">${specialty_block_title}</div>
 <div class="specialties-toolbox">
     <form class="search-form">
-        <input type="text" class="search-input-field" placeholder="Search here..."/>
+        <label>
+            <i class="fa fa-search"></i>
+            <input type="text" class="search-input-field" placeholder="${search_field_placeholder}">
+        </label>
         <label for="only-with-admission-checkbox">
             ${checkbox_content}
             <input type="checkbox" id="only-with-admission-checkbox" value="false">

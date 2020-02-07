@@ -5,14 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * @author ArtSCactus
  * @version 1.0
  */
 public class LanguageFilter implements Filter {
-    private static final String ENGLISH = "EN";
-    private static final String RUSSIAN = "RU";
+    private static final String ENGLISH = "en";
+    private static final String RUSSIAN = "ru";
     private static final String LANGUAGE_ATTR = "language";
 
     @Override
@@ -22,7 +23,7 @@ public class LanguageFilter implements Filter {
         HttpSession httpSession = request.getSession(true);
         String currentLanguage = (String) httpSession.getAttribute(LANGUAGE_ATTR);
         if (currentLanguage == null) {
-            httpSession.setAttribute(LANGUAGE_ATTR, ENGLISH);
+            httpSession.setAttribute(LANGUAGE_ATTR, Locale.getDefault().getLanguage());
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }

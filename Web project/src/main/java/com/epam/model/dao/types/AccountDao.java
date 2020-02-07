@@ -61,4 +61,13 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
     public void removeById(Long id) {
 
     }
+
+    public Optional<Account> getAccountByLogin(String login){
+        List<Account> list = super.executeQuery(resourcesGet.getString("get_account_by_login"), new AccountRowMapper(), login);
+        if (list.isEmpty()){
+            return Optional.empty();
+        } else {
+           return Optional.of(list.get(0));
+        }
+    }
 }

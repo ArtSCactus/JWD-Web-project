@@ -6,10 +6,10 @@ showTab(currentTab); // Display the current tab
 
 function showTab(n) {
     // This function will display the specified tab of the form ...
-    var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
+    var tabs = document.getElementsByClassName("tab");
+    tabs[n].style.display = "block";
     // ... and fix the Previous/Next buttons:
-    if (n != (x.length - 1)) {
+    if (n != (tabs.length - 1)) {
         document.getElementById("finish").style.display = "none";
         document.getElementById("nextBtn").style.display = "inline";
     }
@@ -18,7 +18,7 @@ function showTab(n) {
     } else {
         document.getElementById("prevBtn").style.display = "inline";
     }
-    if (n == (x.length - 1)) {
+    if (n == (tabs.length - 1)) {
         document.getElementById("nextBtn").style.display = "none";
         document.getElementById("finish").style.display = "inline";
     } else {
@@ -30,15 +30,15 @@ function showTab(n) {
 
 function nextPrev(n) {
     // This function will figure out which tab to display
-    var x = document.getElementsByClassName("tab");
+    var tabs = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
     if (n == 1 && !validateForm()) return false;
     // Hide the current tab:
-    x[currentTab].style.display = "none";
+    tabs[currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
     currentTab = currentTab + n;
     // if you have reached the end of the form... :
-    if (currentTab >= x.length) {
+    if (currentTab >= tabs.length) {
         //...the form gets submitted:
         document.getElementById("regForm").submit();
         return false;
@@ -49,15 +49,15 @@ function nextPrev(n) {
 
 function validateForm() {
     // This function deals with validation of the form fields
-    var x, y, i, valid = true;
-    x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
+    var tabs, inputs, i, valid = true;
+    tabs = document.getElementsByClassName("tab");
+    inputs = tabs[currentTab].getElementsByTagName("input");
     // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
+    for (i = 0; i < inputs.length; i++) {
         // If a field is empty...
-        if (y[i].value == "" & y[i].className != "mailbox-input") {
+        if (inputs[i].value == "" & inputs[i].className != "mailbox-input") {
             // add an "invalid" class to the field:
-            y[i].className += " invalid";
+            inputs[i].className += " invalid";
             // and set the current valid status to false:
             valid = false;
         }

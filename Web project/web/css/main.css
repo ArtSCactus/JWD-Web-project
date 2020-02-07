@@ -3,6 +3,7 @@
 body {
     margin-left: 0%;
     margin-right: 0%;
+    margin-top: 0%;
     -moz-background-size: 100%; /* Firefox 3.6+ */
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
@@ -108,46 +109,73 @@ menu li a {
 }
 
 header {
+    position: relative;
     background-image: url(../images/Melbourne_university.jpg);
     background-position: 50%;
     background-size: cover;
+    z-index: 0;
+    top: -6.3%;
 }
 
-header .Apply-form {
-    display: inline-block;
-    padding: .625rem 1rem;
-    width: 100%;
-    -webkit-transition: all .2s;
-    transition: all .2s;
-    border: 2px solid rgba(9, 65, 131, 0.3);
-    border-radius: 4px;
-    color: rgb(9, 65, 131);
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    margin-bottom: 0;
-    border-color: rgba(255, 255, 255, 0.3);
-    background-color: transparent;
-    color: rgb(255, 255, 255);
+.top-menu-container{
+    position: sticky;
+    top:0;
+    z-index: 1;
     background-color: rgba(1, 42, 88, .8);
+    height: 6%;
 }
 
-header .Apply-form:hover {
-    background: rgba(52, 85, 121, 0.72);
+.top-menu{
+    margin-top: 1%;
+    float: right;
+    padding: 0;
+    width: 30%;
 }
 
-.upper-section {
-    padding: 50px;
+.top-menu a{
+    padding: 2%;
+    color: white;
+    text-decoration: none;
+    line-height: 5%;
+    background-color: #0f3053;
+    border-radius: 9px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #4f667f;
+    height: 5%;
 }
 
-.down-section {
-    padding-top: 100px;
-    padding-bottom: 3rem !important;
-    padding-right: 40%;
-    padding-left: 40%;
+.upper-bar-wrapper{
+    margin:0px auto;
+    top: 0px;
+    opacity: 0.5;
+    height: 0;
+    /* display: none; */
 }
+.upper-bar{
+    z-index: 0;
+    height: 0;
+}
+
+.upper-bar, .sign-btn-ul {
+    padding-top: 0.1%;
+    padding-bottom: 1.5%;
+}
+
+.sign-btn-ul{
+    background-color: rgba(1, 42, 88, 0);
+    display: none;
+}
+
+.sign-btn-ul li{
+    height: 30px;
+    line-height: 30px;
+}
+
+menu{
+    margin-top: 400px;
+}
+
 
 header .sign-btn-ul li {
     color: #524f4e;
@@ -295,4 +323,18 @@ header .sign-btn-ul li a {
     font-size: 300%;
     text-align: center;
     color: rgb(9, 65, 131);
+}
+
+label{
+    font-weight: 400;
+    font-family:  'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    color: white;
+}
+
+.find-btn{
+    border-radius: 5px;
+    border-width: 0;
+    padding: 0.5% 2%;
+    background-color: rgba(46, 126, 217, 0.8);
+    color: white;
 }

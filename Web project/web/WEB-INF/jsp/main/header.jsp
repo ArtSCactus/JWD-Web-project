@@ -14,21 +14,35 @@
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <link rel="stylesheet" href="css/main.css">
 </head>
+<div class="top-menu-container">
+    <div class="top-menu">
+        <div class="buttons">
+        <a href="controller?command=change_language&lang=ru">RU</a>
+        <a href="controller?command=change_language&lang=end">EN</a>
+            <c:if test="${not empty sessionScope.accountId}">
+                <a href="controller?command=logout">logout</a>
+            </c:if>
+            <c:if test="${empty sessionScope.accountId}">
+                <a href="controller?command=forward&page=registration">${sign_up_btn}</a>
+                <a href="controller?command=forward&page=authorization">${sign_in_btn}</a>
+            </c:if>
+        </div>
+        <%--       <div class="down-section">
+                   <div class="page-title">Melbourne university</div>
+                   <div class="Apply-form"><a>Apply</a></div>
+               </div>--%>
+    </div>
+</div>
 <header>
-    <div class="upper-section">
+    <div class="upper-bar-wrapper">
+    <div class="upper-bar">
     <ul class="sign-btn-ul">
-        <c:if test="${not empty sessionScope.accountId}">
-           <li><a href="controller?command=logout">logout</a></li>
-        </c:if>
-        <c:if test="${empty sessionScope.accountId}">
-            <li><a href="controller?command=forward&page=registration">${sign_up_btn}</a></li>
-           <li><a href="controller?command=forward&page=authorization">${sign_in_btn}</a></li>
-        </c:if>
     </ul>
-        <div class="down-section">
+ <%--       <div class="down-section">
             <div class="page-title">Melbourne university</div>
             <div class="Apply-form"><a>Apply</a></div>
-        </div>
+        </div>--%>
+    </div>
     </div>
     <menu>
         <li><a href="#"><i class="fa fa-home fa-fw"></i>${home_btn}</a></li>
