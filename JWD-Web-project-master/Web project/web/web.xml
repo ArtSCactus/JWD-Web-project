@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <display-name>DevApp</display-name>
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+    </welcome-file-list>
+    <session-config>
+       <!-- <session-timeout>30</session-timeout>-->
+    </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/stacktrace%20page.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.RuntimeException</exception-type>
+        <location>/WEB-INF/jsp/stacktrace%20page.jsp</location>
+    </error-page>
+    <listener>
+        <listener-class>com.epam.listener.HttpSessionListenerImpl
+        </listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>Selection committee</servlet-name>
+        <servlet-class>com.epam.controller.Controller</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Selection committee</servlet-name>
+        <url-pattern>/webapp</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>CommandFilter</filter-name>
+        <filter-class>com.epam.filter.AccessFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CommandFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>LanguageFilter</filter-name>
+        <filter-class>com.epam.filter.LanguageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LanguageFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+</web-app>
