@@ -287,3 +287,12 @@ header .sign-btn-ul li a {
 .search-input-field:not(:focus) {
     transition: 1s;
 }
+
+.specialty-block-title{
+    font-weight: 400;
+    font-family:  'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-style: oblique;
+    font-size: 300%;
+    text-align: center;
+    color: rgb(9, 65, 131);
+}

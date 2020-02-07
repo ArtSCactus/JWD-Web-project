@@ -47,6 +47,9 @@ public class Controller extends HttpServlet {
         Command command = client.defineCommand(request);
         commandResult = command.execute(request);
         try {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType ("text/html; charset=UTF-8");
             switch (commandResult.getExecutedCommandType()) {
                 case POST:
                     response.sendRedirect(request.getContextPath() + commandResult.getUrl());
