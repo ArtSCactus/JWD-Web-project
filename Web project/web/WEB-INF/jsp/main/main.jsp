@@ -13,7 +13,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <title>
-      ${page_title}
+        ${page_title}
     </title>
     <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../../../css/main.css">
@@ -36,7 +36,7 @@
         </c:forEach>
     </aside>
     <div class="faculty-description-block">
-       ${university_description}
+        ${university_description}
     </div>
 </div>
 <div class="specialty-block-title">${specialty_block_title}</div>

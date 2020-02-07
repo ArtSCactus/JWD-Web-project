@@ -16,15 +16,15 @@
 </head>
 <header>
     <div class="upper-section">
-    <ul class="sign-btn-ul">
-        <c:if test="${not empty sessionScope.accountId}">
-           <li><a href="controller?command=logout">logout</a></li>
-        </c:if>
-        <c:if test="${empty sessionScope.accountId}">
-            <li><a href="controller?command=forward&page=registration">${sign_up_btn}</a></li>
-           <li><a href="controller?command=forward&page=authorization">${sign_in_btn}</a></li>
-        </c:if>
-    </ul>
+        <ul class="sign-btn-ul">
+            <c:if test="${not empty sessionScope.accountId}">
+                <li><a href="controller?command=logout">logout</a></li>
+            </c:if>
+            <c:if test="${empty sessionScope.accountId}">
+                <li><a href="controller?command=forward&page=registration">${sign_up_btn}</a></li>
+                <li><a href="controller?command=forward&page=authorization">${sign_in_btn}</a></li>
+            </c:if>
+        </ul>
         <div class="down-section">
             <div class="page-title">Melbourne university</div>
             <div class="Apply-form"><a>Apply</a></div>
