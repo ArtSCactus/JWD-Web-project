@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="Web project:Web exploded">
-    <output-path>C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/webapp</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="Web project/web/Web" />
-    </root>
-  </artifact>
-</component>
