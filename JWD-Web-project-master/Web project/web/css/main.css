@@ -1,0 +1,298 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    margin-left: 0%;
+    margin-right: 0%;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+*, *::before, *::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    transition: 1s;
+}
+
+.faculties-enum-block, .faculty-description-block {
+    display: inline-block;
+}
+
+.faculty-description-block {
+    width: 50%;
+    display: flex; /* 1 */
+    flex-direction: column; /* 1 */
+    flex: 0 0 300px; /* 2 */
+    margin: 10px; /* 3 */
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    padding: 10px;
+}
+
+.faculties-enum-block {
+    float: right;
+    margin-right: 1%;
+    background-color: #0f3053c4;
+    border-color: #4f667fc9;
+    border-radius: 6px;
+    border-style: groove;
+    color: white;
+}
+
+.faculty-item {
+    padding: 4%;
+    font-weight: 600;
+}
+
+.faculty-item:hover {
+    background-color: #ffffffa3;
+    transition: 1s;
+}
+
+.faculty-item:not(:hover) {
+    transition: 1s;
+}
+
+.page-title {
+    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #f6f6faf7;
+    font-size: 2rem;
+    line-height: 1.4;
+}
+
+.authorization-form {
+    font-size: 20;
+    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-weight: 400;
+}
+
+.authorization-form a {
+    color: white;
+}
+
+.apply-form {
+    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+    color: #008eff;
+}
+
+menu {
+    font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0;
+    position: center;
+    background-color: rgba(255, 255, 255, 0.82);
+    padding: 0;
+}
+
+menu li {
+    display: inline-block;
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+menu li a {
+    text-decoration: none;
+    color: #0f3053;
+}
+
+header {
+    background-image: url(../images/Melbourne_university.jpg);
+    background-position: 50%;
+    background-size: cover;
+}
+
+header .Apply-form {
+    display: inline-block;
+    padding: .625rem 1rem;
+    width: 100%;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    border: 2px solid rgba(9, 65, 131, 0.3);
+    border-radius: 4px;
+    color: rgb(9, 65, 131);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-bottom: 0;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    background-color: rgba(1, 42, 88, .8);
+}
+
+header .Apply-form:hover {
+    background: rgba(52, 85, 121, 0.72);
+}
+
+.upper-section {
+    padding: 50px;
+}
+
+.down-section {
+    padding-top: 100px;
+    padding-bottom: 3rem !important;
+    padding-right: 40%;
+    padding-left: 40%;
+}
+
+header .sign-btn-ul li {
+    color: #524f4e;
+    display: inline-block;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    transition: .2s linear;
+    float: right;
+}
+
+header .sign-btn-ul li a {
+    text-decoration: none;
+}
+
+.sign-btn-ul a {
+    padding: 6px;
+    background-color: #0f3053;
+    border-color: #4f667fc9;
+    border-radius: 6px;
+    border-style: groove;
+    font-weight: 500;
+    color: white;
+}
+
+.sign-btn-ul a:hover {
+    background: rgba(52, 85, 121, 0.72);
+}
+
+.specialty-item {
+    display: flex; /* 1 */
+    flex-direction: column; /* 1 */
+    flex: 0 0 300px; /* 2 */
+    margin: 10px; /* 3 */
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    padding: 10px;
+
+}
+
+.specialty-item .apply-btn-form {
+    text-align: right;
+}
+
+.apply-btn-form {
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 10%;
+}
+
+.specialties-block {
+    list-style: none; /* 1 */
+    margin: 0; /* 1 */
+    padding: 0; /* 1 */
+    display: flex; /* 2 */
+    flex-wrap: wrap; /* 2 */
+}
+
+.specialty_item_title {
+    font-size: 150%;
+    font-style: oblique;
+}
+
+.specialty-item:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    box-shadow: inset 0 0 0 5px #0f3053de;
+    transition: 1s;
+}
+
+.specialty-item:not(:hover) {
+    transition: 1s;
+}
+
+.apply-btn {
+    padding: .625rem 1rem;
+    width: 100%;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    border: 2px solid rgba(9, 65, 131, 0.3);
+    border-radius: 4px;
+    color: rgb(9, 65, 131);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-bottom: 0;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    background-color: rgba(1, 42, 88, .8);
+}
+
+.specialty-item .apply-btn-form {
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+}
+
+.apply-btn:hover {
+    background: rgba(52, 85, 121, 0.72);
+}
+
+.apply-btn:active {
+    background: white;
+}
+
+.specialties-toolbox {
+    text-align: center;
+    background-color: rgba(1, 42, 88, .8);
+}
+
+.specialties-toolbox {
+    margin-top: 30px;
+}
+
+.search-input-field {
+    width: 5%;
+    border-radius: 4px;
+    transition: 1s;
+}
+
+.search-input-field:hover {
+    width: 50%;
+    transition: 1s;
+}
+
+.search-input-field:focus {
+    width: 50%;
+    transition: 1s;
+}
+
+.search-input-field:not(:focus) {
+    transition: 1s;
+}
+
+.specialty-block-title{
+    font-weight: 400;
+    font-family:  'Noto Serif', 'Georgia', 'Times New Roman', serif;
+    font-style: oblique;
+    font-size: 300%;
+    text-align: center;
+    color: rgb(9, 65, 131);
+}
