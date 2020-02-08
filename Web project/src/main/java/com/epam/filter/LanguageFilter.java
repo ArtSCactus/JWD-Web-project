@@ -12,9 +12,10 @@ import java.util.Locale;
  * @version 1.0
  */
 public class LanguageFilter implements Filter {
-    private static final String ENGLISH = "en";
-    private static final String RUSSIAN = "ru";
-    private static final String LANGUAGE_ATTR = "language";
+    private static final String ENGLISH = "EN";
+    private static final String RUSSIAN = "RU";
+    private static final String LANGUAGE_ATTR = "lang";
+    private static final String NULL_STR = "null";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -22,7 +23,7 @@ public class LanguageFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession httpSession = request.getSession(true);
         String currentLanguage = (String) httpSession.getAttribute(LANGUAGE_ATTR);
-        if (currentLanguage == null) {
+        if (currentLanguage == null || currentLanguage.equals(NULL_STR)) {
             httpSession.setAttribute(LANGUAGE_ATTR, Locale.getDefault().getLanguage());
         }
         filterChain.doFilter(servletRequest, servletResponse);

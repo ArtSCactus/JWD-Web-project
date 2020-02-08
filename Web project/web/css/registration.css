@@ -36,6 +36,7 @@ input.invalid {
     border-radius: 50%;
     display: inline-block;
     opacity: 0.5;
+    transition: 1s;
 }
 
 /* Mark the active step: */
@@ -46,4 +47,18 @@ input.invalid {
 /* Mark the steps that are finished and valid: */
 .step.finish {
     background-color: #4CAF50;
+}
+input{
+    border-radius: 10px;
+}
+input:invalid{
+    border: 1px solid #ee0707;
+    background-color:#ed08084d;
+    transition: 1s;
+
+}
+
+input:valid{
+    background-color: #71bc3a30;
+    transition: 1s;
 }

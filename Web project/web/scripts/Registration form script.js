@@ -43,31 +43,56 @@ function nextPrev(n) {
         document.getElementById("regForm").submit();
         return false;
     }
+    for (var index=0; index<tabs.length; index++){
+        if (index!=currentTab){
+            $(tabs[index]).css("display", "none");
+        }
+    }
     // Otherwise, display the correct tab:
     showTab(currentTab);
 }
 
 function validateForm() {
-    // This function deals with validation of the form fields
     var tabs, inputs, i, valid = true;
     tabs = document.getElementsByClassName("tab");
     inputs = tabs[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
     for (i = 0; i < inputs.length; i++) {
-        // If a field is empty...
-        if (inputs[i].value == "" & inputs[i].className != "mailbox-input") {
-            // add an "invalid" class to the field:
+        if (!inputs[i].checkValidity() && inputs[i].name != "mailbox") {
             inputs[i].className += " invalid";
-            // and set the current valid status to false:
             valid = false;
         }
     }
-    // If the valid status is true, mark the step as finished and valid:
     if (valid) {
         document.getElementsByClassName("step")[currentTab].className += " finish";
     }
-    return valid; // return the valid status
+    return valid;
 }
+//Validation on case if inputs was edited through the code.
+//If it is, showing tabs with invalid fields on final stage.
+function finalValidation(){
+    var isValid=true;
+    var fields=document.getElementsByTagName("input");
+    for (var index=0; index<fields.length; index++) {
+        if (!fields[index].checkValidity()){
+            $(fields[index]).parent("p").parent(".tab").css("display", "block");
+            isValid= false;
+        }
+        if (isValid){
+            //       document.getElementById("regForm").submit();
+        } else {
+            return false;
+        }
+
+    }
+}
+$('#prevBtn').click(function(){
+    var tabs = document.getElementsByClassName(".tab");
+    for (var index=0; index<tabs.length; index++){
+        if (index!=currentTab){
+            $(tabs[index]).css("display", "none");
+        }
+    }
+});
 
 function fixStepIndicator(n) {
     // This function removes the "active" class of all steps...

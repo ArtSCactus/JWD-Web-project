@@ -32,6 +32,7 @@ public class AccountRowMapper implements RowMapper<Account> {
                 .withSecondName(resultSet.getString(SURNAME_COL))
                 .withThirdName(resultSet.getString(PATRONYMIC_COL))
                 .withTotalPoints(resultSet.getInt(TOTAL_POINTS_COL))
+                .withStudentId(resultSet.getLong(STUDENT_ID_COL))
                 .build();
     }
 }

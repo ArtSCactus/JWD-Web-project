@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
  */
 public class AccountDataValidator {
     private static final Pattern MAILBOX_PATTERN = Pattern.compile("(\\w){3,30}\\@(\\w){3,15}\\.(com|ru|by|net|)");
+    private static final Pattern NAME_PATTERN = Pattern.compile("^[А-Яа-яA-Za-z0-9\\s]{2,20}$");
+    private static final Pattern LOGIN_PATTERN = Pattern.compile("^[A-za-z0-9_-]{2,20}$");
     public boolean isLoginValid(String login) {
         if (login == null){
             return false;
@@ -20,9 +22,14 @@ public class AccountDataValidator {
         if (login.isEmpty()) {
             return false;
         }
-        AccountService service = new AccountService();
-        Optional<Account> possibleCollision = service.getByLogin(login);
-        return !possibleCollision.isPresent();
+        Matcher matcher = LOGIN_PATTERN.matcher(login.replaceAll("\\s+",""));
+        if (matcher.matches()) {
+            AccountService service = new AccountService();
+            Optional<Account> possibleCollision = service.getByLogin(login);
+            return !possibleCollision.isPresent();
+        } else {
+            return false;
+        }
     }
 
     public boolean isMailBoxValid(String mailbox) {
@@ -59,7 +66,24 @@ public class AccountDataValidator {
         return !password.isEmpty();
     }
 
-    public boolean validateAll(String login, String password, String mailbox, String totalPoints){
-        return isLoginValid(login) & isMailBoxValid(mailbox) & isTotalPointsValid(totalPoints) & isPasswordCorrect(password);
+    public boolean isNameCorrect(String name){
+        if (name == null || name.isEmpty()){
+            return false;
+        }
+        Matcher matcher = NAME_PATTERN.matcher(name);
+        return matcher.matches();
+    }
+
+    public boolean validateAll(String login, String password, String mailbox, String totalPoints,
+                               String firstName,
+                               String secondName,
+                               String thirdName){
+        return isLoginValid(login)
+                & isMailBoxValid(mailbox)
+                & isTotalPointsValid(totalPoints)
+                & isPasswordCorrect(password)
+                & isNameCorrect(firstName)
+                & isNameCorrect(secondName)
+                & isNameCorrect(thirdName);
     }
 }

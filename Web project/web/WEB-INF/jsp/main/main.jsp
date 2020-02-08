@@ -2,24 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="header.jsp" %>
-
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="Page content" var="content"/>
 <fmt:message bundle="${content}" key="page_title" var="page_title"/>
 <fmt:message bundle="${content}" key="university_description" var="university_description"/>
 <fmt:message bundle="${content}" key="specialty_block_title" var="specialty_block_title"/>
 <fmt:message bundle="${content}" key="only_with_admissions_check_box" var="checkbox_content"/>
 <fmt:message bundle="${content}" key="main_page_search_input_field_placeholder" var="search_field_placeholder"/>
-<html lang="${sessionScope.language}">
+<fmt:message bundle="${content}" key="apply_btn" var="apply_btn"/>
+<fmt:message bundle="${content}" key="find_btn" var="find_btn"/>
+<html lang="${sessionScope.lang}">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <title>
       ${page_title}
     </title>
-    <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="../../../css/main.css">
-    <script async src="scripts/Main page.js"></script>
-    <link type="text/css" href="scripts/jquery/jquery-ui-1.12.1/jquery-ui.theme.css" rel="stylesheet"/>
-    <script type="text/javascript" src="scripts/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <c:set var="pageContent" value="${requestScope.content}" scope="page"/>
 </head>
 <body>
@@ -49,7 +46,7 @@
             ${checkbox_content}
             <input type="checkbox" id="only-with-admission-checkbox" value="false">
         </label>
-        <input class="find-btn" type="button" value="find" onclick="updateSpecialtiesBlock()">
+        <input class="find-btn" type="button" value="${find_btn}" onclick="updateSpecialtiesBlock()">
     </form>
 </div>
 <div class="specialties-block">
@@ -64,7 +61,7 @@
             </div>
             <form class="apply-btn-form" method="post"
                   action="controller?command=apply&specialty=${specialty.id}&faculty=${specialty.facultyId}">
-                <button class="apply-btn" type="submit">Apply</button>
+                <button class="apply-btn" type="submit">${apply_btn}</button>
             </form>
         </div>
     </c:forEach>

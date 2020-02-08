@@ -1,6 +1,7 @@
 package com.epam.listener;
 
 import javax.servlet.http.*;
+import java.util.Locale;
 
 public class HttpSessionListenerImpl implements HttpSessionListener {
     @Override
@@ -9,6 +10,7 @@ public class HttpSessionListenerImpl implements HttpSessionListener {
       //  session.setMaxInactiveInterval(600); // 10 minutes
         session.setAttribute("isUserDefined", false);
         session.setAttribute("isUserAdmin", false);
+        session.setAttribute("lang", Locale.getDefault().getLanguage());
     }
 
     @Override

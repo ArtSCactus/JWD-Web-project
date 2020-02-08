@@ -68,4 +68,11 @@ public class ApplicationService {
            return applicationDao.getEnrolledApplications(admission);
         }
     }
+
+    public List<Application> getApplicationsByAccountId(Long id){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            ApplicationDao applicationDao = dao.getApplicationDao();
+            return applicationDao.getByAccountId(id);
+        }
+    }
 }

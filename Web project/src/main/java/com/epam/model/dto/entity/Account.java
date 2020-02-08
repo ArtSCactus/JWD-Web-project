@@ -3,6 +3,7 @@ package com.epam.model.dto.entity;
 import com.epam.model.dto.Identifiable;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class Account implements Serializable, Identifiable {
@@ -18,6 +19,7 @@ public class Account implements Serializable, Identifiable {
     private Long studentId;
     private boolean isAdmin;
     private boolean isBlocked;
+    private List<Application> appliedApplications;
 
     public Account(Long id, String login, String password, String mailbox) {
         this.id = id;
@@ -136,6 +138,14 @@ public class Account implements Serializable, Identifiable {
         return studentId;
     }
 
+    public List<Application> getAppliedApplications() {
+        return appliedApplications;
+    }
+
+    public void setAppliedApplications(List<Application> appliedApplications) {
+        this.appliedApplications = appliedApplications;
+    }
+
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
@@ -201,6 +211,21 @@ public class Account implements Serializable, Identifiable {
             return this;
         }
 
+        public Builder withAppliedApplications(List<Application> appliedApplications){
+            account.appliedApplications = appliedApplications;
+            return this;
+        }
+
+        public Builder addAppliedApplication(Application application){
+            account.appliedApplications.add(application);
+            return this;
+        }
+
+        public Builder withStudentId(Long id){
+            account.studentId = id;
+            return this;
+        }
+
         public Account build() {
             return account;
         }
@@ -227,13 +252,13 @@ public class Account implements Serializable, Identifiable {
                 Objects.equals(getThirdName(), account.getThirdName()) &&
                 Objects.equals(getTotalPoints(), account.getTotalPoints()) &&
                 Objects.equals(getId(), account.getId()) &&
-                Objects.equals(getStudentId(), account.getStudentId());
+                Objects.equals(getStudentId(), account.getStudentId()) &&
+                Objects.equals(getAppliedApplications(), account.getAppliedApplications());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLogin(), getPassword(), getMailbox(), getName(), getSecondName(),
-                getThirdName(), getTotalPoints(), getId(), getStudentId(), isAdmin(), isBlocked());
+        return Objects.hash(getLogin(), getPassword(), getMailbox(), getName(), getSecondName(), getThirdName(), getTotalPoints(), getId(), getStudentId(), isAdmin(), isBlocked(), getAppliedApplications());
     }
 
     @Override
@@ -250,6 +275,7 @@ public class Account implements Serializable, Identifiable {
                 ", studentId=" + studentId +
                 ", isAdmin=" + isAdmin +
                 ", isBlocked=" + isBlocked +
+                ", appliedApplications=" + appliedApplications +
                 '}';
     }
 }

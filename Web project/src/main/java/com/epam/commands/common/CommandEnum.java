@@ -6,6 +6,7 @@ import com.epam.commands.controlpanel.post.*;
 import com.epam.commands.controlpanel.get.ShowAccountsCommand;
 import com.epam.commands.controlpanel.get.ShowAdmissionsCommand;
 import com.epam.commands.get.ShowMainPageCommand;
+import com.epam.commands.get.SwitchLanguageCommand;
 import com.epam.commands.post.ApplyCommand;
 import com.epam.commands.result.ForwardCommand;
 import com.epam.commands.authorization.post.LoginCommand;
@@ -96,6 +97,11 @@ public enum CommandEnum {
     SIGN_UP{
         {
             this.command = new SignUpCommand();
+        }
+    },
+    CHANGE_LANGUAGE{
+        {
+            this.command = new SwitchLanguageCommand();
         }
     };
     Command command;

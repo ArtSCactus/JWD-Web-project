@@ -27,11 +27,4 @@ public class ApplicationRowMapper implements RowMapper<Application> {
                 .build();
     }
 
-    public Long mapAdmissionResult(ResultSet resultSet){
-        try {
-            return  resultSet.getLong(ACCOUNT_ID_COLUMN);
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
-    }
 }

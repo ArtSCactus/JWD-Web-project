@@ -151,6 +151,9 @@ menu a{
     float: right;
 }
 
+.close-btn{
+    border-bottom: 0;
+}
 .close-btn:before{
     content: '\2630';
 }
