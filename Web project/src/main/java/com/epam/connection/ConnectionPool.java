@@ -87,10 +87,14 @@ public class ConnectionPool {
     }
 
     public void releaseConnection(Connection connection) {
-        LOCK.lock();
-        freeConnections.offer(connection);
-        busyConnections.remove(connection);
-        LOCK.unlock();
+       try {
+           LOCK.lock();
+           freeConnections.offer(connection);
+           busyConnections.remove(connection);
+       }finally{
+           LOCK.unlock();
+
+       }
     }
 
     public Connection getConnection() {

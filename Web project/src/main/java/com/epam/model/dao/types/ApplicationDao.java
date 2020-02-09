@@ -67,4 +67,8 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     public List<Application> getByAccountId(Long id) {
         return super.executeQuery(resourcesGet.getString("get_applications_by_account_id"), new ApplicationRowMapper(), id);
     }
+
+    public List<Application> getAppliedApplication(Long id){
+        return super.executeQuery(resourcesGet.getString("get_applied_applications_by_account_id"), new ApplicationRowMapper(), id);
+    }
 }
