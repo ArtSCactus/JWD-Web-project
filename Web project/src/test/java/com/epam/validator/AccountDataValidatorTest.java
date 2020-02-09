@@ -4,8 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 public class AccountDataValidatorTest {
     private AccountDataValidator validator = new AccountDataValidator();
     @DataProvider(name="logins")
@@ -21,7 +19,8 @@ public class AccountDataValidatorTest {
     @DataProvider(name = "mailboxes")
     public Object[][] getObjects(){
         return new Object[][]{
-
+                {"mailbox@email.com", true},
+                {"Not$%@mail.", false}
         };
     }
 

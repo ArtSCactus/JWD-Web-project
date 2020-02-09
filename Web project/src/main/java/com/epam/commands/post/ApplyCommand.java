@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 public class ApplyCommand implements Command {
     private static final String LOGIN_PAGE = "/WEB-INF/jsp/login.jsp";
     private static final String MAIN_PAGE = "/WEB-INF/jsp/main/main.jsp";
-    private static final String IS_USER_DEFINED_ATTR="isDefined";
     private static final String FACULTY_PARAM = "faculty";
     private static final String SPECIALTY_PARAM = "specialty";
     private static final String ACCOUNT_ID_ATTR="accountId";
@@ -20,7 +19,8 @@ public class ApplyCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (Boolean.parseBoolean((String) session.getAttribute(IS_USER_DEFINED_ATTR))) {
+       Long accountId = (Long) session.getAttribute(ACCOUNT_ID_ATTR);
+        if (accountId!=null) {
             ApplicationService service = new ApplicationService();
             service.apply(Long.parseLong(request.getParameter(FACULTY_PARAM)),
                     Long.parseLong(request.getParameter(SPECIALTY_PARAM)),

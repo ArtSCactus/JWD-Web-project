@@ -359,3 +359,7 @@ label{
 .find-btn:hover{
     background-color: #a7ccecb8;
 }
+
+.title{
+    margin-left: 10px;
+}

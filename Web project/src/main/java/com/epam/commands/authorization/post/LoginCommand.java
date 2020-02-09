@@ -29,6 +29,7 @@ public class LoginCommand implements Command {
             } else {
                 session.setAttribute("isUserAdmin", currentAccount.isAdmin());
                 session.setAttribute("accountId", currentAccount.getId());
+                session.setAttribute("isUserDefined", true);
                 return new CommandResult(REDIRECT_URL, CommandType.POST);
             }
         } else {
