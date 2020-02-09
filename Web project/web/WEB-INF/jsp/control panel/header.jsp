@@ -13,6 +13,8 @@
     <a class="open-btn"></a>
 <menu id="side-menu">
     <a class="close-btn"></a>
+    <a class="language-switch">EN</a>
+    <a class="language-switch">RU</a>
     <ul class="list">
     <li><a href="controller?command=show_admissions_panel">Admissions</a></li>
     <li><a href="controller?command=show_applications_panel">Applications</a></li>

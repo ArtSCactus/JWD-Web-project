@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
-    //TODO: Update insert account statement and save method according to new table format;
     private ResourceBundle resourcesGet;
     private ResourceBundle resourcesPut;
 
@@ -33,12 +32,12 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public Optional<Account> getById(Long id) {
-           List<Account> accountsList= super.executeQuery(resourcesGet.getString("get_account_by_id"), new AccountRowMapper(), id);
-           if (accountsList.isEmpty()){
-               return Optional.empty();
-           } else {
-               return Optional.of(accountsList.get(0));
-           }
+        List<Account> accountsList = super.executeQuery(resourcesGet.getString("get_account_by_id"), new AccountRowMapper(), id);
+        if (accountsList.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(accountsList.get(0));
+        }
     }
 
     @Override
@@ -48,13 +47,17 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     @Override
     public int save(Account item) {
-      return super.executeUpdate(resourcesPut.getString("insert_odku_into_accounts"),
+        return super.executeUpdate(resourcesPut.getString("insert_odku_into_accounts"),
                 item.getId(),
                 item.getLogin(),
                 item.getPassword(),
                 item.getMailbox(),
                 item.isAdmin(),
-                item.isBlocked());
+                item.isBlocked(),
+                item.getName(),
+                item.getSecondName(),
+                item.getThirdName(),
+                item.getTotalPoints());
     }
 
     @Override
@@ -62,12 +65,12 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     }
 
-    public Optional<Account> getAccountByLogin(String login){
+    public Optional<Account> getAccountByLogin(String login) {
         List<Account> list = super.executeQuery(resourcesGet.getString("get_account_by_login"), new AccountRowMapper(), login);
-        if (list.isEmpty()){
+        if (list.isEmpty()) {
             return Optional.empty();
         } else {
-           return Optional.of(list.get(0));
+            return Optional.of(list.get(0));
         }
     }
 }

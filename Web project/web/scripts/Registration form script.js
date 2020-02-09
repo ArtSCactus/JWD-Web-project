@@ -78,7 +78,7 @@ function finalValidation(){
             isValid= false;
         }
         if (isValid){
-            //       document.getElementById("regForm").submit();
+                  document.getElementById("regForm").submit();
         } else {
             return false;
         }

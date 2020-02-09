@@ -75,7 +75,7 @@ body {
 }
 
 .authorization-form {
-    font-size: 20;
+    font-size: 20px;
     font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
     font-weight: 400;
 }
@@ -313,19 +313,19 @@ header .sign-btn-ul li a {
 }
 
 .search-input-field {
-    width: 9%;
+    width: 7%;
     border-style: none;
     border-radius: 5px;
     transition: 1s;
 }
 
 .search-input-field:hover {
-    width: 50%;
+    width: 30%;
     transition: 1s;
 }
 
 .search-input-field:focus {
-    width: 50%;
+    width: 30%;
     transition: 1s;
 }
 
@@ -354,4 +354,8 @@ label{
     padding: 0.5% 2%;
     background-color: rgba(46, 126, 217, 0.8);
     color: white;
+}
+
+.find-btn:hover{
+    background-color: #a7ccecb8;
 }

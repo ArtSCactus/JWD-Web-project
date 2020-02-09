@@ -6,12 +6,12 @@
         </title>
     </head>
   <body>
- Request from ${pageContext.errorData.requestUri} is failed
+ Request from ${requestUri} is failed
  <br/>
- Servlet name or type: ${pageContext.errorData.servletName}
+ Servlet name or type: ${servletName}
  <br/>
- Status code: ${pageContext.errorData.statusCode}
+ Status code: ${statusCode}
  <br/>
- Exception: ${pageContext.errorData.throwable}
+ Exception: ${throwable}
     </body>
     </html>

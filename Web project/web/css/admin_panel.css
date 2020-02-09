@@ -167,3 +167,11 @@ menu a{
 .open-btn:before{
     content: '\2630';
 }
+
+.language-switch, .close-btn{
+    display: inline-block;
+}
+
+.language-switch{
+    border-bottom: 0;
+}
