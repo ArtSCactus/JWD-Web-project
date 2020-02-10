@@ -14,7 +14,6 @@
       <option name="AJP_PORT" value="8010" />
       <option name="BASE_DIRECTORY_NAME" value="Unnamed_Web_project" />
       <option name="DEPLOY_TOMCAT_APPS" value="true" />
-      <option name="HTTPS_PORT" value="8080" />
       <option name="PRESERVE_SESSIONS" value="true" />
     </server-settings>
     <predefined_log_file enabled="true" id="Tomcat" />

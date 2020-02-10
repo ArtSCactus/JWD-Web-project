@@ -68,7 +68,18 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
         return super.executeQuery(resourcesGet.getString("get_applications_by_account_id"), new ApplicationRowMapper(), id);
     }
 
-    public List<Application> getAppliedApplication(Long id){
+    public List<Application> getAppliedApplication(Long id) {
         return super.executeQuery(resourcesGet.getString("get_applied_applications_by_account_id"), new ApplicationRowMapper(), id);
+    }
+
+    public Optional<Application> getByAccountIdAndSpecialtyId(Long accountId, Long specialtyId) {
+        List<Application> applicationList =
+                super.executeQuery(resourcesGet.getString("get_applications_by_account_id_and_specialty_id"),
+                        new ApplicationRowMapper(), accountId, specialtyId);
+        if (applicationList.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(applicationList.get(0));
+        }
     }
 }

@@ -1,7 +1,10 @@
 package com.epam.model.dto.entity;
 
 public enum ApplicationStatus {
-    REJECTED("rejected"), ACCEPTED("accepted"), WAITING("waiting");
+    REJECTED("rejected"),
+    ACCEPTED("accepted"),
+    WAITING("waiting"),
+    CANCELLED("cancelled");
 
     ApplicationStatus(String message) {
         this.message = message;

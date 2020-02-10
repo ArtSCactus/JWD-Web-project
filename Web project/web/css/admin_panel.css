@@ -16,7 +16,8 @@ table{
     border-spacing: 0;
     border-collapse: separate;
     display: inline-block;
-    margin-left: 3%
+    margin-left: 3%;
+    counter-reset: counter;
 }
 th{
     background-color: #1d3e61;
@@ -27,8 +28,10 @@ th{
 th:hover{
     background-color: #1d3e619c;
 }
-tr{
+tr:nth-child(n+2){
     text-align: center;
+    background-color: #f2f2f2;
+    counter-increment: counter;
 }
 tr:hover{
     background-color:#8eb5f094;
@@ -36,8 +39,14 @@ tr:hover{
 tr:focus{
     background-color:#8eb5f094;
 }
-tr {
-    background-color: #f2f2f2;
+tr:before{
+    content: counter(counter);
+}
+tr:nth-child(-n+1):before {
+    content: "";
+    background-color: #1d3e61;
+    display: table-cell;
+    vertical-align: middle;
 }
 .error-message{
     color: #d70000;
@@ -50,7 +59,7 @@ tr {
     font-size: 3em;
     font-weight: 400;
     color:#1d3e61;
-    margin-left: 5%
+    margin-left: 25%
 }
 
 header .university-title, a {
@@ -109,7 +118,7 @@ select{
 }
 
 menu{
-    display: none;
+    display: block;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -161,7 +170,7 @@ menu a{
     padding: 15px;
     background-color: #1d3e61;
     color: white;
-    display: block;
+    display: none;
     position: fixed;
 }
 .open-btn:before{
@@ -174,4 +183,8 @@ menu a{
 
 .language-switch{
     border-bottom: 0;
+}
+
+.main-content{
+    margin-left: 25%;
 }

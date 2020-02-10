@@ -9,6 +9,8 @@
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
+<div class="main-content">
+<h3>Students</h3>
 <table class="student-table">
     <tr>
         <th>ID</th>
@@ -36,5 +38,6 @@
         </tr>
     </c:forEach>
 </table>
+</div>
 </body>
 </html>

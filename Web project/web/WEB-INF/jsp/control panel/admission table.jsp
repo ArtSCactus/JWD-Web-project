@@ -10,6 +10,8 @@
     <c:set var="errorMessageVar" value="${error}" scope="page"/>
 </head>
 <body>
+<div class="main-content">
+<h3>Admissions</h3>
 <c:if test="${not empty errorMessageVar}">
     <div class="error-message">
         ${errorMessageVar}
@@ -61,23 +63,37 @@
             <td>${admission.start}</td>
             <td>${admission.end}</td>
             <td>${admission.amountOfStudents}</td>
-            <td>${admission.active}</td>
+            <c:choose>
+                <c:when test="${admission.active}">
+                    <td>in process</td>
+                </c:when>
+                <c:otherwise>
+                    <td>finished</td>
+                </c:otherwise>
+            </c:choose>
             <td>
-                <form class="accept-form" name="accept" method="post" action="controller">
-                    <input type="hidden" name="command" value="change_admission_status"/>
-                    <input type="hidden" name="admissionId" value="${admission.id}"/>
-                    <input type="hidden" name="newStatus" value="false"/>
-                    <input class="button" type="submit" value="finish"/>
-                </form>
-                <form class="decline-form" name="decline" method="post" action="controller">
-                    <input type="hidden" name="command" value="change_admission_status"/>
-                    <input type="hidden" name="admissionId" value="${admission.id}"/>
-                    <input type="hidden" name="newStatus" value="true"/>
-                    <input class="button" type="submit" value="resume"/>
-                </form>
+                <c:choose>
+                    <c:when test="${admission.active}">
+                        <form class="accept-form" name="accept" method="post" action="controller">
+                            <input type="hidden" name="command" value="change_admission_status"/>
+                            <input type="hidden" name="admissionId" value="${admission.id}"/>
+                            <input type="hidden" name="newStatus" value="false"/>
+                            <input class="button" type="submit" value="finish"/>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form class="decline-form" name="decline" method="post" action="controller">
+                            <input type="hidden" name="command" value="change_admission_status"/>
+                            <input type="hidden" name="admissionId" value="${admission.id}"/>
+                            <input type="hidden" name="newStatus" value="true"/>
+                            <input class="button" type="submit" value="resume"/>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
             </td>
         </tr>
     </c:forEach>
 </table>
+</div>
 </body>
 </html>

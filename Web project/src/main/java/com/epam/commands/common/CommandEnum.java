@@ -8,12 +8,14 @@ import com.epam.commands.controlpanel.get.ShowAdmissionsCommand;
 import com.epam.commands.get.ShowMainPageCommand;
 import com.epam.commands.get.SwitchLanguageCommand;
 import com.epam.commands.post.ApplyCommand;
+import com.epam.commands.post.CancelCommand;
 import com.epam.commands.result.ForwardCommand;
 import com.epam.commands.authorization.post.LoginCommand;
 import com.epam.commands.authorization.post.LogoutCommand;
 import com.epam.commands.controlpanel.get.ShowApplicationsCommand;
 
 public enum CommandEnum {
+    //TODO: To CommandFactory
     LOGIN {
         {
             this.command = new LoginCommand();
@@ -102,6 +104,11 @@ public enum CommandEnum {
     CHANGE_LANGUAGE{
         {
             this.command = new SwitchLanguageCommand();
+        }
+    },
+    CANCEL{
+        {
+            this.command = new CancelCommand();
         }
     };
     Command command;

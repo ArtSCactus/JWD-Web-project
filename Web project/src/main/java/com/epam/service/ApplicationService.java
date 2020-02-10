@@ -76,10 +76,17 @@ public class ApplicationService {
         }
     }
 
+    public Optional<Application> getByAccountIdAndSpecialtyId(Long accountId, Long specialtyId){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            ApplicationDao applicationDao = dao.getApplicationDao();
+            return applicationDao.getByAccountIdAndSpecialtyId(accountId, specialtyId);
+        }
+    }
+
     public List<Application> getAppliedApplications(Long id){
         try(DaoManager dao = DaoFactory.createDaoManager()){
             ApplicationDao applicationDao = dao.getApplicationDao();
-            return applicationDao.getByAccountId(id);
+            return applicationDao.getAppliedApplication(id);
         }
     }
 }

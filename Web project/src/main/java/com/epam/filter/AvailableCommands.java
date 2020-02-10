@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AvailableCommands {
+    //TODO: To filter
     private static List<CommandEnum> userCommands;
     private static List<CommandEnum> adminCommands;
 
@@ -19,6 +20,7 @@ public class AvailableCommands {
             userCommands.add(CommandEnum.SIGN_UP);
             userCommands.add(CommandEnum.SHOW_MAIN_PAGE);
             userCommands.add(CommandEnum.CHANGE_LANGUAGE);
+            userCommands.add(CommandEnum.CANCEL);
             return userCommands;
         }
         return userCommands;

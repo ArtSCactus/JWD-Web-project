@@ -9,6 +9,8 @@
     <c:set var="pageContent" value="${content}" scope="page"/>
 </head>
 <body>
+<div class="main-content">
+<h3>Accounts</h3>
 <table class="account-table">
     <tr>
         <th>ID</th>
@@ -34,25 +36,31 @@
                 <td>blocked</td>
             </c:if>
             <c:if test="${account.blocked eq false}">
-                <td>available</td>
+                <td>not blocked</td>
             </c:if>
             <td>
-                <form class="accept-form" name="accept" method="post" action="controller">
-                    <input type="hidden" name="command" value="change_block_status"/>
-                    <input type="hidden" name="accountId" value="${account.id}"/>
-                    <input type="hidden" name="blockStatus" value="false"/>
-                    <input class="button" type="submit" value="unblock"/>
-                </form>
-                <form class="decline-form" name="decline" method="post" action="controller">
-                    <input type="hidden" name="command" value="change_block_status"/>
-                    <input type="hidden" name="accountId" value="${account.id}"/>
-                    <input type="hidden" name="blockStatus" value="true"/>
-                    <input class="button" type="submit" value="block"/>
-                </form>
+                <c:choose>
+                    <c:when test="${account.blocked eq true}">
+                        <form class="accept-form" name="accept" method="post" action="controller">
+                            <input type="hidden" name="command" value="change_block_status"/>
+                            <input type="hidden" name="accountId" value="${account.id}"/>
+                            <input type="hidden" name="blockStatus" value="false"/>
+                            <input class="button" type="submit" value="unblock"/>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form class="decline-form" name="decline" method="post" action="controller">
+                            <input type="hidden" name="command" value="change_block_status"/>
+                            <input type="hidden" name="accountId" value="${account.id}"/>
+                            <input type="hidden" name="blockStatus" value="true"/>
+                            <input class="button" type="submit" value="block"/>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
             </td>
         </tr>
     </c:forEach>
 </table>
-
+</div>
 </body>
 </html>

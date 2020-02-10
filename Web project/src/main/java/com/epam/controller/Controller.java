@@ -19,7 +19,7 @@ import java.io.IOException;
  * Main page controller.
  *
  * @author ArtSCactus
- * @version 0.1.1
+ * @version 0.1.2
  */
 @WebServlet("/controller")
 public class Controller extends HttpServlet {
@@ -47,25 +47,27 @@ public class Controller extends HttpServlet {
         Command command = client.defineCommand(request);
         commandResult = command.execute(request);
         try {
-            request.setCharacterEncoding("UTF-8");
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType ("text/html; charset=UTF-8");
-            switch (commandResult.getExecutedCommandType()) {
-                case POST:
-                    response.sendRedirect(request.getContextPath() + commandResult.getUrl());
-                    break;
-                case GET:
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
-                    dispatcher.forward(request, response);
-            }
-        } catch (ServletException e) {
+            doResponse(commandResult, request, response);
+        } catch (Exception e) {
             LOGGER.error("An error was occurred while command executing: " + e.getMessage());
             commandResult = new CommandResult("/WEB-INF/stacktrace page.jsp");
             request.setAttribute("requestUri", request.getRequestURI());
             request.setAttribute("servletName", request.getHttpServletMapping().getServletName());
-            request.setAttribute("throwable", e);
+            request.setAttribute("exception", e.getClass().getName());
+            request.setAttribute("message", e.getMessage());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
             dispatcher.forward(request, response);
+        }
+    }
+
+    private void doResponse(CommandResult commandResult, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        switch (commandResult.getExecutedCommandType()) {
+            case POST:
+                response.sendRedirect(request.getContextPath() + commandResult.getUrl());
+                break;
+            case GET:
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(commandResult.getUrl());
+                dispatcher.forward(request, response);
         }
     }
 }
