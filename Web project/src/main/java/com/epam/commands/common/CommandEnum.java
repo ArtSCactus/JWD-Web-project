@@ -88,7 +88,7 @@ public enum CommandEnum {
     },
     EXPEL_STUDENT{
         {
-            this.command = new ExpelStudentCommand();
+            this.command = new ChangeStudentStatusCommand();
         }
     },
     START_ADMISSION{

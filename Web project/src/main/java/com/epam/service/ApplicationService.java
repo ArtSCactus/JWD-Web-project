@@ -22,7 +22,7 @@ public class ApplicationService {
      * @param specialtyId {@code Long} type id of specialty on which application was submitted.
      * @param accountId   {@code Long} type id of account which submitted the application.
      */
-    public void apply(Long facultyId, Long specialtyId, Long accountId) {
+    public void apply(Long facultyId, Long specialtyId, Long accountId, Long admissionId) {
         try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao appDao = dao.getApplicationDao();
             appDao.save(new Application.Builder()
@@ -31,6 +31,7 @@ public class ApplicationService {
                     .withSpecialtyId(specialtyId)
                     .withStatus(ApplicationStatus.WAITING)
                     .withDate(Date.valueOf(LocalDate.now()))
+                    .admissionId(admissionId)
                     .build());
         }
     }

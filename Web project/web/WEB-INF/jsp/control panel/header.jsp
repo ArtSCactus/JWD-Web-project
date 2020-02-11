@@ -22,19 +22,19 @@
     <a class="open-btn"></a>
 <menu id="side-menu">
     <a class="close-btn"></a>
-    <a class="language-switch">EN</a>
+    <a class="language-switch" href="">EN</a>
     <a class="language-switch">RU</a>
     <ul class="list">
-    <li><a href="controller?command=show_admissions_panel">Admissions</a></li>
-    <li><a href="controller?command=show_applications_panel">Applications</a></li>
-    <li><a href="controller?command=show_students_panel">Students</a></li>
-    <li><a href="controller?command=show_accounts_panel">Accounts</a></li>
-    <li><a href="controller?command=show_main_page">Main</a></li>
-    <li><a href="controller?command=logout">Logout</a></li>
+    <li><a href="controller?command=show_admissions_panel">${admissions}</a></li>
+    <li><a href="controller?command=show_applications_panel">${applications}</a></li>
+    <li><a href="controller?command=show_students_panel">${students}</a></li>
+    <li><a href="controller?command=show_accounts_panel">${accounts}</a></li>
+    <li><a href="controller?command=show_main_page">${main}</a></li>
+    <li><a href="controller?command=logout">${logout}</a></li>
     </ul>
 </menu>
 </div>
 <header>
-    <div class="university-title">Melbourne university</div>
+    <div class="university-title">${title}</div>
 </header>
 </html>

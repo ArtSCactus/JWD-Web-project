@@ -15,7 +15,7 @@ public class FacultyDao extends AbstractDao<Faculty> implements Dao<Faculty> {
 
     public FacultyDao(Connection connection) {
         super(connection);
-        resources = ResourceBundle.getBundle("sql requests/get");
+        resources = ResourceBundle.getBundle("sql/get");
     }
 
 

@@ -17,8 +17,8 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
 
     public ApplicationDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql requests/get");
-        resourcesPut = ResourceBundle.getBundle("sql requests/put");
+        resourcesGet = ResourceBundle.getBundle("sql/get");
+        resourcesPut = ResourceBundle.getBundle("sql/put");
     }
 
     @Override
@@ -46,7 +46,8 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
                 item.getSpecialtyId(),
                 item.getAccountId(),
                 item.getStatus().getMessage(),
-                item.getFilingDate());
+                item.getFilingDate(),
+                item.getAdmissionId());
     }
 
     @Override

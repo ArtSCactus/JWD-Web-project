@@ -16,8 +16,8 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
 
     public SpecialtyDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql requests/get");
-        resourcesPut = ResourceBundle.getBundle("sql requests/put");
+        resourcesGet = ResourceBundle.getBundle("sql/get");
+        resourcesPut = ResourceBundle.getBundle("sql/put");
     }
 
     @Override

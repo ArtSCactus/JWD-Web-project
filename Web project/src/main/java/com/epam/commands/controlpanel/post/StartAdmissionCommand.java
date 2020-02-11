@@ -35,7 +35,7 @@ public class StartAdmissionCommand implements Command {
 
     private Map<String, Object> getParameters(HttpServletRequest request) {
         AdmissionValidator validator = new AdmissionValidator();
-        if (!validator.isDateCorrect(request.getParameter("start"))
+        if (!validator.isDateCorrect(request.getParameter("end"))
                 || !validator.isLimitCorrect(request.getParameter("limit"))) {
             throw new IllegalArgumentException();
         }
@@ -43,6 +43,7 @@ public class StartAdmissionCommand implements Command {
         parameters.put("faculty", request.getParameter("faculty"));
         parameters.put("specialty", request.getParameter("specialty"));
         parameters.put("limit", Long.valueOf(request.getParameter("limit")));
+        parameters.put("end", Date.valueOf(request.getParameter("end")));
         return parameters;
     }
 }

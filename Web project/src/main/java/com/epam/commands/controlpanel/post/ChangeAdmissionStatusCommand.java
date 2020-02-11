@@ -6,6 +6,7 @@ import com.epam.commands.result.CommandType;
 import com.epam.model.dto.entity.Admission;
 import com.epam.model.dto.entity.Application;
 import com.epam.model.dto.entity.Student;
+import com.epam.model.dto.entity.StudentStatus;
 import com.epam.service.AdmissionService;
 import com.epam.service.ApplicationService;
 import com.epam.service.StudentService;
@@ -45,7 +46,8 @@ public class ChangeAdmissionStatusCommand implements Command {
                         application.getAccountId(),
                         application.getFacultyId(),
                         application.getSpecialtyId(),
-                        Date.valueOf(LocalDate.now(Clock.systemDefaultZone()))));
+                        Date.valueOf(LocalDate.now(Clock.systemDefaultZone())),
+                        StudentStatus.ENROLLED));
             }
             studentService.enrollStudents(studentList);
             return new CommandResult(REDIRECT_URL, CommandType.POST);

@@ -46,4 +46,11 @@ public class StudentService {
         }
     }
 
+    public int update(Student student){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            StudentDao studentDao = dao.getStudentDao();
+            return studentDao.save(student);
+        }
+    }
+
 }

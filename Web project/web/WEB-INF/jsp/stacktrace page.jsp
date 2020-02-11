@@ -13,5 +13,7 @@
  Status code: ${statusCode}
  <br/>
  Exception: ${throwable}
+  <br/>
+  Message: ${requestScope.message}
     </body>
     </html>

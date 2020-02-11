@@ -18,6 +18,7 @@
         <th>Faculty id</th>
         <th>Specialty id</th>
         <th>Enrollment date</th>
+        <th>Status</th>
         <th>Action</th>
     </tr>
     <%--@elvariable id="student" type="com.epam.model.dto.entity.Student"--%>
@@ -28,12 +29,27 @@
             <td>${student.facultyId}</td>
             <td>${student.specialtyId}</td>
             <td>${student.enrollmentDate}</td>
+            <td>${student.status.message}</td>
             <td>
-                <form class="accept-form" name="accept" method="post" action="controller">
-                    <input type="hidden" name="command" value="expel_student"/>
-                    <input type="hidden" name="studentId" value="${student.id}"/>
-                    <input class="button" type="submit" value="expel"/>
-                </form>
+                <c:choose>
+                    <c:when test="${student.status.message eq 'enrolled'}">
+                        <form class="accept-form" name="accept" method="post" action="controller">
+                            <input type="hidden" name="command" value="expel_student"/>
+                            <input type="hidden" name="studentId" value="${student.id}"/>
+                            <input type="hidden" name="status" value="dismissed">
+                            <input class="button" type="submit" value="expel"/>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form class="accept-form" name="accept" method="post" action="controller">
+                            <input type="hidden" name="command" value="expel_student"/>
+                            <input type="hidden" name="studentId" value="${student.id}"/>
+                            <input type="hidden" name="status" value="enrolled">
+                            <input class="button" type="submit" value="enroll"/>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+
             </td>
         </tr>
     </c:forEach>

@@ -17,8 +17,8 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 
     public AccountDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql requests/get");
-        resourcesPut = ResourceBundle.getBundle("sql requests/put");
+        resourcesGet = ResourceBundle.getBundle("sql/get");
+        resourcesPut = ResourceBundle.getBundle("sql/put");
     }
 
     public Optional<Account> getByLoginAndPassword(String login, String password) throws DaoException {

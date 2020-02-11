@@ -75,6 +75,7 @@
             <c:if test="${contains eq false}">
                 <form class="apply-btn-form" method="post"
                       action="controller?command=apply&specialty=${specialty.id}&faculty=${specialty.facultyId}">
+                    <input type="hidden" name="admissionId" value="${specialty.admissionId}"/>
                     <button class="apply-btn" type="submit">${apply_btn}</button>
                 </form>
             </c:if>

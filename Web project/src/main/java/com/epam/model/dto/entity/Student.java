@@ -12,14 +12,16 @@ public class Student implements Identifiable, Serializable {
     private Long facultyId;
     private Long specialtyId;
     private Date enrollmentDate;
+    private StudentStatus status;
 
     public Student(Long id, Long accountId, Long facultyId,
-                   Long specialtyId, Date enrollmentDate) {
+                   Long specialtyId, Date enrollmentDate, StudentStatus status) {
         this.id = id;
         this.accountId = accountId;
         this.facultyId = facultyId;
         this.specialtyId = specialtyId;
         this.enrollmentDate = enrollmentDate;
+        this.status = status;
     }
 
     @Override
@@ -63,6 +65,14 @@ public class Student implements Identifiable, Serializable {
         this.enrollmentDate = enrollmentDate;
     }
 
+    public StudentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(StudentStatus status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,12 +82,13 @@ public class Student implements Identifiable, Serializable {
                 Objects.equals(getAccountId(), student.getAccountId()) &&
                 Objects.equals(getFacultyId(), student.getFacultyId()) &&
                 Objects.equals(getSpecialtyId(), student.getSpecialtyId()) &&
-                Objects.equals(getEnrollmentDate(), student.getEnrollmentDate());
+                Objects.equals(getEnrollmentDate(), student.getEnrollmentDate()) &&
+                getStatus() == student.getStatus();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getAccountId(), getFacultyId(), getSpecialtyId(), getEnrollmentDate());
+        return Objects.hash(getId(), getAccountId(), getFacultyId(), getSpecialtyId(), getEnrollmentDate(), getStatus());
     }
 
     @Override
@@ -88,6 +99,7 @@ public class Student implements Identifiable, Serializable {
                 ", facultyId=" + facultyId +
                 ", specialtyId=" + specialtyId +
                 ", enrollmentDate=" + enrollmentDate +
+                ", status=" + status +
                 '}';
     }
 }

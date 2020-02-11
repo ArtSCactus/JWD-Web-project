@@ -16,8 +16,8 @@ public class AdmissionDao extends AbstractDao<Admission> implements Dao<Admissio
 
     public AdmissionDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql requests/get");
-        resourcesPut = ResourceBundle.getBundle("sql requests/put");
+        resourcesGet = ResourceBundle.getBundle("sql/get");
+        resourcesPut = ResourceBundle.getBundle("sql/put");
     }
 
     @Override

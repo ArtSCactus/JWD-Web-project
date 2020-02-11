@@ -13,6 +13,7 @@ public class Application implements Identifiable, Serializable {
     private Long specialtyId;
     private ApplicationStatus status;
     private Date filingDate;
+    private Long admissionId;
 
     public Application(Long id, Long facultyId, Long accountId,
                        Long specialtyId, ApplicationStatus status, Date filingDate) {
@@ -85,6 +86,14 @@ public class Application implements Identifiable, Serializable {
         this.filingDate = filingDate;
     }
 
+    public Long getAdmissionId() {
+        return admissionId;
+    }
+
+    public void setAdmissionId(Long admissionId) {
+        this.admissionId = admissionId;
+    }
+
     public static class Builder {
         private Application obj;
 
@@ -119,6 +128,11 @@ public class Application implements Identifiable, Serializable {
 
         public Builder withDate(Date filingDate) {
             obj.filingDate = filingDate;
+            return this;
+        }
+
+        public Builder admissionId(Long id){
+            obj.admissionId = id;
             return this;
         }
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class FacultyRowMapper implements RowMapper<Faculty> {
     private static final String ID_COLUMN="id";
     private static final String NAME_COLUMN = "name";
-    private static final String DESCRIPTION_COLUMN = "description";
+    private static final String DESCRIPTION_COLUMN = "description_en";
     @Override
     public Faculty map(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong(ID_COLUMN);
