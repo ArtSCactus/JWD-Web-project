@@ -16,7 +16,7 @@ public class ShowStudentsCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         StudentService service = new StudentService();
-        List<Student> studentList = service.getStudentList();
+        List<Student> studentList = service.getStudentForTable();
         PageContent content = new PageContent();
         content.setContent(studentList);
         request.setAttribute("content", content);

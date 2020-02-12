@@ -3,22 +3,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="Page content" var="content"/>
-<fmt:message bundle="${content}" key="sign_up_page_title" var="sign_up_page_title"/>
-<fmt:message bundle="${content}" key="sign_up_form_title" var="form_title"/>
-<fmt:message bundle="${content}" key="sign_up_page_log_pas_tab_title" var="log_pas_tab_title"/>
-<fmt:message bundle="${content}" key="sign_up_page_mailbox_tab_title" var="mailbox_tab_title"/>
-<fmt:message bundle="${content}" key="sign_up_page_name_tab_title" var="name_tab_title"/>
-<fmt:message bundle="${content}" key="sign_up_page_total_points_tab_title" var="total_points_tab_title"/>
-<fmt:message bundle="${content}" key="sign_up_page_previous_btn" var="previous_btn"/>
-<fmt:message bundle="${content}" key="sign_up_page_next_btn" var="next_btn"/>
-<fmt:message bundle="${content}" key="sign_up_page_finish_btn" var="finish_btn"/>
-<fmt:message bundle="${content}" key="sign_up_page_login_placeholder" var="login_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_password_placeholder" var="password_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_email_placeholder" var="email_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_first_name_placeholder" var="first_name_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_second_name_placeholder" var="second_name_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_third_name_placeholder" var="third_name_placeholder"/>
-<fmt:message bundle="${content}" key="sign_up_page_total_points_placeholder" var="total_points_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.title" var="sign_up_page_title"/>
+<fmt:message bundle="${content}" key="sign.up.form.title" var="form_title"/>
+<fmt:message bundle="${content}" key="sign.up.page.log.pas.tab.title" var="log_pas_tab_title"/>
+<fmt:message bundle="${content}" key="sign.up.page.mailbox.tab.title" var="mailbox_tab_title"/>
+<fmt:message bundle="${content}" key="sign.up.page.name.tab.title" var="name_tab_title"/>
+<fmt:message bundle="${content}" key="sign.up.page.total.points.tab.title" var="total_points_tab_title"/>
+<fmt:message bundle="${content}" key="sign.up.page.previous.btn" var="previous_btn"/>
+<fmt:message bundle="${content}" key="sign.up.page.next.btn" var="next_btn"/>
+<fmt:message bundle="${content}" key="sign.up.page.finish.btn" var="finish_btn"/>
+<fmt:message bundle="${content}" key="sign.up.page.login.placeholder" var="login_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.password.placeholder" var="password_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.email.placeholder" var="email_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.first.name.placeholder" var="first_name_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.second.name.placeholder" var="second_name_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.third.name.placeholder" var="third_name_placeholder"/>
+<fmt:message bundle="${content}" key="sign.up.page.total.points.placeholder" var="total_points_placeholder"/>
 <html lang="${sessionScope.lang}">
 <head>
     <title>

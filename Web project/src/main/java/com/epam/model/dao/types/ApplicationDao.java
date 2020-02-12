@@ -5,6 +5,7 @@ import com.epam.model.dao.common.AbstractDao;
 import com.epam.model.dao.common.Dao;
 import com.epam.model.dto.entity.Application;
 import com.epam.model.rowmappers.ApplicationRowMapper;
+import com.epam.model.rowmappers.table.ApplicationTableRowMapper;
 
 import java.sql.Connection;
 import java.util.List;
@@ -36,6 +37,11 @@ public class ApplicationDao extends AbstractDao<Application> implements Dao<Appl
     public List<Application> getAll() {
         return super.executeQuery(resourcesGet.getString("get_all_applications"),
                 new ApplicationRowMapper());
+    }
+
+    public List<Application> getAllForTable() {
+        return super.executeQuery(resourcesGet.getString("get_all_applications_for_table"),
+                new ApplicationTableRowMapper());
     }
 
     @Override

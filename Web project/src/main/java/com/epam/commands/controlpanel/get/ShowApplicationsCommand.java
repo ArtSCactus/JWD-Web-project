@@ -18,7 +18,7 @@ public class ShowApplicationsCommand implements Command {
     public CommandResult execute(HttpServletRequest request) {
         PageContent container = new PageContent();
         ApplicationService service = new ApplicationService();
-        List<Application> applicationList = service.getApplicationsList();
+        List<Application> applicationList = service.getApplicationsForTable();
         container.setContent(applicationList);
         request.setAttribute("content", container);
         return new CommandResult(CONTROL_PANEL_PAGE, CommandType.GET);

@@ -21,12 +21,13 @@ public class ApplyCommand implements Command {
     public CommandResult execute(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         Long accountId = (Long) session.getAttribute(ACCOUNT_ID_ATTR);
-        if (accountId != null) {
-            ApplicationService service = new ApplicationService();
+        Long admissionId = Long.parseLong((request.getParameter(ADMISSION_ID)));
+            if (accountId != null) {
+                    ApplicationService service = new ApplicationService();
             service.apply(Long.parseLong(request.getParameter(FACULTY_PARAM)),
                     Long.parseLong(request.getParameter(SPECIALTY_PARAM)),
                     (Long) session.getAttribute(ACCOUNT_ID_ATTR),
-                    Long.parseLong(request.getParameter("admissionId")));
+                    admissionId);
             return new CommandResult(REDIRECT_MAIN_URL, CommandType.POST);
         } else {
             return new CommandResult(LOGIN_PAGE, CommandType.GET);

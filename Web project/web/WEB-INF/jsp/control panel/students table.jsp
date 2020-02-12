@@ -14,7 +14,9 @@
 <table class="student-table">
     <tr>
         <th>ID</th>
-        <th>Account id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Patronymic</th>
         <th>Faculty id</th>
         <th>Specialty id</th>
         <th>Enrollment date</th>
@@ -25,7 +27,9 @@
     <c:forEach var="student" items="${pageContent.objectsList}">
         <tr>
             <td>${student.id}</td>
-            <td>${student.accountId}</td>
+            <td>${student.name}</td>
+            <td>${student.surname}</td>
+            <td>${student.patronymic}</td>
             <td>${student.facultyId}</td>
             <td>${student.specialtyId}</td>
             <td>${student.enrollmentDate}</td>
@@ -37,7 +41,7 @@
                             <input type="hidden" name="command" value="expel_student"/>
                             <input type="hidden" name="studentId" value="${student.id}"/>
                             <input type="hidden" name="status" value="dismissed">
-                            <input class="button" type="submit" value="expel"/>
+                            <input class="button" type="submit" value="dismiss"/>
                         </form>
                     </c:when>
                     <c:otherwise>
@@ -49,7 +53,6 @@
                         </form>
                     </c:otherwise>
                 </c:choose>
-
             </td>
         </tr>
     </c:forEach>

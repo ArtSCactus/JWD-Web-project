@@ -45,8 +45,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
             try {
                 statement.setObject(index, params[index - 1]);
             } catch (SQLException e) {
-                e.printStackTrace();
-                throw new SQLException(e);
+              throw new DaoException(e);
             }
         }
         return statement;

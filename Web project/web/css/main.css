@@ -366,3 +366,19 @@ label{
 .title{
     margin-left: 10px;
 }
+
+.popup{
+    float: right;
+    z-index: 99;
+    position: sticky;
+    bottom: 0;
+    background-color: #345579d4;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 15px;
+    display: none;
+    color: white;
+    font-family:  'Noto Serif', 'Georgia', 'Times New Roman', serif;
+}

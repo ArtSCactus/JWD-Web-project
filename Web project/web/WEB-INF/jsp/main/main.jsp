@@ -10,6 +10,7 @@
 <fmt:message bundle="${content}" key="apply_btn" var="apply_btn"/>
 <fmt:message bundle="${content}" key="find_btn" var="find_btn"/>
 <fmt:message bundle="${content}" key="applied_btn_status" var="cancel_application_btn"/>
+<fmt:message bundle="${content}" key="popup_message" var="popup_message"/>
 <html lang="${sessionScope.lang}">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
@@ -82,5 +83,8 @@
         </div>
     </c:forEach>
 </div>
+<button class="popup">
+${popup_message}
+</button>
 </body>
 </html>

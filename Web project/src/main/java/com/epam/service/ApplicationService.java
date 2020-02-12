@@ -49,6 +49,21 @@ public class ApplicationService {
         }
     }
 
+    /**
+     * Provides more filled and user-friendly Application object for the table.
+     * <p>
+     * At the same time uses more difficult request with 'join' operation, unlike
+     * {@code getApplicationsList()} method.
+     *
+     * @return {@code ArrayList()} object with applications.
+     */
+    public List<Application> getApplicationsForTable() {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
+            ApplicationDao applicationDao = dao.getApplicationDao();
+            return applicationDao.getAllForTable();
+        }
+    }
+
     public Optional<Application> getApplicationById(Long id) {
         try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
@@ -63,29 +78,29 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getEnrolledApplications(Admission admission){
-        try(DaoManager dao = DaoFactory.createDaoManager()){
+    public List<Application> getEnrolledApplications(Admission admission) {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
-           return applicationDao.getEnrolledApplications(admission);
+            return applicationDao.getEnrolledApplications(admission);
         }
     }
 
-    public List<Application> getApplicationsByAccountId(Long id){
-        try(DaoManager dao = DaoFactory.createDaoManager()){
+    public List<Application> getApplicationsByAccountId(Long id) {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
             return applicationDao.getByAccountId(id);
         }
     }
 
-    public Optional<Application> getByAccountIdAndSpecialtyId(Long accountId, Long specialtyId){
-        try(DaoManager dao = DaoFactory.createDaoManager()){
+    public Optional<Application> getByAccountIdAndSpecialtyId(Long accountId, Long specialtyId) {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
             return applicationDao.getByAccountIdAndSpecialtyId(accountId, specialtyId);
         }
     }
 
-    public List<Application> getAppliedApplications(Long id){
-        try(DaoManager dao = DaoFactory.createDaoManager()){
+    public List<Application> getAppliedApplications(Long id) {
+        try (DaoManager dao = DaoFactory.createDaoManager()) {
             ApplicationDao applicationDao = dao.getApplicationDao();
             return applicationDao.getAppliedApplication(id);
         }

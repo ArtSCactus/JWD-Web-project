@@ -14,6 +14,16 @@ public class Application implements Identifiable, Serializable {
     private ApplicationStatus status;
     private Date filingDate;
     private Long admissionId;
+    /*Applier first name (Optional)*/
+    private String applierName;
+    /*Applier second name (Optional)*/
+    private String applierSurname;
+    /*Applier third name (Optional)*/
+    private String applierPatronymic;
+    /*Name of faculty (Optional)*/
+    private String facultyName;
+    /*Name of specialty (Optional)*/
+    private String specialtyName;
 
     public Application(Long id, Long facultyId, Long accountId,
                        Long specialtyId, ApplicationStatus status, Date filingDate) {
@@ -34,7 +44,7 @@ public class Application implements Identifiable, Serializable {
         this.filingDate = filingDate;
     }
 
-    private Application(){
+    private Application() {
     }
 
     @Override
@@ -94,6 +104,46 @@ public class Application implements Identifiable, Serializable {
         this.admissionId = admissionId;
     }
 
+    public String getApplierName() {
+        return applierName;
+    }
+
+    public void setApplierName(String applierName) {
+        this.applierName = applierName;
+    }
+
+    public String getApplierSurname() {
+        return applierSurname;
+    }
+
+    public void setApplierSurname(String applierSurname) {
+        this.applierSurname = applierSurname;
+    }
+
+    public String getApplierPatronymic() {
+        return applierPatronymic;
+    }
+
+    public void setApplierPatronymic(String applierPatronymic) {
+        this.applierPatronymic = applierPatronymic;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public String getSpecialtyName() {
+        return specialtyName;
+    }
+
+    public void setSpecialtyName(String specialtyName) {
+        this.specialtyName = specialtyName;
+    }
+
     public static class Builder {
         private Application obj;
 
@@ -131,8 +181,42 @@ public class Application implements Identifiable, Serializable {
             return this;
         }
 
-        public Builder admissionId(Long id){
+        public Builder admissionId(Long id) {
             obj.admissionId = id;
+            return this;
+        }
+
+        /*Settings applier first name.
+
+         */
+        public Builder withName(String firstName) {
+            obj.applierName = firstName;
+            return this;
+        }
+
+        /*Settings applier second name.
+
+         */
+        public Builder withSurname(String secondName) {
+            obj.applierSurname = secondName;
+            return this;
+        }
+
+        /*Settings applier third name.
+
+         */
+        public Builder withPatronymic(String thirdName) {
+            obj.applierPatronymic = thirdName;
+            return this;
+        }
+
+        public Builder withSpecialtyName(String specialtyName) {
+            obj.specialtyName = specialtyName;
+            return this;
+        }
+
+        public Builder withFacultyName(String facultyName) {
+            obj.facultyName = facultyName;
             return this;
         }
 
@@ -151,12 +235,18 @@ public class Application implements Identifiable, Serializable {
                 Objects.equals(getAccountId(), that.getAccountId()) &&
                 Objects.equals(getSpecialtyId(), that.getSpecialtyId()) &&
                 getStatus() == that.getStatus() &&
-                Objects.equals(getFilingDate(), that.getFilingDate());
+                Objects.equals(getFilingDate(), that.getFilingDate()) &&
+                Objects.equals(getAdmissionId(), that.getAdmissionId()) &&
+                Objects.equals(getApplierName(), that.getApplierName()) &&
+                Objects.equals(getApplierSurname(), that.getApplierSurname()) &&
+                Objects.equals(getApplierPatronymic(), that.getApplierPatronymic()) &&
+                Objects.equals(getFacultyName(), that.getFacultyName()) &&
+                Objects.equals(getSpecialtyName(), that.getSpecialtyName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFacultyId(), getAccountId(), getSpecialtyId(), getStatus(), getFilingDate());
+        return Objects.hash(getId(), getFacultyId(), getAccountId(), getSpecialtyId(), getStatus(), getFilingDate(), getAdmissionId(), getApplierName(), getApplierSurname(), getApplierPatronymic(), getFacultyName(), getSpecialtyName());
     }
 
     @Override
@@ -168,6 +258,12 @@ public class Application implements Identifiable, Serializable {
                 ", specialtyId=" + specialtyId +
                 ", status=" + status +
                 ", filingDate=" + filingDate +
+                ", admissionId=" + admissionId +
+                ", applierFName='" + applierName + '\'' +
+                ", applierSName='" + applierSurname + '\'' +
+                ", applierTName='" + applierPatronymic + '\'' +
+                ", facultyName='" + facultyName + '\'' +
+                ", specialtyName='" + specialtyName + '\'' +
                 '}';
     }
 }

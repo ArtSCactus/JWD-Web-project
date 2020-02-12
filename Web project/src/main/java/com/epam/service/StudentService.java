@@ -32,6 +32,13 @@ public class StudentService {
         }
     }
 
+    public List<Student> getStudentForTable(){
+        try(DaoManager dao = DaoFactory.createDaoManager()){
+            StudentDao studentDao = dao.getStudentDao();
+            return studentDao.getAllForTable();
+        }
+    }
+
     public Optional<Student> getById(Long id){
         try(DaoManager dao = DaoFactory.createDaoManager()){
             StudentDao studentDao = dao.getStudentDao();

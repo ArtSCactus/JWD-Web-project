@@ -55,8 +55,8 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
                 item.isAdmin(),
                 item.isBlocked(),
                 item.getName(),
-                item.getSecondName(),
-                item.getThirdName(),
+                item.getSurname(),
+                item.getPatronymic(),
                 item.getTotalPoints());
     }
 

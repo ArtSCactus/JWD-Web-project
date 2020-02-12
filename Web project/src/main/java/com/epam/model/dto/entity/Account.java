@@ -12,8 +12,8 @@ public class Account implements Serializable, Identifiable {
     private String password;
     private String mailbox;
     private String name;
-    private String secondName;
-    private String thirdName;
+    private String surname;
+    private String patronymic;
     private Integer totalPoints;
     private Long id;
     private Long studentId;
@@ -36,14 +36,14 @@ public class Account implements Serializable, Identifiable {
         this.isAdmin = false;
     }
 
-    public Account(String login, String password, String mailbox, String name, String secondName, String thirdName,
+    public Account(String login, String password, String mailbox, String name, String surname, String patronymic,
                    Integer totalPoints, Long id, Long studentId, boolean isAdmin, boolean isBlocked) {
         this.login = login;
         this.password = password;
         this.mailbox = mailbox;
         this.name = name;
-        this.secondName = secondName;
-        this.thirdName = thirdName;
+        this.surname = surname;
+        this.patronymic = patronymic;
         this.totalPoints = totalPoints;
         this.id = id;
         this.studentId = studentId;
@@ -109,20 +109,20 @@ public class Account implements Serializable, Identifiable {
         this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getThirdName() {
-        return thirdName;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setThirdName(String thirdName) {
-        this.thirdName = thirdName;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public Integer getTotalPoints() {
@@ -197,12 +197,12 @@ public class Account implements Serializable, Identifiable {
         }
 
         public Builder withSecondName(String secondName) {
-            account.secondName = secondName;
+            account.surname = secondName;
             return this;
         }
 
         public Builder withThirdName(String thirdName) {
-            account.thirdName = thirdName;
+            account.patronymic = thirdName;
             return this;
         }
 
@@ -248,8 +248,8 @@ public class Account implements Serializable, Identifiable {
                 Objects.equals(getPassword(), account.getPassword()) &&
                 Objects.equals(getMailbox(), account.getMailbox()) &&
                 Objects.equals(getName(), account.getName()) &&
-                Objects.equals(getSecondName(), account.getSecondName()) &&
-                Objects.equals(getThirdName(), account.getThirdName()) &&
+                Objects.equals(getSurname(), account.getSurname()) &&
+                Objects.equals(getPatronymic(), account.getPatronymic()) &&
                 Objects.equals(getTotalPoints(), account.getTotalPoints()) &&
                 Objects.equals(getId(), account.getId()) &&
                 Objects.equals(getStudentId(), account.getStudentId()) &&
@@ -258,7 +258,7 @@ public class Account implements Serializable, Identifiable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLogin(), getPassword(), getMailbox(), getName(), getSecondName(), getThirdName(), getTotalPoints(), getId(), getStudentId(), isAdmin(), isBlocked(), getAppliedApplications());
+        return Objects.hash(getLogin(), getPassword(), getMailbox(), getName(), getSurname(), getPatronymic(), getTotalPoints(), getId(), getStudentId(), isAdmin(), isBlocked(), getAppliedApplications());
     }
 
     @Override
@@ -268,8 +268,8 @@ public class Account implements Serializable, Identifiable {
                 ", password='" + password + '\'' +
                 ", mailbox='" + mailbox + '\'' +
                 ", name='" + name + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", thirdName='" + thirdName + '\'' +
+                ", secondName='" + surname + '\'' +
+                ", thirdName='" + patronymic + '\'' +
                 ", totalPoints=" + totalPoints +
                 ", id=" + id +
                 ", studentId=" + studentId +

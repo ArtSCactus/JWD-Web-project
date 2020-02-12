@@ -14,7 +14,9 @@
 <table class="application-table">
     <tr>
         <th>ID</th>
-        <th>Account id</th>
+        <th>First name</th>
+        <th>Second name</th>
+        <th>Third name</th>
         <th>Faculty</th>
         <th>Specialty</th>
         <th>Status</th>
@@ -24,10 +26,12 @@
     <%--@elvariable id="application" type="com.epam.model.dto.entity.Application"--%>
     <c:forEach var="application" items="${pageContent.objectsList}">
         <tr>
-            <td class="row-number-td">${application.id}</td>
-            <td>${application.accountId}</td>
-            <td>${application.facultyId}</td>
-            <td>${application.specialtyId}</td>
+            <td>${application.id}</td>
+            <td>${application.applierName}</td>
+            <td>${application.applierSurname}</td>
+            <td>${application.applierPatronymic}</td>
+            <td>${application.facultyName}</td>
+            <td>${application.specialtyName}</td>
             <td>${application.status.message}</td>
             <td>${application.filingDate}</td>
             <td>

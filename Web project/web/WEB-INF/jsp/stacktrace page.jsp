@@ -6,14 +6,18 @@
         </title>
     </head>
   <body>
- Request from ${requestUri} is failed
+ Request from ${pageContext.errorData.requestURI} is failed
  <br/>
- Servlet name or type: ${servletName}
+ Servlet name or type: ${pageContext.errorData.servletName}
  <br/>
- Status code: ${statusCode}
+ Status code: ${pageContext.errorData.statusCode}
  <br/>
- Exception: ${throwable}
+ Servlet Exception: ${throwable}
+ <br/>
+ 404 Exception: ${pageContext.errorData.throwable}
+ <br/>
+ ${pageContext.errorData.throwable.cause.message}
   <br/>
-  Message: ${requestScope.message}
+  Servlet message: ${requestScope.message}
     </body>
     </html>
