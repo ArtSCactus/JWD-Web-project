@@ -181,7 +181,7 @@ public class Application implements Identifiable, Serializable {
             return this;
         }
 
-        public Builder admissionId(Long id) {
+        public Builder withAdmissionId(Long id) {
             obj.admissionId = id;
             return this;
         }

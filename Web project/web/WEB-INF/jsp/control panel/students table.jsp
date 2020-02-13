@@ -12,7 +12,10 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.students.action.col" var="action_col"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.students.action.dismiss" var="dismiss_action"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.students.action.enroll" var="enroll_action"/>
-<html>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.status.dismissed" var="dismissed_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.status.enrolled" var="enrolled_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.status.table.name" var="table_name"/>
+<html lang="${sessionScope.lang}">
 <head>
     <title>Control panel</title>
     <link rel="stylesheet" href="css/admin_panel.css">
@@ -21,7 +24,7 @@
 </head>
 <body>
 <div class="main-content">
-<h3>Students</h3>
+<h3 class="table-name">Students</h3>
 <table class="student-table">
     <tr>
         <th>${id_col}</th>
@@ -43,8 +46,15 @@
             <td>${student.patronymic}</td>
             <td>${student.facultyId}</td>
             <td>${student.specialtyId}</td>
-            <td>${student.enrollmentDate}</td>
-            <td>${student.status.message}</td>
+            <td><fmt:formatDate value="${student.enrollmentDate}"/></td>
+            <c:choose>
+                <c:when test="${student.status.message eq 'enrolled'}">
+                    <td>${enrolled_status}</td>
+                </c:when>
+                <c:otherwise>
+                    <td>${dismissed_status}</td>
+                </c:otherwise>
+            </c:choose>
             <td>
                 <c:choose>
                     <c:when test="${student.status.message eq 'enrolled'}">

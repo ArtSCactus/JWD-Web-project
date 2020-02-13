@@ -12,6 +12,11 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.applications.action.col" var="action_col"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.applications.action.reject" var="reject_action"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.applications.action.accept" var="accept_action"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.status.waiting" var="waiting_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.status.accepted" var="accepted_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.status.rejected" var="rejected_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.status.cancelled" var="cancelled_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.table.name" var="table_name"/>
 <html lang="${sessionScope.lang}">
 <head>
     <link rel="stylesheet" href="css/admin_panel.css">
@@ -20,68 +25,80 @@
 </head>
 <body>
 <div class="main-content">
-<h3>Applications</h3>
-<table class="application-table">
-    <tr>
-        <th>${id_col}</th>
-        <th>${name_col}</th>
-        <th>${surname_col}</th>
-        <th>${patronymic_col}</th>
-        <th>${faculty_col}</th>
-        <th>${specialty_col}</th>
-        <th>${status_col}</th>
-        <th>${date_col}</th>
-        <th>${action_col}</th>
-    </tr>
-    <%--@elvariable id="application" type="com.epam.model.dto.entity.Application"--%>
-    <c:forEach var="application" items="${pageContent.objectsList}">
+    <h3 class="table-name">${table_name}</h3>
+    <table class="application-table">
         <tr>
-            <td>${application.id}</td>
-            <td>${application.applierName}</td>
-            <td>${application.applierSurname}</td>
-            <td>${application.applierPatronymic}</td>
-            <td>${application.facultyName}</td>
-            <td>${application.specialtyName}</td>
-            <td>${application.status.message}</td>
-            <td>${application.filingDate}</td>
-            <td>
-                <c:choose>
+            <th>${id_col}</th>
+            <th>${name_col}</th>
+            <th>${surname_col}</th>
+            <th>${patronymic_col}</th>
+            <th>${faculty_col}</th>
+            <th>${specialty_col}</th>
+            <th>${status_col}</th>
+            <th>${date_col}</th>
+            <th>${action_col}</th>
+        </tr>
+        <%--@elvariable id="application" type="com.epam.model.dto.entity.Application"--%>
+        <c:forEach var="application" items="${pageContent.objectsList}">
+            <tr>
+                <td>${application.id}</td>
+                <td>${application.applierName}</td>
+                <td>${application.applierSurname}</td>
+                <td>${application.applierPatronymic}</td>
+                <td>${application.facultyName}</td>
+                <td>${application.specialtyName}</td>
+                <td><c:choose>
                     <c:when test="${application.status.message eq 'waiting'}">
-                        <form class="accept-form" name="accept" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_application_status"/>
-                            <input type="hidden" name="applicationId" value="${application.id}"/>
-                            <input type="hidden" name="newStatus" value="accepted"/>
-                            <input class="button" type="submit" value="accept"/>
-                        </form>
-                        <form class="decline-form" name="decline" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_application_status"/>
-                            <input type="hidden" name="applicationId" value="${application.id}"/>
-                            <input type="hidden" name="newStatus" value="rejected"/>
-                            <input class="button" type="submit" value="reject"/>
-                        </form>
-                    </c:when>
-                    <c:when test="${application.status.message eq 'rejected'}">
-                        <form class="accept-form" name="accept" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_application_status"/>
-                            <input type="hidden" name="applicationId" value="${application.id}"/>
-                            <input type="hidden" name="newStatus" value="accepted"/>
-                            <input class="button" type="submit" value="${accept_action}"/>
-                        </form>
+                        ${waiting_status}
                     </c:when>
                     <c:when test="${application.status.message eq 'accepted'}">
-                        <form class="decline-form" name="decline" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_application_status"/>
-                            <input type="hidden" name="applicationId" value="${application.id}"/>
-                            <input type="hidden" name="newStatus" value="rejected"/>
-                            <input class="button" type="submit" value="${reject_action}"/>
-                        </form>
+                        ${accepted_status}
                     </c:when>
-                </c:choose>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+                    <c:when test="${application.status.message eq 'rejected'}">
+                        ${rejected_status}
+                    </c:when>
+                    <c:otherwise>
+                        ${cancelled_status}
+                    </c:otherwise>
+                </c:choose></td>
+                <td><fmt:formatDate value="${application.filingDate}"/></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${application.status.message eq 'waiting'}">
+                            <form class="accept-form" name="accept" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_application_status"/>
+                                <input type="hidden" name="applicationId" value="${application.id}"/>
+                                <input type="hidden" name="newStatus" value="accepted"/>
+                                <input class="button" type="submit" value="${accept_action}"/>
+                            </form>
+                            <form class="decline-form" name="decline" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_application_status"/>
+                                <input type="hidden" name="applicationId" value="${application.id}"/>
+                                <input type="hidden" name="newStatus" value="rejected"/>
+                                <input class="button" type="submit" value="${reject_action}"/>
+                            </form>
+                        </c:when>
+                        <c:when test="${application.status.message eq 'rejected'}">
+                            <form class="accept-form" name="accept" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_application_status"/>
+                                <input type="hidden" name="applicationId" value="${application.id}"/>
+                                <input type="hidden" name="newStatus" value="accepted"/>
+                                <input class="button" type="submit" value="${accept_action}"/>
+                            </form>
+                        </c:when>
+                        <c:when test="${application.status.message eq 'accepted'}">
+                            <form class="decline-form" name="decline" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_application_status"/>
+                                <input type="hidden" name="applicationId" value="${application.id}"/>
+                                <input type="hidden" name="newStatus" value="rejected"/>
+                                <input class="button" type="submit" value="${reject_action}"/>
+                            </form>
+                        </c:when>
+                    </c:choose>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
-
 </body>
 </html>

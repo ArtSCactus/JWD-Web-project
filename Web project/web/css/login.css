@@ -8,7 +8,6 @@
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -21,7 +20,7 @@
 
 .container-login{
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -33,7 +32,21 @@
     padding: 15px;
     background-image: url(../images/Melbourne_university.jpg);
     -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ Ð¸ Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
     opacity: 80%;
+}
+
+.signInBtn{
+    background-color: #0d4b81f2;
+    border-radius: 5px;
+    border-color: #0d2d56d9;
+    border-width: 2%;
+    color: white;
+    padding: 5px;
+    transition: 0.25s;
+}
+.signInBtn:hover{
+    background-color: #47769f8f;
+    transition: 0.25s;
 }

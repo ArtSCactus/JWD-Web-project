@@ -24,8 +24,8 @@
     <a class="open-btn"></a>
 <menu id="side-menu">
     <a class="close-btn"></a>
-    <a class="language-switch" href="">EN</a>
-    <a class="language-switch">RU</a>
+    <a class="language-switch" href="controller?command=change_language&lang=en">EN</a>
+    <a class="language-switch" href="controller?command=change_language&lang=ru">RU</a>
     <ul class="list">
     <li><a href="controller?command=show_admissions_panel">${admissions}</a></li>
     <li><a href="controller?command=show_applications_panel">${applications}</a></li>

@@ -12,9 +12,12 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.accounts.action.col" var="action_col"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.accounts.action.block" var="block_action"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.accounts.action.unblock" var="unblock_action"/>
-
-
-<html>
+<fmt:message bundle="${localizationContent}" key="control.panel.accounts.status.blocked" var="blocked_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.accounts.status.unblocked" var="unblocked_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.accounts.table.name" var="table_name"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.accounts.status.admin" var="admin_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.accounts.status.user" var="user_status"/>
+<html lang="${sessionScope.lang}">
 <head>
     <link rel="stylesheet" href="css/admin_panel.css">
     <%--@elvariable id="content" type="com.epam.model.dto.PageContent"--%>
@@ -22,7 +25,7 @@
 </head>
 <body>
 <div class="main-content">
-    <h3>Accounts</h3>
+    <h3 class="table-name">${table_name}</h3>
     <table class="account-table">
         <tr>
             <th>${id_col}</th>
@@ -45,16 +48,16 @@
                 <td>${account.surname}</td>
                 <td>${account.patronymic}</td>
                 <c:if test="${account.admin eq true}">
-                    <td>admin</td>
+                    <td>${admin_status}</td>
                 </c:if>
                 <c:if test="${account.admin eq false}">
-                    <td>user</td>
+                    <td>${user_status}</td>
                 </c:if>
                 <c:if test="${account.blocked eq true}">
-                    <td>blocked</td>
+                    <td>${blocked_status}</td>
                 </c:if>
                 <c:if test="${account.blocked eq false}">
-                    <td>not blocked</td>
+                    <td>${unblocked_status}</td>
                 </c:if>
                 <td>
                     <c:choose>

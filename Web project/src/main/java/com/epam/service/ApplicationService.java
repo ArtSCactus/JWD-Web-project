@@ -31,7 +31,7 @@ public class ApplicationService {
                     .withSpecialtyId(specialtyId)
                     .withStatus(ApplicationStatus.WAITING)
                     .withDate(Date.valueOf(LocalDate.now()))
-                    .admissionId(admissionId)
+                    .withAdmissionId(admissionId)
                     .build());
         }
     }

@@ -2,7 +2,6 @@ package com.epam.model.rowmappers;
 
 import com.epam.model.dto.entity.Application;
 import com.epam.model.dto.entity.ApplicationStatus;
-import exception.dao.DaoException;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +13,7 @@ public class ApplicationRowMapper implements RowMapper<Application> {
     private static final String ACCOUNT_ID_COLUMN = "accountId";
     private static final String STATUS_COLUMN = "status";
     private static final String FILING_DATE_COLUMN = "date";
+    private static final String ADMISSION_ID_COLUMN = "admissionId";
 
     @Override
     public Application map(ResultSet resultSet) throws SQLException {
@@ -24,6 +24,7 @@ public class ApplicationRowMapper implements RowMapper<Application> {
                 .withAccountId(resultSet.getLong(ACCOUNT_ID_COLUMN))
                 .withStatus(ApplicationStatus.valueOf(resultSet.getString(STATUS_COLUMN).toUpperCase()))
                 .withDate(resultSet.getDate(FILING_DATE_COLUMN))
+                .withAdmissionId(resultSet.getLong(ADMISSION_ID_COLUMN))
                 .build();
     }
 

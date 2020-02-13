@@ -21,6 +21,8 @@
     <c:set var="existingApplications" value="${pageContent.additionalAttributes.get('existingApplications')}"/>
 </head>
 <body>
+<div class="about-block">
+</div>
 <div class="faculties-block">
     <aside class="faculties-enum-block">
         <%--@elvariable id="faculty" type="com.epam.model.dto.university.Faculty"--%>

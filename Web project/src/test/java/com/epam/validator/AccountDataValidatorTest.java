@@ -17,10 +17,23 @@ public class AccountDataValidatorTest {
         };
     }
     @DataProvider(name = "mailboxes")
-    public Object[][] getObjects(){
+    public Object[][] getMailboxes(){
         return new Object[][]{
                 {"mailbox@email.com", true},
                 {"Not$%@mail.", false}
+        };
+    }
+
+    @DataProvider(name="Total points")
+    public Object[][] getLimits(){
+        return new Object[][]{
+                {-10L, false},
+                {0L, false},
+                {50L, true},
+                {450L, false},
+                {401L, false},
+                {400L, true},
+                {399L, true}
         };
     }
 
@@ -31,11 +44,15 @@ public class AccountDataValidatorTest {
     }
 
     @Test(dataProvider = "mailboxes")
-    public void testIsMailBoxValid() {
+    public void shouldValidateMailboxesCorrectly(String mailbox, boolean correctResult) {
+        boolean log = validator.isMailBoxValid(mailbox);
+        Assert.assertEquals(log, correctResult);
     }
 
-    @org.testng.annotations.Test
-    public void testIsTotalPointsValid() {
+    @Test(dataProvider = "Total points")
+    public void shouldValidateTotalPointsCorrectly(Long totalPoints, boolean correctResult) {
+        boolean log = validator.isTotalPointsValid(totalPoints);
+        Assert.assertEquals(log, correctResult);
     }
 
     @org.testng.annotations.Test

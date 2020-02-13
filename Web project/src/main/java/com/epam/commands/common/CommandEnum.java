@@ -5,6 +5,7 @@ import com.epam.commands.controlpanel.get.ShowStudentsCommand;
 import com.epam.commands.controlpanel.post.*;
 import com.epam.commands.controlpanel.get.ShowAccountsCommand;
 import com.epam.commands.controlpanel.get.ShowAdmissionsCommand;
+import com.epam.commands.get.ShowMainNewsCommand;
 import com.epam.commands.get.ShowMainPageCommand;
 import com.epam.commands.get.SwitchLanguageCommand;
 import com.epam.commands.post.ApplyCommand;
@@ -36,9 +37,9 @@ public enum CommandEnum {
             this.command = new ApplyCommand();
         }
     },
-    SHOW_MAIN_PAGE{
+    SHOW_MAIN_PAGE {
         {
-          this.command = new ShowMainPageCommand();
+            this.command = new ShowMainPageCommand();
         }
     },
     SHOW_CONTROL_PANEL {
@@ -51,9 +52,9 @@ public enum CommandEnum {
             this.command = new ChangeApplicationStatusCommand();
         }
     },
-    CHANGE_BLOCK_STATUS{
+    CHANGE_BLOCK_STATUS {
         {
-          this.command = new ChangeBlockStatusCommand();
+            this.command = new ChangeBlockStatusCommand();
         }
     },
     SHOW_ADMIN_PANEL {
@@ -61,54 +62,59 @@ public enum CommandEnum {
             this.command = new ShowApplicationsCommand();
         }
     },
-    SHOW_APPLICATIONS_PANEL{
+    SHOW_APPLICATIONS_PANEL {
         {
             this.command = new ShowApplicationsCommand();
         }
     },
-    SHOW_ACCOUNTS_PANEL{
+    SHOW_ACCOUNTS_PANEL {
         {
             this.command = new ShowAccountsCommand();
         }
     },
-    SHOW_ADMISSIONS_PANEL{
+    SHOW_ADMISSIONS_PANEL {
         {
             this.command = new ShowAdmissionsCommand();
         }
     },
-    CHANGE_ADMISSION_STATUS{
+    CHANGE_ADMISSION_STATUS {
         {
             this.command = new ChangeAdmissionStatusCommand();
         }
     },
-    SHOW_STUDENTS_PANEL{
+    SHOW_STUDENTS_PANEL {
         {
             this.command = new ShowStudentsCommand();
         }
     },
-    EXPEL_STUDENT{
+    EXPEL_STUDENT {
         {
             this.command = new ChangeStudentStatusCommand();
         }
     },
-    START_ADMISSION{
+    START_ADMISSION {
         {
             this.command = new StartAdmissionCommand();
         }
     },
-    SIGN_UP{
+    SIGN_UP {
         {
             this.command = new SignUpCommand();
         }
     },
-    CHANGE_LANGUAGE{
+    CHANGE_LANGUAGE {
         {
             this.command = new SwitchLanguageCommand();
         }
     },
-    CANCEL{
+    CANCEL {
         {
             this.command = new CancelCommand();
+        }
+    },
+    NEWS{
+        {
+            this.command = new ShowMainNewsCommand();
         }
     };
     Command command;

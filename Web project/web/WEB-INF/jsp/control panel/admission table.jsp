@@ -15,6 +15,10 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit" var="limt_label"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit.placeholder" var="limit_placeholder"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.start.btn" var="start_btn"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.finished" var="finished_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.process" var="process_status"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.table.name" var="table_name"/>
+
 <html lang="${sessionScope.lang}">
 <head>
     <link rel="stylesheet" href="css/admin_panel.css">
@@ -24,7 +28,7 @@
 </head>
 <body>
 <div class="main-content">
-<h3>Admissions</h3>
+<h3 class="table-name">${table_name}</h3>
 <c:if test="${not empty errorMessageVar}">
     <div class="error-message">
         ${errorMessageVar}
@@ -73,15 +77,15 @@
     <c:forEach var="admission" items="${pageContent.objectsList}">
         <tr>
             <td>${admission.id}</td>
-            <td>${admission.start}</td>
-            <td>${admission.end}</td>
+            <td><fmt:formatDate value="${admission.start}"/></td>
+            <td><fmt:formatDate value="${admission.end}"/></td>
             <td>${admission.amountOfStudents}</td>
             <c:choose>
                 <c:when test="${admission.active}">
-                    <td>in process</td>
+                    <td>${process_status}</td>
                 </c:when>
                 <c:otherwise>
-                    <td>finished</td>
+                    <td>${finished_status}</td>
                 </c:otherwise>
             </c:choose>
             <td>

@@ -42,8 +42,8 @@
     </div>
 <%--    </div>--%>
     <menu>
-        <li><a href="#"><i class="fa fa-home fa-fw"></i>${home_btn}</a></li>
-        <li><a href="#">${news_btn}</a></li>
+        <li><a href="controller?command=show_main_page"><i class="fa fa-home fa-fw"></i>${home_btn}</a></li>
+        <li><a href="controller?command=news">${news_btn}</a></li>
         <li><a href="#">${admissions_btn}</a></li>
         <li><a href="#">${contacts_btn}</a></li>
         <c:if test="${isUserAdmin}">

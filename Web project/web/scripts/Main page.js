@@ -26,7 +26,7 @@ function updateSpecialtiesBlock() {
 $(function () {
     $('.apply-btn').click(function () {
         var admissionId = $(this).parent('form').parent('div').attr('id');
-        if (admissionId == 0){
+        if (admissionId === 0){
             $('.popup').show(500, function () {
                 setTimeout(function () {
                     $('.popup').hide(500)
@@ -36,4 +36,9 @@ $(function () {
         }
     });
 });
+
+function imageCarousel(){
+    var currentImageIndex=0;
+    var imagePool = im
+}
 
