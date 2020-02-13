@@ -2,15 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="header.jsp" %>
-<fmt:message bundle="${content}" key="page_title" var="page_title"/>
-<fmt:message bundle="${content}" key="university_description" var="university_description"/>
-<fmt:message bundle="${content}" key="specialty_block_title" var="specialty_block_title"/>
-<fmt:message bundle="${content}" key="only_with_admissions_check_box" var="checkbox_content"/>
-<fmt:message bundle="${content}" key="main_page_search_input_field_placeholder" var="search_field_placeholder"/>
-<fmt:message bundle="${content}" key="apply_btn" var="apply_btn"/>
-<fmt:message bundle="${content}" key="find_btn" var="find_btn"/>
-<fmt:message bundle="${content}" key="applied_btn_status" var="cancel_application_btn"/>
-<fmt:message bundle="${content}" key="popup_message" var="popup_message"/>
+<fmt:message bundle="${localizedContent}" key="page_title" var="page_title"/>
+<fmt:message bundle="${localizedContent}" key="university_description" var="university_description"/>
+<fmt:message bundle="${localizedContent}" key="specialty_block_title" var="specialty_block_title"/>
+<fmt:message bundle="${localizedContent}" key="only_with_admissions_check_box" var="checkbox_content"/>
+<fmt:message bundle="${localizedContent}" key="main_page_search_input_field_placeholder" var="search_field_placeholder"/>
+<fmt:message bundle="${localizedContent}" key="apply_btn" var="apply_btn"/>
+<fmt:message bundle="${localizedContent}" key="find_btn" var="find_btn"/>
+<fmt:message bundle="${localizedContent}" key="applied_btn_status" var="cancel_application_btn"/>
+<fmt:message bundle="${localizedContent}" key="popup_message" var="popup_message"/>
 <html lang="${sessionScope.lang}">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>

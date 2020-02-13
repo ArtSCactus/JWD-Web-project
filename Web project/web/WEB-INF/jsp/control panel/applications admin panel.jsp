@@ -1,9 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@include file="header.jsp" %>
-<html>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.id.col" var="id_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.name.col" var="name_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.surname.col" var="surname_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.patronymic.col" var="patronymic_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.faculty.col" var="faculty_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.specialty.col" var="specialty_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.status.col" var="status_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.date.col" var="date_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.action.col" var="action_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.action.reject" var="reject_action"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.applications.action.accept" var="accept_action"/>
+<html lang="${sessionScope.lang}">
 <head>
-    <title>Control panel</title>
     <link rel="stylesheet" href="css/admin_panel.css">
     <%--@elvariable id="pageContent" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${content}" scope="request"/>
@@ -13,15 +23,15 @@
 <h3>Applications</h3>
 <table class="application-table">
     <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Second name</th>
-        <th>Third name</th>
-        <th>Faculty</th>
-        <th>Specialty</th>
-        <th>Status</th>
-        <th>Date</th>
-        <th>Action</th>
+        <th>${id_col}</th>
+        <th>${name_col}</th>
+        <th>${surname_col}</th>
+        <th>${patronymic_col}</th>
+        <th>${faculty_col}</th>
+        <th>${specialty_col}</th>
+        <th>${status_col}</th>
+        <th>${date_col}</th>
+        <th>${action_col}</th>
     </tr>
     <%--@elvariable id="application" type="com.epam.model.dto.entity.Application"--%>
     <c:forEach var="application" items="${pageContent.objectsList}">
@@ -55,7 +65,7 @@
                             <input type="hidden" name="command" value="change_application_status"/>
                             <input type="hidden" name="applicationId" value="${application.id}"/>
                             <input type="hidden" name="newStatus" value="accepted"/>
-                            <input class="button" type="submit" value="accept"/>
+                            <input class="button" type="submit" value="${accept_action}"/>
                         </form>
                     </c:when>
                     <c:when test="${application.status.message eq 'accepted'}">
@@ -63,7 +73,7 @@
                             <input type="hidden" name="command" value="change_application_status"/>
                             <input type="hidden" name="applicationId" value="${application.id}"/>
                             <input type="hidden" name="newStatus" value="rejected"/>
-                            <input class="button" type="submit" value="reject"/>
+                            <input class="button" type="submit" value="${reject_action}"/>
                         </form>
                     </c:when>
                 </c:choose>

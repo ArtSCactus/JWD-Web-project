@@ -1,6 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@include file="header.jsp" %>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.id.col" var="id_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.name.col" var="name_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.surname.col" var="surname_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.patronymic.col" var="patronymic_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.faculty.col" var="faculty_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.specialty.col" var="specialty_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.enrollment.date.col" var="date_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.status.col" var="status_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.action.col" var="action_col"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.action.dismiss" var="dismiss_action"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.action.enroll" var="enroll_action"/>
 <html>
 <head>
     <title>Control panel</title>
@@ -13,15 +24,15 @@
 <h3>Students</h3>
 <table class="student-table">
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Patronymic</th>
-        <th>Faculty id</th>
-        <th>Specialty id</th>
-        <th>Enrollment date</th>
-        <th>Status</th>
-        <th>Action</th>
+        <th>${id_col}</th>
+        <th>${name_col}</th>
+        <th>${surname_col}</th>
+        <th>${patronymic_col}</th>
+        <th>${faculty_col}</th>
+        <th>${specialty_col}</th>
+        <th>${date_col}</th>
+        <th>${status_col}</th>
+        <th>${action_col}</th>
     </tr>
     <%--@elvariable id="student" type="com.epam.model.dto.entity.Student"--%>
     <c:forEach var="student" items="${pageContent.objectsList}">
@@ -41,7 +52,7 @@
                             <input type="hidden" name="command" value="expel_student"/>
                             <input type="hidden" name="studentId" value="${student.id}"/>
                             <input type="hidden" name="status" value="dismissed">
-                            <input class="button" type="submit" value="dismiss"/>
+                            <input class="button" type="submit" value="${dismiss_action}"/>
                         </form>
                     </c:when>
                     <c:otherwise>
@@ -49,7 +60,7 @@
                             <input type="hidden" name="command" value="expel_student"/>
                             <input type="hidden" name="studentId" value="${student.id}"/>
                             <input type="hidden" name="status" value="enrolled">
-                            <input class="button" type="submit" value="enroll"/>
+                            <input class="button" type="submit" value="${enroll_action}"/>
                         </form>
                     </c:otherwise>
                 </c:choose>

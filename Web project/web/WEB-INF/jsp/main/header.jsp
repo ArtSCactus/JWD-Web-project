@@ -2,16 +2,16 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="Page content" var="content"/>
-<fmt:message bundle="${content}" key="sign_in_btn" var="sign_in_btn"/>
-<fmt:message bundle="${content}" key="sign_up_btn" var="sign_up_btn"/>
-<fmt:message bundle="${content}" key="home_btn" var="home_btn"/>
-<fmt:message bundle="${content}" key="news_btn" var="news_btn"/>
-<fmt:message bundle="${content}" key="admissions_btn" var="admissions_btn"/>
-<fmt:message bundle="${content}" key="contacts_btn" var="contacts_btn"/>
-<fmt:message bundle="${content}" key="control_panel_btn" var="control_panel_btn"/>
-<fmt:message bundle="${content}" key="university_title" var="university_title"/>
-<fmt:message bundle="${content}" key="logout_btn" var="logout_btn"/>
+<fmt:setBundle basename="Page content" var="localizedContent"/>
+<fmt:message bundle="${localizedContent}" key="sign_in_btn" var="sign_in_btn"/>
+<fmt:message bundle="${localizedContent}" key="sign_up_btn" var="sign_up_btn"/>
+<fmt:message bundle="${localizedContent}" key="home_btn" var="home_btn"/>
+<fmt:message bundle="${localizedContent}" key="news_btn" var="news_btn"/>
+<fmt:message bundle="${localizedContent}" key="admissions_btn" var="admissions_btn"/>
+<fmt:message bundle="${localizedContent}" key="contacts_btn" var="contacts_btn"/>
+<fmt:message bundle="${localizedContent}" key="control_panel_btn" var="control_panel_btn"/>
+<fmt:message bundle="${localizedContent}" key="university_title" var="university_title"/>
+<fmt:message bundle="${localizedContent}" key="logout_btn" var="logout_btn"/>
 <html>
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>

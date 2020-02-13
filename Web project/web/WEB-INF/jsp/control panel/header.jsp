@@ -10,8 +10,10 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.header.main" var="main"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.header.logout" var="logout"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.header.university.title" var="title"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.header.page.title" var="page_title"/>
 <html lang="${sessionScope.lang}">
 <head>
+    <title>${page_title}</title>
     <link rel="stylesheet" href="css/admin_panel.css">
     <script async src="scripts/Admin panel.js"></script>
     <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
