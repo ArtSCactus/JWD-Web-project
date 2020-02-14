@@ -14,7 +14,7 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.students.action.enroll" var="enroll_action"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.students.status.dismissed" var="dismissed_status"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.students.status.enrolled" var="enrolled_status"/>
-<fmt:message bundle="${localizationContent}" key="control.panel.students.status.table.name" var="table_name"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.students.table.name" var="table_name"/>
 <html lang="${sessionScope.lang}">
 <head>
     <title>Control panel</title>
@@ -24,7 +24,7 @@
 </head>
 <body>
 <div class="main-content">
-<h3 class="table-name">Students</h3>
+<h3 class="table-name">${table_name}</h3>
 <table class="student-table">
     <tr>
         <th>${id_col}</th>

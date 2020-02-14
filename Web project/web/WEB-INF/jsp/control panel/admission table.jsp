@@ -37,7 +37,7 @@
 <form class="Start-admission-form" method="post" action="controller">
     <label for="date-end-input">
         ${end_label}
-        <input type="date" class="date-end-input-field" name="end" id="date-end-input"/>
+        <input type="date" class="date-end-input-field" name="end" id="date-end-input" required="required"/>
     </label>
     <label>
         ${faculty_label}
