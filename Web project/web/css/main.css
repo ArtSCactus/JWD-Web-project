@@ -382,3 +382,7 @@ label{
     color: white;
     font-family:  'Noto Serif', 'Georgia', 'Times New Roman', serif;
 }
+
+.top-menu a:hover{
+    background: rgba(52, 85, 121, 0.72);
+}
