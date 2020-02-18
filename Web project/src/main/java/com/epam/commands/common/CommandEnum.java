@@ -7,7 +7,7 @@ import com.epam.commands.controlpanel.get.ShowAccountsCommand;
 import com.epam.commands.controlpanel.get.ShowAdmissionsCommand;
 import com.epam.commands.get.ShowMainNewsCommand;
 import com.epam.commands.get.ShowMainPageCommand;
-import com.epam.commands.get.SwitchLanguageCommand;
+import com.epam.commands.post.SwitchLanguageCommand;
 import com.epam.commands.post.ApplyCommand;
 import com.epam.commands.post.CancelCommand;
 import com.epam.commands.result.ForwardCommand;

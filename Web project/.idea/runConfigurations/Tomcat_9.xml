@@ -4,23 +4,22 @@
     <option name="BROWSER_ID" value="53e2f627-b1a7-4dfa-bfa7-5b83cc034776" />
     <option name="UPDATING_POLICY" value="redeploy-artifacts" />
     <deployment>
-      <file path="%IDEA_RUN:TOMCAT_HOME%/webapps/webapp">
+      <artifact name="Web project:war exploded">
         <settings>
           <option name="CONTEXT_PATH" value="/webapp" />
         </settings>
-      </file>
+      </artifact>
     </deployment>
     <server-settings>
-      <option name="AJP_PORT" value="8010" />
       <option name="BASE_DIRECTORY_NAME" value="Unnamed_Web_project" />
       <option name="DEPLOY_TOMCAT_APPS" value="true" />
       <option name="PRESERVE_SESSIONS" value="true" />
     </server-settings>
     <predefined_log_file enabled="true" id="Tomcat" />
     <predefined_log_file enabled="true" id="Tomcat Catalina" />
-    <predefined_log_file id="Tomcat Manager" />
+    <predefined_log_file enabled="true" id="Tomcat Manager" />
     <predefined_log_file id="Tomcat Host Manager" />
-    <predefined_log_file id="Tomcat Localhost Access" />
+    <predefined_log_file enabled="true" id="Tomcat Localhost Access" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="61560" />
     </RunnerSettings>
@@ -71,6 +70,9 @@
     </ConfigurationWrapper>
     <method v="2">
       <option name="Make" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="Web project:war exploded" />
+      </option>
     </method>
   </configuration>
 </component>

@@ -12,8 +12,9 @@ public class AccountDataValidatorTest {
             {"NickName",true},
                 {"Inco$$ectNick name", false},
                 {"Wrong%symbols^*)_here", false},
-                {"Hey_this_is_normal_nickname", true}, //out of bounds (more than 20 symbols)
-                {"Normal_too95", true}
+                {"Hey_this_is_normal_nickname", false}, //out of bounds (more than 20 symbols)
+                {"Normal_too95", true},
+                {"Absolutely_norm_nick", true}
         };
     }
     @DataProvider(name = "mailboxes")
@@ -37,10 +38,33 @@ public class AccountDataValidatorTest {
         };
     }
 
+    @DataProvider(name="Passwords")
+    public Object[][] getPasswords(){
+        return new Object[][]{
+                {"", false},
+                {"12345678", true},
+                {"fgkndgadj!@#$%^&", true},
+                {null, false}
+
+        };
+    }
+
+    @DataProvider(name = "Names")
+    public Object[][] getNames(){
+        return new Object[][]{
+                {"", false},
+                {"11", true},
+                {"123456789101112131415161718192021",false},
+                {"!@#$%^&*", false},
+                {"Correct", true},
+                {"Correct too", true}
+        };
+    }
+
     @Test(dataProvider = "logins")
     public void shouldValidateLoginsCorrectly(String login, boolean correctResult) {
         boolean log = validator.isLoginValid(login);
-        Assert.assertEquals(validator.isLoginValid(login), correctResult);
+        Assert.assertEquals(log, correctResult);
     }
 
     @Test(dataProvider = "mailboxes")
@@ -55,19 +79,16 @@ public class AccountDataValidatorTest {
         Assert.assertEquals(log, correctResult);
     }
 
-    @org.testng.annotations.Test
-    public void testTestIsTotalPointsValid() {
+    @Test(dataProvider = "Passwords")
+    public void testIsPasswordCorrect(String password, boolean correctResult) {
+        boolean log = validator.isPasswordCorrect(password);
+        Assert.assertEquals(log, correctResult);
     }
 
-    @org.testng.annotations.Test
-    public void testIsPasswordCorrect() {
+    @Test(dataProvider = "Names")
+    public void testIsNameCorrect(String name, boolean correctResult) {
+        boolean log = validator.isNameCorrect(name);
+        Assert.assertEquals(log, correctResult);
     }
 
-    @org.testng.annotations.Test
-    public void testIsNameCorrect() {
-    }
-
-    @org.testng.annotations.Test
-    public void testValidateAll() {
-    }
 }

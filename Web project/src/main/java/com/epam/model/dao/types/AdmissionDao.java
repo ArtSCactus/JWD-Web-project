@@ -8,21 +8,18 @@ import com.epam.model.rowmappers.AdmissionRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 public class AdmissionDao extends AbstractDao<Admission> implements Dao<Admission> {
-    private ResourceBundle resourcesGet;
-    private ResourceBundle resourcesPut;
 
     public AdmissionDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql/get");
-        resourcesPut = ResourceBundle.getBundle("sql/put");
     }
 
     @Override
     public Optional<Admission> getById(Long id) {
-        List<Admission> admissionList = super.executeQuery(resourcesGet.getString("get_admission_by_id"),
+        List<Admission> admissionList = super.executeQuery(getSelectRequest("get_admission_by_id"),
                 new AdmissionRowMapper(), id);
         if (admissionList.isEmpty()) {
             return Optional.empty();
@@ -33,12 +30,12 @@ public class AdmissionDao extends AbstractDao<Admission> implements Dao<Admissio
 
     @Override
     public List<Admission> getAll() {
-        return super.executeQuery(resourcesGet.getString("get_all_admissions"), new AdmissionRowMapper());
+        return super.executeQuery(getSelectRequest("get_all_admissions"), new AdmissionRowMapper());
     }
 
     @Override
     public int save(Admission item) {
-        return super.executeUpdate(resourcesPut.getString("insert_odku_into_admissions"),
+        return super.executeUpdate(getPutRequest("insert_odku_into_admissions"),
                 item.getId(),
                 item.getStart(),
                 item.getEnd(),

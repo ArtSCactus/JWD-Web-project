@@ -7,19 +7,18 @@
         <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
-       <session-timeout>30</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/jsp/stacktrace%20page.jsp</location>
+        <location>/error/404.jsp</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.RuntimeException</exception-type>
         <location>/WEB-INF/jsp/stacktrace%20page.jsp</location>
     </error-page>
     <listener>
-        <listener-class>com.epam.listener.HttpSessionListenerImpl
-        </listener-class>
+        <listener-class>com.epam.listener.HttpSessionListenerImpl</listener-class>
     </listener>
     <servlet>
         <servlet-name>Selection committee</servlet-name>

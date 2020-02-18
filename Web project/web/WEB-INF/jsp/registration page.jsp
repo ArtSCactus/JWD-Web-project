@@ -46,13 +46,12 @@
     </c:if>
     <div class="tab">${log_pas_tab_title}
         <p><input name="login" type="text" placeholder="${login_placeholder}" required pattern="^[A-za-z0-9_-]{2,20}$" oninput="this.className = ''">
-        <p><input name="password" type="password" placeholder="${password_placeholder}" oninput="this.className = ''" required></p>
+        <p><input name="password" type="password" placeholder="${password_placeholder}" oninput="this.className = ''" required min="3" max="16"></p>
     </div>
 
     <div class="tab">${mailbox_tab_title}
         <p><input name="mailbox" placeholder="${email_placeholder}" oninput="this.className = ''"></p>
     </div>
-    <!-- One "tab" for each step in the form: -->
     <div class="tab">${name_tab_title}
         <p><input name="first name" placeholder="${first_name_placeholder}" oninput="this.className = ''" required pattern="^[А-Яа-яA-Za-z0-9\s]{2,20}$"></p>
         <p><input  name="second name" placeholder="${second_name_placeholder}" oninput="this.className = ''" required pattern="^[А-Яа-яA-Za-z0-9\s]{2,20}$"></p>

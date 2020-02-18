@@ -15,35 +15,39 @@ public class DaoManager implements AutoCloseable {
     }
 
     /**
-     * @deprecated use DaoFactory instead
      * @return DaoManager obj
+     * @deprecated use DaoFactory instead
      */
-    public static DaoManager create(){
+    public static DaoManager create() {
         return new DaoManager(ConnectionPool.getInstance());
     }
 
-    public AccountDao getAccountDao(){
+    public AccountDao getAccountDao() {
         return new AccountDao(connection);
     }
 
-    public FacultyDao getFacultyDao(){
+    public FacultyDao getFacultyDao() {
         return new FacultyDao(connection);
     }
 
-    public SpecialtyDao getSpecialtyDao(){
+    public SpecialtyDao getSpecialtyDao() {
         return new SpecialtyDao(connection);
     }
 
-    public ApplicationDao getApplicationDao(){
+    public ApplicationDao getApplicationDao() {
         return new ApplicationDao(connection);
     }
 
-    public StudentDao getStudentDao(){
+    public StudentDao getStudentDao() {
         return new StudentDao(connection);
     }
 
-    public AdmissionDao getAdmissionDao(){
+    public AdmissionDao getAdmissionDao() {
         return new AdmissionDao(connection);
+    }
+
+    public NewsDao getNewsDao() {
+        return new NewsDao(connection);
     }
 
     @Override

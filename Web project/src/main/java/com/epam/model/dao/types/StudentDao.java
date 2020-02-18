@@ -9,21 +9,18 @@ import com.epam.model.rowmappers.table.StudentTableRowMapper;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 public class StudentDao extends AbstractDao<Student> implements Dao<Student> {
-    private ResourceBundle resourcesGet;
-    private ResourceBundle resourcePut;
 
     public StudentDao(Connection connection) {
         super(connection);
-        resourcesGet = ResourceBundle.getBundle("sql/get");
-        resourcePut = ResourceBundle.getBundle("sql/put");
     }
 
     @Override
     public Optional<Student> getById(Long id) {
-        List<Student> studentList = super.executeQuery(resourcesGet.getString("get_student_by_id"), new StudentRowMapper(), id);
+        List<Student> studentList = super.executeQuery(getSelectRequest("get_student_by_id"), new StudentRowMapper(), id);
         if (studentList.isEmpty()) {
             return Optional.empty();
         } else {
@@ -33,16 +30,16 @@ public class StudentDao extends AbstractDao<Student> implements Dao<Student> {
 
     @Override
     public List<Student> getAll() {
-        return super.executeQuery(resourcesGet.getString("get_all_students"), new StudentRowMapper());
+        return super.executeQuery(getSelectRequest("get_all_students"), new StudentRowMapper());
     }
 
     public List<Student> getAllForTable() {
-        return super.executeQuery(resourcesGet.getString("get_all_students_for_table"), new StudentTableRowMapper());
+        return super.executeQuery(getSelectRequest("get_all_students_for_table"), new StudentTableRowMapper());
     }
 
     @Override
     public int save(Student item) {
-        return super.executeUpdate(resourcePut.getString("insert_odku_into_students"),
+        return super.executeUpdate(getPutRequest("insert_odku_into_students"),
                 item.getId(),
                 item.getAccountId(),
                 item.getFacultyId(),

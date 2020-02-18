@@ -1,4 +1,4 @@
-package com.epam.commands.get;
+package com.epam.commands.post;
 
 import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
