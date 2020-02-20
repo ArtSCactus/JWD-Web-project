@@ -13,7 +13,8 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.faculty" var="faculty_label"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.specialty" var="specialty_label"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit" var="limt_label"/>
-<fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit.placeholder" var="limit_placeholder"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit.placeholder"
+             var="limit_placeholder"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.start.btn" var="start_btn"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.finished" var="finished_status"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.process" var="process_status"/>
@@ -28,89 +29,101 @@
 </head>
 <body>
 <div class="main-content">
-<h3 class="table-name">${table_name}</h3>
-<c:if test="${not empty errorMessageVar}">
-    <div class="error-message">
-        ${errorMessageVar}
-    </div>
-</c:if>
-<form class="Start-admission-form" method="post" action="controller">
-    <label for="date-end-input">
-        ${end_label}
-        <input type="date" class="date-end-input-field" name="end" id="date-end-input" required="required"/>
-    </label>
-    <label>
-        ${faculty_label}
-        <select class="select-faculty-list" name="faculty" required="required">
-            <%--@elvariable id="faculty_item" type="com.epam.model.dto.university.Faculty"--%>
-            <c:forEach var="faculty_item" items="${pageContent.additionalAttributes.get('faculties')}">
-                <option>${faculty_item.name}</option>
-            </c:forEach>
-        </select>
-    </label>
-    <label>
-        ${specialty_label}
-        <select class="select-specialty-list" name="specialty" required="required">
-            <%--@elvariable id="specialty_item" type="com.epam.model.dto.university.Specialty"--%>
-            <c:forEach var="specialty_item" items="${pageContent.additionalAttributes.get('specialties')}">
-                <option>${specialty_item.name}</option>
-            </c:forEach>
-        </select>
-    </label>
-    <label>
-        ${limt_label}
-        <input class="limit-input" name="limit" type="text" required="required" placeholder="${limit_placeholder}"/>
-    </label>
-    <input class="start-admission-btn" type="submit" value="${start_btn}">
-    <input type="hidden" name="command" value="start_admission">
-</form>
-<table class="admission-table">
-    <tr>
-        <th>${id_col}</th>
-        <th>${start_col}</th>
-        <th>${end_col}</th>
-        <th>${limit_col}</th>
-        <th>${status_col}</th>
-        <th>${action_col}</th>
-    </tr>
-    <%--@elvariable id="admission" type="com.epam.model.dto.entity.Admission"--%>
-    <c:forEach var="admission" items="${pageContent.objectsList}">
+    <h3 class="table-name">${table_name}</h3>
+    <c:if test="${not empty errorMessageVar}">
+        <div class="error-message">
+                ${errorMessageVar}
+        </div>
+    </c:if>
+    <form class="Start-admission-form" method="post" action="controller">
+        <label for="date-end-input">
+            ${end_label}
+            <input type="date" class="date-end-input-field" name="end" id="date-end-input" required="required"/>
+        </label>
+        <label>
+            ${faculty_label}
+            <select class="select-faculty-list" name="faculty" required="required">
+                <%--@elvariable id="faculty_item" type="com.epam.model.dto.university.Faculty"--%>
+                <c:forEach var="faculty_item" items="${pageContent.additionalAttributes.get('faculties')}">
+                    <option>${faculty_item.name}</option>
+                </c:forEach>
+            </select>
+        </label>
+        <label>
+            ${specialty_label}
+            <select class="select-specialty-list" name="specialty" required="required">
+                <%--@elvariable id="specialty_item" type="com.epam.model.dto.university.Specialty"--%>
+                <c:forEach var="specialty_item" items="${pageContent.additionalAttributes.get('specialties')}">
+                    <option>${specialty_item.name}</option>
+                </c:forEach>
+            </select>
+        </label>
+        <label>
+            ${limt_label}
+            <input class="limit-input" name="limit" type="text" required="required" placeholder="${limit_placeholder}"/>
+        </label>
+        <input class="start-admission-btn" type="submit" value="${start_btn}">
+        <label class="notification-checkbox-label">
+            Notify:
+            <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
+        </label>
+        <input type="hidden" name="command" value="start_admission">
+    </form>
+    <table class="admission-table">
         <tr>
-            <td>${admission.id}</td>
-            <td><fmt:formatDate value="${admission.start}"/></td>
-            <td><fmt:formatDate value="${admission.end}"/></td>
-            <td>${admission.amountOfStudents}</td>
-            <c:choose>
-                <c:when test="${admission.active}">
-                    <td>${process_status}</td>
-                </c:when>
-                <c:otherwise>
-                    <td>${finished_status}</td>
-                </c:otherwise>
-            </c:choose>
-            <td>
+            <th>${id_col}</th>
+            <th>${start_col}</th>
+            <th>${end_col}</th>
+            <th>${limit_col}</th>
+            <th>${status_col}</th>
+            <th>${action_col}</th>
+        </tr>
+        <%--@elvariable id="admission" type="com.epam.model.dto.entity.Admission"--%>
+        <c:forEach var="admission" items="${pageContent.objectsList}">
+            <tr>
+                <td>${admission.id}</td>
+                <td><fmt:formatDate value="${admission.start}"/></td>
+                <td><fmt:formatDate value="${admission.end}"/></td>
+                <td>${admission.amountOfStudents}</td>
                 <c:choose>
                     <c:when test="${admission.active}">
-                        <form class="accept-form" name="accept" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_admission_status"/>
-                            <input type="hidden" name="admissionId" value="${admission.id}"/>
-                            <input type="hidden" name="newStatus" value="false"/>
-                            <input class="button" type="submit" value="${finish_action}"/>
-                        </form>
+                        <td>${process_status}</td>
                     </c:when>
                     <c:otherwise>
-                        <form class="decline-form" name="decline" method="post" action="controller">
-                            <input type="hidden" name="command" value="change_admission_status"/>
-                            <input type="hidden" name="admissionId" value="${admission.id}"/>
-                            <input type="hidden" name="newStatus" value="true"/>
-                            <input class="button" type="submit" value="${resume_action}"/>
-                        </form>
+                        <td>${finished_status}</td>
                     </c:otherwise>
                 </c:choose>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+                <td>
+                    <c:choose>
+                        <c:when test="${admission.active}">
+                            <form class="accept-form" name="accept" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_admission_status"/>
+                                <input type="hidden" name="admissionId" value="${admission.id}"/>
+                                <input type="hidden" name="newStatus" value="false"/>
+                                <input class="button" type="submit" value="${finish_action}"/>
+                                <label class="notification-checkbox-label">
+                                    Notify:
+                                    <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
+                                </label>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form class="decline-form" name="decline" method="post" action="controller">
+                                <input type="hidden" name="command" value="change_admission_status"/>
+                                <input type="hidden" name="admissionId" value="${admission.id}"/>
+                                <input type="hidden" name="newStatus" value="true"/>
+                                <input class="button" type="submit" value="${resume_action}"/>
+                                <label class="notification-checkbox-label">
+                                Notify:
+                                <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
+                            </label>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 </body>
 </html>

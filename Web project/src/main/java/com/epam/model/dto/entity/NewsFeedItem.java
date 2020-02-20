@@ -10,13 +10,13 @@ import java.util.Objects;
  * @author ArtSCactus
  * @version 1.0
  */
-public class News implements Identifiable, Serializable {
+public class NewsFeedItem implements Identifiable, Serializable {
     private Long id;
     private String title;
     private String text;
     private Date date;
 
-    public News(Long id, String title, String text, Date date) {
+    public NewsFeedItem(Long id, String title, String text, Date date) {
         this.id = id;
         this.title = title;
         this.text = text;
@@ -59,12 +59,12 @@ public class News implements Identifiable, Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof News)) return false;
-        News news = (News) o;
-        return Objects.equals(getId(), news.getId()) &&
-                Objects.equals(getTitle(), news.getTitle()) &&
-                Objects.equals(getText(), news.getText()) &&
-                Objects.equals(getDate(), news.getDate());
+        if (!(o instanceof NewsFeedItem)) return false;
+        NewsFeedItem newsFeedItem = (NewsFeedItem) o;
+        return Objects.equals(getId(), newsFeedItem.getId()) &&
+                Objects.equals(getTitle(), newsFeedItem.getTitle()) &&
+                Objects.equals(getText(), newsFeedItem.getText()) &&
+                Objects.equals(getDate(), newsFeedItem.getDate());
     }
 
     @Override

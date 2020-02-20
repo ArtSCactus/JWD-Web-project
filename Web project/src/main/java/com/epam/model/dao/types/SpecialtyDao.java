@@ -19,7 +19,7 @@ public class SpecialtyDao extends AbstractDao<Specialty> implements Dao<Specialt
 
     @Override
     public Optional<Specialty> getById(Long id) {
-        List<Specialty> resultList = super.executeQuery(getSelectRequest("get_student_by_id"), new SpecialtyRowMapper(), id);
+        List<Specialty> resultList = super.executeQuery(getSelectRequest("get_specialty_by_id"), new SpecialtyRowMapper(), id);
         if (resultList.isEmpty()) {
             return Optional.empty();
         } else {

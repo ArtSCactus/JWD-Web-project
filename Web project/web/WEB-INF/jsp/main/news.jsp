@@ -2,24 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="header.jsp" %>
-<fmt:message bundle="${localizedContent}" key="main.page.news.title" var="title"/>
+<fmt:message bundle="${localizedContent}" key="main.page.newsFeedItem.title" var="title"/>
 <html lang="${sessionScope.lang}">
 <head>
     ${title}
     <c:set var="content" value="${requestScope.content}"/>
 </head>
 <body>
-<%--@elvariable id="newsItem" type="com.epam.model.dto.entity.News"--%>
+<%--@elvariable id="newsItem" type="com.epam.model.dto.entity.NewsFeedItem"--%>
 <c:forEach var="newsItem" items="${content.objectsList}">
-    <div class="news-block">
-        <div class="news-item">
-            <div class="news-item-title">
+    <div class="newsFeedItem-block">
+        <div class="newsFeedItem-item">
+            <div class="newsFeedItem-item-title">
                     ${newsItem.title}
             </div>
-            <div class="news-item-date">
+            <div class="newsFeedItem-item-date">
                     ${newsItem.date}
             </div>
-            <div class="news-item-description">
+            <div class="newsFeedItem-item-description">
                     ${newsItem.text}
             </div>
         </div>

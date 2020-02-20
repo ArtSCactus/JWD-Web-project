@@ -1,15 +1,11 @@
 package com.epam.commands.controlpanel.post;
 
 import com.epam.commands.common.Command;
+import com.epam.message.MessageGenerator;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.model.dto.entity.Admission;
-import com.epam.model.dto.entity.Application;
-import com.epam.model.dto.entity.Student;
-import com.epam.model.dto.entity.StudentStatus;
-import com.epam.service.AdmissionService;
-import com.epam.service.ApplicationService;
-import com.epam.service.StudentService;
+import com.epam.model.dto.entity.*;
+import com.epam.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
@@ -17,6 +13,10 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * @author ArtSCactus
+ * @version 0.1.2
+ */
 public class ChangeAdmissionStatusCommand implements Command {
     private static final String REDIRECT_URL = "/controller?command=show_admissions_panel";
     private static final String ADMISSIONS_TABLE_PAGE_PATH = "/WEB-INF/jsp/control panel/admission table.jsp";
@@ -35,6 +35,7 @@ public class ChangeAdmissionStatusCommand implements Command {
         AdmissionService admissionService = new AdmissionService();
         ApplicationService applicationService = new ApplicationService();
         StudentService studentService = new StudentService();
+        boolean isNotificationRequired = Boolean.parseBoolean(request.getParameter("notification"));
         Optional<Admission> admissionOptional = admissionService.getAdmissionById(admissionId);
         if (admissionOptional.isPresent()) {
             Admission admission = admissionOptional.get();
@@ -50,6 +51,9 @@ public class ChangeAdmissionStatusCommand implements Command {
                         StudentStatus.ENROLLED));
             }
             studentService.enrollStudents(studentList);
+            if (isNotificationRequired){
+                createNewsNoteWhenCompleting(admission.getFacultyId(), admission.getSpecialtyId(), studentList);
+            }
             return new CommandResult(REDIRECT_URL, CommandType.POST);
         } else {
             return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, CommandType.GET);
@@ -59,13 +63,35 @@ public class ChangeAdmissionStatusCommand implements Command {
     private CommandResult resumeAdmission(HttpServletRequest request){
         Long admissionId = Long.parseLong(request.getParameter("admissionId"));
         AdmissionService admissionService = new AdmissionService();
+        boolean isNotificationRequired = Boolean.parseBoolean(request.getParameter("notification"));
         Optional<Admission> admissionOptional = admissionService.getAdmissionById(admissionId);
         if (admissionOptional.isPresent()){
          Admission admission = admissionOptional.get();
          admission.setStatus(true);
          admissionService.updateAdmission(admission);
+         if (isNotificationRequired){
+             createNewsNoteWhenResuming(admission.getFacultyId(), admission.getSpecialtyId());
+         }
          return new CommandResult(REDIRECT_URL, CommandType.POST);
         }
         return new CommandResult(ADMISSIONS_TABLE_PAGE_PATH, CommandType.GET);
+    }
+
+    private void createNewsNoteWhenCompleting(Long facultyId, Long specialtyId, List<Student> students){
+        NewsFeedService newsService = new NewsFeedService();
+        MessageGenerator generator = new MessageGenerator();
+        String facultyName = new FacultyService().getFacultyNameById(facultyId);
+        String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
+        NewsFeedItem item = generator.generateAdmissionCompletionMessage(facultyName, specialtyName, students);
+        newsService.update(item);
+    }
+
+    private void createNewsNoteWhenResuming(Long facultyId, Long specialtyId){
+        NewsFeedService newsService = new NewsFeedService();
+        MessageGenerator generator = new MessageGenerator();
+        String facultyName = new FacultyService().getFacultyNameById(facultyId);
+        String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
+        NewsFeedItem item = generator.generateAdmissionResumeMessage(facultyName, specialtyName);
+        newsService.update(item);
     }
 }
