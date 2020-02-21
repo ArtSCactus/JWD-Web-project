@@ -105,6 +105,10 @@
                                     Notify:
                                     <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
                                 </label>
+                                <label class="notification-checkbox-label">
+                                    Send email:
+                                    <input class="notification-checkbox" name="email notification" type="checkbox" value="true" checked/>
+                                </label>
                             </form>
                         </c:when>
                         <c:otherwise>

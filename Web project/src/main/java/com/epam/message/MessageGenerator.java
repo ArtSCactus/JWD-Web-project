@@ -1,5 +1,6 @@
 package com.epam.message;
 
+import com.epam.model.dto.entity.Account;
 import com.epam.model.dto.entity.NewsFeedItem;
 import com.epam.model.dto.entity.Student;
 
@@ -23,7 +24,7 @@ public class MessageGenerator {
 
     public NewsFeedItem generateAdmissionCompletionMessage(String facultyName,
                                                            String specialtyName,
-                                                           List<Student> enrolledStudents) {
+                                                           List<Account> enrolledStudents) {
         String fullNamesList = convertStudentObjListToParamString(enrolledStudents);
         String preparedMessage = prepareMessage(messageTemplates.getString("admission.completion.message"),
                 facultyName, specialtyName, fullNamesList);
@@ -47,6 +48,7 @@ public class MessageGenerator {
         return news;
     }
 
+
     private String prepareMessage(String messageTemplate, String... params) {
         int index = 0;
         while (messageTemplate.contains(PARAM_STRING) & index < params.length) {
@@ -55,20 +57,29 @@ public class MessageGenerator {
         return messageTemplate;
     }
 
+    public String getEnrollmentEmailTitle(){
+      return  messageTemplates.getString("mail.enrollment.title");
+    }
+
+    public String getEnrollmentEmailMessage(String ...params){
+        return prepareMessage(messageTemplates.getString("mail.enrollment.message"), params);
+    }
+
     private String prepareMessageForAdmissionResume(String messageTemplate, String facultyName, String specialtyName) {
         messageTemplate = messageTemplate.replaceFirst(PARAM_REGEXP, facultyName);
         messageTemplate = messageTemplate.replaceFirst(PARAM_REGEXP, specialtyName);
         return messageTemplate;
     }
 
-    private String convertStudentObjListToParamString(List<Student> students) {
+    private String convertStudentObjListToParamString(List<Account> students) {
         StringBuilder builder = new StringBuilder();
-        for (Student student : students) {
-            builder.append(student.getName());
+        builder.append("\n");
+        for (Account account : students) {
+            builder.append(account.getName());
             builder.append(" ");
-            builder.append(student.getSurname());
+            builder.append(account.getSurname());
             builder.append(" ");
-            builder.append(student.getPatronymic()).append("\n");
+            builder.append(account.getPatronymic()).append("\n");
         }
         return builder.toString();
     }

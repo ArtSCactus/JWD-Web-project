@@ -1,7 +1,7 @@
 package com.epam.message;
 
+import com.epam.model.dto.entity.Account;
 import com.epam.model.dto.entity.NewsFeedItem;
-import com.epam.model.dto.entity.Student;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class MessageGeneratorTest {
     private NewsFeedItem correctGeneratedAdmissionCompletionMessage;
     private NewsFeedItem correctGeneratedAdmissionResumeMessage;
     private NewsFeedItem correctGeneratedAdmissionStartMessage;
-    private List<Student> studentList;
+    private List<Account> accountList;
 
     @Before
     public void init() {
@@ -33,7 +33,7 @@ public class MessageGeneratorTest {
         admissionCompletionMessage = admissionCompletionMessage.replaceFirst(PARAM_REGEXP, "param1");
         admissionCompletionMessage = admissionCompletionMessage.replaceFirst(PARAM_REGEXP, "param2");
         admissionCompletionMessage = admissionCompletionMessage.replaceFirst(PARAM_REGEXP,
-                "name1 surname1 patronymic1\nname2 surname2 patronymic2\nname3 surname3 patronymic3\n");
+                "\nname1 surname1 patronymic1\nname2 surname2 patronymic2\nname3 surname3 patronymic3\n");
         correctGeneratedAdmissionCompletionMessage = new NewsFeedItem(null, admissionCompletionTitle,
                 admissionCompletionMessage,
                 Date.valueOf(LocalDate.now()));
@@ -53,20 +53,28 @@ public class MessageGeneratorTest {
         correctGeneratedAdmissionStartMessage = new NewsFeedItem(null, admissionStartTitle, admissionStartMessage,
                 Date.valueOf(LocalDate.now()));
 
-        studentList = new ArrayList<>();
-        studentList.add(new Student(null, null, null, null, null, null,
-                "name1", "surname1", "patronymic1"));
-        studentList.add(new Student(null, null, null, null, null, null,
-                "name2", "surname2", "patronymic2"));
-        studentList.add(new Student(null, null, null, null, null, null,
-                "name3", "surname3", "patronymic3"));
+        accountList = new ArrayList<>();
+        accountList.add(new Account.Builder()
+                .withName("name1")
+                .withSecondName("surname1")
+                .withThirdName("patronymic1")
+                .build());
+        accountList.add(new Account.Builder()
+                .withName("name2")
+                .withSecondName("surname2")
+                .withThirdName("patronymic2")
+                .build()); accountList.add(new Account.Builder()
+                .withName("name3")
+                .withSecondName("surname3")
+                .withThirdName("patronymic3")
+                .build());
     }
 
     @Test
     public void shouldReturnCorrectAdmissionCompletionNewsFeedItem() {
         MessageGenerator generator = new MessageGenerator();
         NewsFeedItem item = generator.generateAdmissionCompletionMessage("param1", "param2",
-                studentList);
+                accountList);
         Assert.assertEquals(correctGeneratedAdmissionCompletionMessage, item);
     }
 

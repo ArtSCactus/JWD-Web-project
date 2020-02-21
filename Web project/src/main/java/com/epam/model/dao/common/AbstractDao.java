@@ -3,6 +3,8 @@ package com.epam.model.dao.common;
 import com.epam.model.rowmappers.RowMapper;
 import exception.dao.DaoException;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,9 +28,13 @@ public abstract class AbstractDao<T> implements Dao<T> {
     protected ResourceBundle putRequests;
 
     protected AbstractDao(Connection connection) {
+        initProperties();
         this.connection = connection;
-        getRequests = PropertyResourceBundle.getBundle(GET_REQUESTS_PATH);
-        putRequests = PropertyResourceBundle.getBundle(PUT_REQUESTS_PATH);
+    }
+
+    private void initProperties(){
+        getRequests = PropertyResourceBundle.getBundle("sql/get");
+        putRequests = PropertyResourceBundle.getBundle("sql/put");
     }
 
     /**
