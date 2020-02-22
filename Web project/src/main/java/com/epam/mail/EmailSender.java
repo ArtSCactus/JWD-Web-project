@@ -29,14 +29,14 @@ public class EmailSender {
         config.put("mail.smtp.port", bundle.getString("mail.smtp.port"));
         config.put("mail.from.email", bundle.getString("mail.from.email"));
         config.put("mail.account.name", bundle.getString("mail.account.name"));
-        config.put("mail.account.application.password", bundle.getString("mail.account.application.password"));
+        config.put("mail.account.password", bundle.getString("mail.account.password"));
     }
 
     public void send(String subject, String text, String toEmail) {
         Session session = Session.getDefaultInstance(config, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(config.getProperty("mail.account.name"),
-                        config.getProperty("mail.account.application.password"));
+                        config.getProperty("mail.account.password"));
             }
         });
 

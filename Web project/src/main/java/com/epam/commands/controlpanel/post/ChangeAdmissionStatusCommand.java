@@ -2,7 +2,7 @@ package com.epam.commands.controlpanel.post;
 
 import com.epam.commands.common.Command;
 import com.epam.mail.EmailSender;
-import com.epam.message.MessageGenerator;
+import com.epam.message.TemplateMessages;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
 import com.epam.model.dto.entity.*;
@@ -98,24 +98,24 @@ public class ChangeAdmissionStatusCommand implements Command {
 
     private void createNewsNoteWhenCompleting(Long facultyId, Long specialtyId, List<Account> accounts) {
         NewsFeedService newsService = new NewsFeedService();
-        MessageGenerator generator = new MessageGenerator();
+        TemplateMessages generator = new TemplateMessages();
         String facultyName = new FacultyService().getFacultyNameById(facultyId);
         String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
-        NewsFeedItem item = generator.generateAdmissionCompletionMessage(facultyName, specialtyName, accounts);
+        NewsFeedItem item = generator.getAdmissionCompletionMessage(facultyName, specialtyName, accounts);
         newsService.update(item);
     }
 
     private void createNewsNoteWhenResuming(Long facultyId, Long specialtyId) {
         NewsFeedService newsService = new NewsFeedService();
-        MessageGenerator generator = new MessageGenerator();
+        TemplateMessages generator = new TemplateMessages();
         String facultyName = new FacultyService().getFacultyNameById(facultyId);
         String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
-        NewsFeedItem item = generator.generateAdmissionResumeMessage(facultyName, specialtyName);
+        NewsFeedItem item = generator.getAdmissionResumeMessage(facultyName, specialtyName);
         newsService.update(item);
     }
 
     private void notifyViaEmail(List<Account> accounts, Long facultyId, Long specialtyId) {
-        MessageGenerator generator = new MessageGenerator();
+        TemplateMessages generator = new TemplateMessages();
         String facultyName = new FacultyService().getFacultyNameById(facultyId);
         String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
         EmailSender sender = new EmailSender();

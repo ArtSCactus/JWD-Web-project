@@ -16,9 +16,9 @@ import java.util.ResourceBundle;
 /**
  * @author ArtSCactus
  * @version 1.0
- * @see MessageGenerator
+ * @see TemplateMessages
  */
-public class MessageGeneratorTest {
+public class TemplateMessagesTest {
     private static final String PARAM_REGEXP = "\\$\\{\\?}";
     private NewsFeedItem correctGeneratedAdmissionCompletionMessage;
     private NewsFeedItem correctGeneratedAdmissionResumeMessage;
@@ -72,23 +72,23 @@ public class MessageGeneratorTest {
 
     @Test
     public void shouldReturnCorrectAdmissionCompletionNewsFeedItem() {
-        MessageGenerator generator = new MessageGenerator();
-        NewsFeedItem item = generator.generateAdmissionCompletionMessage("param1", "param2",
+        TemplateMessages generator = new TemplateMessages();
+        NewsFeedItem item = generator.getAdmissionCompletionMessage("param1", "param2",
                 accountList);
         Assert.assertEquals(correctGeneratedAdmissionCompletionMessage, item);
     }
 
     @Test
     public void shouldReturnCorrectAdmissionResumeNewsFeedItem() {
-        MessageGenerator generator = new MessageGenerator();
-        NewsFeedItem item = generator.generateAdmissionResumeMessage("facultyName", "specialtyName");
+        TemplateMessages generator = new TemplateMessages();
+        NewsFeedItem item = generator.getAdmissionResumeMessage("facultyName", "specialtyName");
         Assert.assertEquals(correctGeneratedAdmissionResumeMessage, item);
     }
 
     @Test
     public void shouldReturnCorrectAdmissionStartNewsFeedItem(){
-        MessageGenerator generator = new MessageGenerator();
-        NewsFeedItem item = generator.generateAdmissionStartMessage("facultyName", "specialtyName", "10");
+        TemplateMessages generator = new TemplateMessages();
+        NewsFeedItem item = generator.getAdmissionStartMessage("facultyName", "specialtyName", "10");
         Assert.assertEquals(correctGeneratedAdmissionStartMessage, item);
     }
 

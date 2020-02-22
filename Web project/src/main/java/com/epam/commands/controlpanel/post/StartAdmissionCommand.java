@@ -3,15 +3,13 @@ package com.epam.commands.controlpanel.post;
 import com.epam.commands.common.Command;
 import com.epam.commands.result.CommandResult;
 import com.epam.commands.result.CommandType;
-import com.epam.message.MessageGenerator;
-import com.epam.model.dto.entity.NewsFeedItem;
+import com.epam.message.TemplateMessages;
 import com.epam.service.AdmissionService;
 import com.epam.service.NewsFeedService;
 import com.epam.service.UniversityService;
 import com.epam.validator.AdmissionValidator;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.MessageDigest;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,11 +31,11 @@ public class StartAdmissionCommand implements Command {
             boolean isShouldBeCreatedNewsFeedItem = (boolean) parameters.get("notification");
 
             if (isShouldBeCreatedNewsFeedItem) {
-                MessageGenerator generator = new MessageGenerator();
+                TemplateMessages generator = new TemplateMessages();
                 NewsFeedService newsFeedService = new NewsFeedService();
                 String facultyName = universityService.getFacultyNameById(facultyId);
                 String specialtyName = universityService.getSpecialtyNameById(specialtyId);
-                newsFeedService.update(generator.generateAdmissionStartMessage(facultyName, specialtyName,
+                newsFeedService.update(generator.getAdmissionStartMessage(facultyName, specialtyName,
                          limit+""));
             }
 

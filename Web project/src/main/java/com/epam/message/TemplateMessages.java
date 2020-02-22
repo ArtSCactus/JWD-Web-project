@@ -2,29 +2,30 @@ package com.epam.message;
 
 import com.epam.model.dto.entity.Account;
 import com.epam.model.dto.entity.NewsFeedItem;
-import com.epam.model.dto.entity.Student;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 /**
  * @author ArtSCactus
- * @version 1.0
+ * @version 1.1
  */
-public class MessageGenerator {
+public class TemplateMessages {
     private static final String MESSAGE_TEMPLATES_PATH = "message/templates";
     private static final String PARAM_REGEXP = "\\$\\{\\?}";
     private static final String PARAM_STRING = "${?}";
     private ResourceBundle messageTemplates;
 
-    public MessageGenerator() {
+    public TemplateMessages() {
         messageTemplates = PropertyResourceBundle.getBundle(MESSAGE_TEMPLATES_PATH);
     }
 
-    public NewsFeedItem generateAdmissionCompletionMessage(String facultyName,
-                                                           String specialtyName,
-                                                           List<Account> enrolledStudents) {
+    public NewsFeedItem getAdmissionCompletionMessage(String facultyName,
+                                                      String specialtyName,
+                                                      List<Account> enrolledStudents) {
         String fullNamesList = convertStudentObjListToParamString(enrolledStudents);
         String preparedMessage = prepareMessage(messageTemplates.getString("admission.completion.message"),
                 facultyName, specialtyName, fullNamesList);
@@ -33,7 +34,7 @@ public class MessageGenerator {
         return news;
     }
 
-    public NewsFeedItem generateAdmissionResumeMessage(String facultyName, String specialtyName) {
+    public NewsFeedItem getAdmissionResumeMessage(String facultyName, String specialtyName) {
         String preparedMessage = prepareMessageForAdmissionResume(messageTemplates.getString("admission.resume.message"),
                 facultyName, specialtyName);
         NewsFeedItem news = new NewsFeedItem(null, messageTemplates.getString("admission.resume.title"),
@@ -41,7 +42,7 @@ public class MessageGenerator {
         return news;
     }
 
-    public NewsFeedItem generateAdmissionStartMessage(String ...params) {
+    public NewsFeedItem getAdmissionStartMessage(String ...params) {
         String preparedMessage = prepareMessage(messageTemplates.getString("admission.start.message"), params);
         NewsFeedItem news = new NewsFeedItem(null, messageTemplates.getString("admission.start.title"),
                 preparedMessage, Date.valueOf(LocalDate.now()));
