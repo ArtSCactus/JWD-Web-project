@@ -8,6 +8,7 @@ import com.epam.commands.result.CommandType;
 import com.epam.model.dto.entity.*;
 import com.epam.service.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.Clock;
@@ -70,7 +71,8 @@ public class ChangeAdmissionStatusCommand implements Command {
             }
 
             if (isEmailNotificationEnabled) {
-                notifyViaEmail(accountsOfEnrolledStudents, admission.getFacultyId(), admission.getSpecialtyId());
+                notifyViaEmail(accountsOfEnrolledStudents, admission.getFacultyId(), admission.getSpecialtyId(),
+                        request.getServletContext());
             }
 
             return new CommandResult(REDIRECT_URL, CommandType.POST);
@@ -114,13 +116,13 @@ public class ChangeAdmissionStatusCommand implements Command {
         newsService.update(item);
     }
 
-    private void notifyViaEmail(List<Account> accounts, Long facultyId, Long specialtyId) {
+    private void notifyViaEmail(List<Account> accounts, Long facultyId, Long specialtyId, ServletContext context) {
         TemplateMessages generator = new TemplateMessages();
         String facultyName = new FacultyService().getFacultyNameById(facultyId);
         String specialtyName = new SpecialtyService().getSpecialtyNameById(specialtyId);
-        EmailSender sender = new EmailSender();
+        EmailSender sender = new EmailSender(context);
         for (Account account : accounts) {
-            if (!account.getMailbox().isEmpty() || account.getMailbox() != null) {
+            if (account.getMailbox() != null & !account.getMailbox().isEmpty()) {
                 sender.send(generator.getEnrollmentEmailTitle(), generator.getEnrollmentEmailMessage(account.getName(),
                         facultyName, specialtyName),
                         account.getMailbox());

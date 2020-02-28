@@ -3,11 +3,15 @@ package com.epam.mail;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
+import java.io.IOException;
 import java.util.Properties;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 
 /**
+ * Email message handler.
+ * <p>
+ * Contains method ${@code send} messages via email. Configures from file mail.properties.
+ *
  * @author ArtSCactus
  * @version 1.0
  */
@@ -15,23 +19,25 @@ public class EmailSender {
     private static final String CONFIG_FILE_PATH = "config/mail";
     private Properties config;
 
-    public EmailSender() {
-       init();
+    public EmailSender(ServletContext context) {
+        init(context);
     }
 
-    private void init(){
-        ResourceBundle bundle = PropertyResourceBundle.getBundle(CONFIG_FILE_PATH);
+    private void init(ServletContext context) {
         config = new Properties();
-        config.put("mail.smtp.host", bundle.getString("mail.smtp.host"));
-        config.put("mail.smtp.socketFactory.port", bundle.getString("mail.smtp.socketFactory.port"));
-        config.put("mail.smtp.socketFactory.class", bundle.getString("mail.smtp.socketFactory.class"));
-        config.put("mail.smtp.auth", bundle.getString("mail.smtp.auth"));
-        config.put("mail.smtp.port", bundle.getString("mail.smtp.port"));
-        config.put("mail.from.email", bundle.getString("mail.from.email"));
-        config.put("mail.account.name", bundle.getString("mail.account.name"));
-        config.put("mail.account.password", bundle.getString("mail.account.password"));
+        try {
+            config.load(context.getResourceAsStream(CONFIG_FILE_PATH));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load email sender config", e);
+        }
     }
 
+    /** Sends email from account, that was configured in config file.
+     *
+     * @param subject title of email message.
+     * @param text body of email message.
+     * @param toEmail receiver address.
+     */
     public void send(String subject, String text, String toEmail) {
         Session session = Session.getDefaultInstance(config, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

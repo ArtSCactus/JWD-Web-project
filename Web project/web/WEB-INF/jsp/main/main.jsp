@@ -49,19 +49,15 @@
             ${checkbox_content}
             <input type="checkbox" id="only-with-admission-checkbox" value="false">
         </label>
-        <input class="find-btn" type="button" value="${find_btn}" onclick="updateSpecialtiesBlock()">
+        <input class="find-btn" type="button" value="${find_btn}">
     </form>
 </div>
 <div class="specialties-block">
     <%--@elvariable id="specialty" type="com.epam.model.dto.university.Specialty"--%>
     <c:forEach var="specialty" items="${pageContent.additionalAttributes.get('specialties')}">
         <div id="${specialty.admissionId}" class="specialty-item">
-            <div class="specialty_item_title">
-                    ${specialty.name}
-            </div>
-            <div class="specialty_item_description">
-                    ${specialty.description}
-            </div>
+            <div class="specialty_item_title">${specialty.name}</div>
+            <div class="specialty_item_description">${specialty.description}</div>
             <c:set var="contains" value="false"/>
         <%--@elvariable id="appliedApplication" type="com.epam.model.dto.entity.Application"--%>
             <c:forEach var="appliedApplication" items="${existingApplications}" varStatus="loop">

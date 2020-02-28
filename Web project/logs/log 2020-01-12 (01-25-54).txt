@@ -1,1 +1,0 @@
-2020-01-12 01:25:54.980 [main] ERROR com.epam.connection.ConnectionPool - Failed to get connection from DriverManager

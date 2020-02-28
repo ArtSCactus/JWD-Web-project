@@ -40,6 +40,7 @@ body {
     float: right;
     /* margin-top: 0; */
     margin-right: 1%;
+    padding: 1%;
     background-color: #0f3053c4;
     border-color: #4f667fc9;
     border-radius: 6px;
@@ -385,4 +386,28 @@ label{
 
 .top-menu a:hover{
     background: rgba(52, 85, 121, 0.72);
+}
+
+.newsFeedItem-item{
+    display: flex; /* 1 */
+    flex-direction: column; /* 1 */
+    flex: 0 0 300px; /* 2 */
+    margin: 10px; /* 3 */
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    padding: 10px;
+}
+
+.newsFeedItem-block{
+    margin-left: 3%;
+}
+
+.ui-helper-hidden-accessible {
+    display:none;
+}
+
+#ui-id-1{
+    list-style-type: none;
+    padding-left:0;
 }

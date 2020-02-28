@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../../../css/main.css">
-    <script async src="scripts/Main page.js"></script>
     <link type="text/css" href="scripts/jquery/jquery-ui-1.12.1/jquery-ui.theme.css" rel="stylesheet"/>
     <script type="text/javascript" src="scripts/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script async src="scripts/Main page.js"></script>
 </head>
 <div class="top-menu-container">
     <div class="top-menu">

@@ -13,13 +13,13 @@
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.faculty" var="faculty_label"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.specialty" var="specialty_label"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit" var="limt_label"/>
-<fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit.placeholder"
-             var="limit_placeholder"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.limit.placeholder" var="limit_placeholder"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.toolbar.start.btn" var="start_btn"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.finished" var="finished_status"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.status.process" var="process_status"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.admissions.table.name" var="table_name"/>
-
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.notification.completion.email" var="notify_about_completion_via_email"/>
+<fmt:message bundle="${localizationContent}" key="control.panel.admissions.notification.start.news" var="create_news_article_label"/>
 <html lang="${sessionScope.lang}">
 <head>
     <link rel="stylesheet" href="css/admin_panel.css">
@@ -64,7 +64,7 @@
         </label>
         <input class="start-admission-btn" type="submit" value="${start_btn}">
         <label class="notification-checkbox-label">
-            Notify:
+            ${create_news_article_label}
             <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
         </label>
         <input type="hidden" name="command" value="start_admission">
@@ -102,11 +102,11 @@
                                 <input type="hidden" name="newStatus" value="false"/>
                                 <input class="button" type="submit" value="${finish_action}"/>
                                 <label class="notification-checkbox-label">
-                                    Notify:
+                                   ${create_news_article_label}
                                     <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
                                 </label>
                                 <label class="notification-checkbox-label">
-                                    Send email:
+                                    ${notify_about_completion_via_email}
                                     <input class="notification-checkbox" name="email notification" type="checkbox" value="true" checked/>
                                 </label>
                             </form>
@@ -118,7 +118,7 @@
                                 <input type="hidden" name="newStatus" value="true"/>
                                 <input class="button" type="submit" value="${resume_action}"/>
                                 <label class="notification-checkbox-label">
-                                Notify:
+                                ${create_news_article_label}
                                 <input class="notification-checkbox" name="notification" type="checkbox" value="true" checked/>
                             </label>
                             </form>
