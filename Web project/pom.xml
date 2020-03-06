@@ -66,6 +66,11 @@
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.scalatestplus</groupId>
+            <artifactId>mockito-1-10_2.13</artifactId>
+            <version>3.2.0.0-M2</version>
+        </dependency>
     </dependencies>
 
 </project>

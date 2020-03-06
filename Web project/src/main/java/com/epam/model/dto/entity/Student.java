@@ -26,6 +26,10 @@ public class Student implements Identifiable, Serializable {
    * */
     private String patronymic;
 
+    private Student() {
+
+    }
+
     public Student(Long id, Long accountId, Long facultyId,
                    Long specialtyId, Date enrollmentDate, StudentStatus status) {
         this.id = id;
@@ -121,6 +125,62 @@ public class Student implements Identifiable, Serializable {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public static class Builder {
+        private Student obj;
+
+        public Builder() {
+            obj = new Student();
+        }
+
+        public Builder withId(Long id){
+            obj.id = id;
+            return this;
+        }
+
+        public Builder withAccountId(Long id){
+            obj.accountId = id;
+            return this;
+        }
+
+        public Builder withFacultyId(Long id){
+            obj.facultyId = id;
+            return this;
+        }
+        public Builder withSpecialtyId(Long id){
+            obj.specialtyId = id;
+            return this;
+        }
+
+        public Builder withEnrollmentDate(Date date){
+            obj.enrollmentDate = date;
+            return this;
+        }
+
+        public Builder withStudentStatus(StudentStatus status){
+            obj.status = status;
+            return this;
+        }
+
+        public Builder withName(String name){
+            obj.name = name;
+            return this;
+        }
+
+        public Builder withSurname(String surname){
+            obj.surname = surname;
+            return this;
+        }
+
+        public Builder withPatronymic(String patronymic){
+            obj.patronymic = patronymic;
+            return this;
+        }
+
+        public Student build(){
+            return obj;
+        }
     }
 
     @Override

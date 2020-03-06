@@ -29,24 +29,21 @@ public class TemplateMessages {
         String fullNamesList = convertStudentObjListToParamString(enrolledStudents);
         String preparedMessage = prepareMessage(messageTemplates.getString("admission.completion.message"),
                 facultyName, specialtyName, fullNamesList);
-        NewsFeedItem news = new NewsFeedItem(null, messageTemplates.getString("admission.completion.title"),
+        return new NewsFeedItem(null, messageTemplates.getString("admission.completion.title"),
                 preparedMessage, Date.valueOf(LocalDate.now()));
-        return news;
     }
 
     public NewsFeedItem getAdmissionResumeMessage(String facultyName, String specialtyName) {
         String preparedMessage = prepareMessageForAdmissionResume(messageTemplates.getString("admission.resume.message"),
                 facultyName, specialtyName);
-        NewsFeedItem news = new NewsFeedItem(null, messageTemplates.getString("admission.resume.title"),
+        return new NewsFeedItem(null, messageTemplates.getString("admission.resume.title"),
                 preparedMessage, Date.valueOf(LocalDate.now()));
-        return news;
     }
 
-    public NewsFeedItem getAdmissionStartMessage(String ...params) {
+    public NewsFeedItem getAdmissionStartMessage(String... params) {
         String preparedMessage = prepareMessage(messageTemplates.getString("admission.start.message"), params);
-        NewsFeedItem news = new NewsFeedItem(null, messageTemplates.getString("admission.start.title"),
+        return new NewsFeedItem(null, messageTemplates.getString("admission.start.title"),
                 preparedMessage, Date.valueOf(LocalDate.now()));
-        return news;
     }
 
 
@@ -58,11 +55,11 @@ public class TemplateMessages {
         return messageTemplate;
     }
 
-    public String getEnrollmentEmailTitle(){
-      return  messageTemplates.getString("mail.enrollment.title");
+    public String getEnrollmentEmailTitle() {
+        return messageTemplates.getString("mail.enrollment.title");
     }
 
-    public String getEnrollmentEmailMessage(String ...params){
+    public String getEnrollmentEmailMessage(String... params) {
         return prepareMessage(messageTemplates.getString("mail.enrollment.message"), params);
     }
 

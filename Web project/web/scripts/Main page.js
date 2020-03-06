@@ -57,7 +57,7 @@ $('.find-btn').click(function () {
                 $('html,body').animate({
                         scrollTop: $(specialtiesTitles[index]).offset().top - $(this).height() / 2},
                     'slow');
-                
+
             }
         }
     }
