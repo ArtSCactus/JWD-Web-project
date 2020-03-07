@@ -32,7 +32,7 @@ public class StudentRowMapperTest {
                 .withAccountId(1L)
                 .withFacultyId(2L)
                 .withSpecialtyId(3L)
-                .withEnrollmentDate(Date.valueOf(LocalDate.now()))
+                .withEnrollmentDate(Date.valueOf("2020-01-10"))
                 .withStudentStatus(StudentStatus.ENROLLED)
                 .build();
     }
@@ -44,7 +44,7 @@ public class StudentRowMapperTest {
         Mockito.when(resultSet.getLong("accountId")).thenReturn(1L);
         Mockito.when(resultSet.getLong("facultyId")).thenReturn(2L);
         Mockito.when(resultSet.getLong("specialtyId")).thenReturn(3L);
-        Mockito.when(resultSet.getDate("enrollmentDate")).thenReturn(Date.valueOf(LocalDate.now()));
+        Mockito.when(resultSet.getDate("enrollmentDate")).thenReturn(Date.valueOf("2020-01-10"));
         Mockito.when(resultSet.getString("status")).thenReturn("enrolled");
         Student resultObj = studentRowMapperTest.map(resultSet);
         Assert.assertEquals(correctObj, resultObj);

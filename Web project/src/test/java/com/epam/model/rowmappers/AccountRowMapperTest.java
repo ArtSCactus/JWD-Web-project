@@ -50,9 +50,9 @@ public class AccountRowMapperTest {
         Mockito.when(resultSet.getBoolean("blockStatus")).thenReturn(false);
         Mockito.when(resultSet.getLong("studentId")).thenReturn(0L);
         Mockito.when(resultSet.getInt("totalPoints")).thenReturn(400);
-        Account resultAccount = accountRowMapper.map(resultSet);
+       Account resultAccount = accountRowMapper.map(resultSet);
         resultAccount.setStudentId(null); // because of Mockito cannot return null value when Number type is using, but real
         // ResultSet can do it
-        Assert.assertEquals(correctAccount, resultAccount);
+        Assert.assertEquals(resultAccount, correctAccount);
     }
 }

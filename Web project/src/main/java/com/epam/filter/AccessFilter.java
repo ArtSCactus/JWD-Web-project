@@ -18,7 +18,7 @@ public class AccessFilter implements Filter {
     private List<CommandEnum> adminCommands;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig){
         userCommands = new ArrayList<>();
         userCommands.add(CommandEnum.APPLY);
         userCommands.add(CommandEnum.LOGIN);
@@ -62,15 +62,18 @@ public class AccessFilter implements Filter {
         if (commands.contains(requestingCommandObj)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE_PATH);
-            requestDispatcher.forward(servletRequest, servletResponse);
+                RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE_PATH);
+                requestDispatcher.forward(servletRequest, servletResponse);
         }
         } else {
-            if (commands.contains(requestingCommandObj) & !service.isAccountBlocked(accountId)) {
+            boolean isAccountBlocked = service.isAccountBlocked(accountId);
+            if (commands.contains(requestingCommandObj) & !isAccountBlocked) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                HttpSession httpSession = httpServletRequest.getSession();
-                httpSession.invalidate();
+                if (isAccountBlocked) {
+                    HttpSession httpSession = httpServletRequest.getSession();
+                    httpSession.invalidate();
+                }
                 RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(ACCESS_DENIED_PAGE);
                 requestDispatcher.forward(servletRequest, servletResponse);
             }
