@@ -16,7 +16,7 @@ import java.util.Properties;
  * @version 1.0
  */
 public class EmailSender {
-    private static final String CONFIG_FILE_PATH = "config/mail";
+    private static final String CONFIG_FILE_PATH = "config/mail.properties";
     private Properties config;
 
     public EmailSender(ServletContext context) {
@@ -26,9 +26,9 @@ public class EmailSender {
     private void init(ServletContext context) {
         config = new Properties();
         try {
-            config.load(context.getResourceAsStream(CONFIG_FILE_PATH));
+            config.load(context.getClassLoader().getResourceAsStream(CONFIG_FILE_PATH));
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load email sender config", e);
+            throw new RuntimeException("Failed to load email sender configuration file", e);
         }
     }
 

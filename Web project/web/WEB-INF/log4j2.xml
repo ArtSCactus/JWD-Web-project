@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="ALL">
     <Properties>
-        <Property name="APP_LOG_ROOT">logs</Property>
+        <Property name="APP_LOG_ROOT">../logs/</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">

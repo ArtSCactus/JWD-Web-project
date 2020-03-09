@@ -18,6 +18,7 @@ public class ChangeStudentStatusCommand implements Command {
         Long id = Long.parseLong(request.getParameter("studentId"));
         StudentService service = new StudentService();
         Optional<Student> studentOptional = service.getById(id);
+
         if (studentOptional.isPresent()){
             Student student = studentOptional.get();
             String statusValue = request.getParameter("status");
@@ -25,6 +26,7 @@ public class ChangeStudentStatusCommand implements Command {
             student.setStatus(status);
             service.update(student);
             return new CommandResult(REDIRECT_TO_STUDENTS, CommandType.POST);
+
         } else {
             request.setAttribute("message", "No student with id: "+id+" found.");
             return new CommandResult(REDIRECT_TO_404, CommandType.GET);

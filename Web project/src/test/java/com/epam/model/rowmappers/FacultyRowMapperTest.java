@@ -13,15 +13,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.junit.Assert.*;
+
 @RunWith(MockitoJUnitRunner.class)
 public class FacultyRowMapperTest {
     @Mock
-private ResultSet resultSet;
-private Faculty correctObj;
-@Before
-public void init(){
-    correctObj = new Faculty(1L, "Name", "Description");
-}
+    private ResultSet resultSet;
+    private Faculty correctObj;
+
+    @Before
+    public void init() {
+        correctObj = new Faculty(1L, "Name", "Description");
+    }
+
     @Test
     public void map() throws SQLException {
         Mockito.when(resultSet.getLong("id")).thenReturn(1L);

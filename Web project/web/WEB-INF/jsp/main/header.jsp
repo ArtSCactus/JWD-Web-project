@@ -2,7 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="Page content" var="localizedContent"/>
+<fmt:setBundle basename="localization/Page content" var="localizedContent"/>
 <fmt:message bundle="${localizedContent}" key="sign_in_btn" var="sign_in_btn"/>
 <fmt:message bundle="${localizedContent}" key="sign_up_btn" var="sign_up_btn"/>
 <fmt:message bundle="${localizedContent}" key="home_btn" var="home_btn"/>
@@ -12,6 +12,7 @@
 <fmt:message bundle="${localizedContent}" key="control_panel_btn" var="control_panel_btn"/>
 <fmt:message bundle="${localizedContent}" key="university_title" var="university_title"/>
 <fmt:message bundle="${localizedContent}" key="logout_btn" var="logout_btn"/>
+<fmt:message bundle="${localizedContent}" key="profile_btn" var="profile_btn"/>
 <html>
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
@@ -37,15 +38,16 @@
     </div>
 </div>
 <header>
-   <%-- <div class="header-background-top-border-wrapper">--%>
     <div class="header-background-top-border">
     </div>
-<%--    </div>--%>
     <menu>
         <li><a href="controller?command=show_main_page"><i class="fa fa-home fa-fw"></i>${home_btn}</a></li>
         <li><a href="controller?command=news">${news_btn}</a></li>
         <li><a href="#">${admissions_btn}</a></li>
         <li><a href="#">${contacts_btn}</a></li>
+        <c:if test="${not empty sessionScope.accountId}">
+            <li><a href="controller?command=show_profile">${profile_btn}</a></li>
+        </c:if>
         <c:if test="${isUserAdmin}">
             <li>
                 <a href="controller?command=show_admin_panel">${control_panel_btn}</a>

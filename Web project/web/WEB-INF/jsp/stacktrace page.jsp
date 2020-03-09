@@ -14,10 +14,10 @@
  <br/>
  Servlet Exception: ${throwable}
  <br/>
- 404 Exception: ${pageContext.errorData.throwable}
+ Exception: ${pageContext.errorData.throwable}
  <br/>
  ${pageContext.errorData.throwable.cause.message}
   <br/>
-  Servlet message: ${requestScope.message}
+  Exception message: ${requestScope.message}
     </body>
     </html>

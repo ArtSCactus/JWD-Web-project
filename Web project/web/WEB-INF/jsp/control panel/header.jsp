@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="Page content" var="localizationContent"/>
+<fmt:setBundle basename="localization/Page content" var="localizationContent"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.header.admissions" var="admissions"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.header.applications" var="applications"/>
 <fmt:message bundle="${localizationContent}" key="control.panel.header.students" var="students"/>

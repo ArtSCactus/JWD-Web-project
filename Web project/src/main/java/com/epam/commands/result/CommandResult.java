@@ -12,11 +12,6 @@ public class CommandResult {
         this.executedCommandType = executedCommandType;
     }
 
-
-    public CommandResult(String url, String redirectUrl) {
-        this.url = url;
-    }
-
     public CommandResult(String url) {
         this.url = url;
     }

@@ -17,6 +17,14 @@ public class TemplateMessages {
     private static final String MESSAGE_TEMPLATES_PATH = "message/templates";
     private static final String PARAM_REGEXP = "\\$\\{\\?}";
     private static final String PARAM_STRING = "${?}";
+    private static final String ADMISSION_COMPLETION_MSG = "admission.completion.message";
+    private static final String ADMISSION_COMPLETION_TITLE = "admission.completion.title";
+    private static final String ADMISSION_RESUME_MSG = "admission.resume.message";
+    private static final String ADMISSION_RESUME_TITLE="admission.resume.title";
+    private static final String ADMISSION_START_TITLE = "admission.start.title";
+    private static final String ADMISSION_START_MSG = "admission.start.message";
+    private static final String MAIL_ENROLLMENT_TITLE = "mail.enrollment.title";
+    private static final String MAIL_ENROLLMENT_MSG = "mail.enrollment.message";
     private ResourceBundle messageTemplates;
 
     public TemplateMessages() {
@@ -27,22 +35,22 @@ public class TemplateMessages {
                                                       String specialtyName,
                                                       List<Account> enrolledStudents) {
         String fullNamesList = convertStudentObjListToParamString(enrolledStudents);
-        String preparedMessage = prepareMessage(messageTemplates.getString("admission.completion.message"),
+        String preparedMessage = prepareMessage(messageTemplates.getString(ADMISSION_COMPLETION_MSG),
                 facultyName, specialtyName, fullNamesList);
-        return new NewsFeedItem(null, messageTemplates.getString("admission.completion.title"),
+        return new NewsFeedItem(null, messageTemplates.getString(ADMISSION_COMPLETION_TITLE),
                 preparedMessage, Date.valueOf(LocalDate.now()));
     }
 
     public NewsFeedItem getAdmissionResumeMessage(String facultyName, String specialtyName) {
-        String preparedMessage = prepareMessageForAdmissionResume(messageTemplates.getString("admission.resume.message"),
+        String preparedMessage = prepareMessageForAdmissionResume(messageTemplates.getString(ADMISSION_RESUME_MSG),
                 facultyName, specialtyName);
-        return new NewsFeedItem(null, messageTemplates.getString("admission.resume.title"),
+        return new NewsFeedItem(null, messageTemplates.getString(ADMISSION_RESUME_TITLE),
                 preparedMessage, Date.valueOf(LocalDate.now()));
     }
 
     public NewsFeedItem getAdmissionStartMessage(String... params) {
-        String preparedMessage = prepareMessage(messageTemplates.getString("admission.start.message"), params);
-        return new NewsFeedItem(null, messageTemplates.getString("admission.start.title"),
+        String preparedMessage = prepareMessage(messageTemplates.getString(ADMISSION_START_MSG), params);
+        return new NewsFeedItem(null, messageTemplates.getString(ADMISSION_START_TITLE),
                 preparedMessage, Date.valueOf(LocalDate.now()));
     }
 
@@ -56,11 +64,11 @@ public class TemplateMessages {
     }
 
     public String getEnrollmentEmailTitle() {
-        return messageTemplates.getString("mail.enrollment.title");
+        return messageTemplates.getString(MAIL_ENROLLMENT_TITLE);
     }
 
     public String getEnrollmentEmailMessage(String... params) {
-        return prepareMessage(messageTemplates.getString("mail.enrollment.message"), params);
+        return prepareMessage(messageTemplates.getString(MAIL_ENROLLMENT_MSG), params);
     }
 
     private String prepareMessageForAdmissionResume(String messageTemplate, String facultyName, String specialtyName) {
