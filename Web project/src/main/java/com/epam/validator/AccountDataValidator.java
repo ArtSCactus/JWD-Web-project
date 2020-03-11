@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public class AccountDataValidator {
-    private static final Pattern MAILBOX_PATTERN = Pattern.compile("(\\w){3,30}\\@(\\w){3,15}\\.(com|ru|by|net|)");
+    private static final Pattern MAILBOX_PATTERN = Pattern.compile("(\\w){3,30}\\@(\\w){2,15}\\.(com|ru|by|net|)");
     private static final Pattern NAME_PATTERN = Pattern.compile("^[А-Яа-яA-Za-z0-9\\s]{2,20}$");
     private static final Pattern LOGIN_PATTERN = Pattern.compile("^[A-za-z0-9_-]{2,20}$");
     public boolean isLoginValid(String login) {

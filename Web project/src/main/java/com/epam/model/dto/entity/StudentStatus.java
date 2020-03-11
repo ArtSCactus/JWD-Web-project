@@ -4,7 +4,7 @@ package com.epam.model.dto.entity;
  * @author ArtSCactus
  * @version 1.0
  */
-public enum StudentStatus {
+public enum StudentStatus{
     ENROLLED("enrolled"), DISMISSED("dismissed");
 
     StudentStatus(String message) {

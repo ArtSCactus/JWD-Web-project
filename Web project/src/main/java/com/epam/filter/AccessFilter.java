@@ -21,15 +21,14 @@ public class AccessFilter implements Filter {
     @Override
     public void init(FilterConfig config) {
         unauthorizedUserCommands = new ArrayList<>();
+        unauthorizedUserCommands.add(CommandEnum.FORWARD);
         unauthorizedUserCommands.add(CommandEnum.SIGN_UP);
         unauthorizedUserCommands.add(CommandEnum.LOGIN);
         unauthorizedUserCommands.add(CommandEnum.SHOW_MAIN_PAGE);
         authorizedUserCommands = new ArrayList<>();
         authorizedUserCommands.add(CommandEnum.APPLY);
-        authorizedUserCommands.add(CommandEnum.LOGIN);
         authorizedUserCommands.add(CommandEnum.LOGOUT);
         authorizedUserCommands.add(CommandEnum.FORWARD);
-        authorizedUserCommands.add(CommandEnum.SIGN_UP);
         authorizedUserCommands.add(CommandEnum.SHOW_MAIN_PAGE);
         authorizedUserCommands.add(CommandEnum.CHANGE_LANGUAGE);
         authorizedUserCommands.add(CommandEnum.CANCEL);
@@ -74,8 +73,12 @@ public class AccessFilter implements Filter {
             if (commands.contains(requestingCommandObj)) {
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE_PATH);
-                requestDispatcher.forward(servletRequest, servletResponse);
+                if (requestingCommandObj == CommandEnum.SIGN_UP){
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE_PATH);
+                    requestDispatcher.forward(servletRequest, servletResponse);
+                }
             }
         } else {
             boolean isAccountBlocked = service.isAccountBlocked(accountId);

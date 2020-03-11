@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="Page content" var="localizedContent"/>
+<fmt:setBundle basename="localization/Page content" var="localizedContent"/>
 <fmt:message bundle="${localizedContent}" key="sign.up.page.title" var="sign_up_page_title"/>
 <fmt:message bundle="${localizedContent}" key="sign.up.form.title" var="form_title"/>
 <fmt:message bundle="${localizedContent}" key="sign.up.page.log.pas.tab.title" var="log_pas_tab_title"/>

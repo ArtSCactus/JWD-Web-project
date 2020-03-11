@@ -11,7 +11,7 @@
 <fmt:message bundle="${localizedContent}" key="main.page.profile.total.points.label" var="total_points_label"/>
 <html>
 <head>
-    <title>Profile</title>
+    <title>${title}</title>
     <%--@elvariable id="pageContent" type="com.epam.model.dto.PageContent"--%>
     <c:set var="pageContent" value="${pageContent}"/>
     <%--@elvariable id="account" type="com.epam.model.dto.entity.Account"--%>
